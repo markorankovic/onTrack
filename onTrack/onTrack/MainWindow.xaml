@@ -88,6 +88,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
+            <RowDefinition Height="50" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
@@ -105,7 +106,6 @@
 
                 <StackPanel HorizontalAlignment="Right"
                             Orientation="Horizontal">
-
                     <Button Width="40"
                             Height="40"
                             Content="🗕"
@@ -131,8 +131,29 @@
 
         </Border>
 
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button 
+                    Background="Transparent"
+                    BorderThickness="0">
+                    <TextBlock Text="⌛" 
+                               FontSize="30"
+                               Foreground="White"/>
+                </Button>
+                <Button 
+                    Background="Transparent"
+                    BorderThickness="0">
+                    <TextBlock Text="⚙️" 
+                               FontSize="30"
+                               Foreground="White"/>
+                </Button>
+            </StackPanel>
+            <Rectangle Width="90" Height="5" Fill="White"/>
+        </StackPanel>
+
+
         <StackPanel
-                Grid.Row="1"
+                Grid.Row="2"
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 
             >
