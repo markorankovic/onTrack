@@ -179,6 +179,7 @@
                 Width="520"
                 AutoToolTipPlacement="TopLeft"
                 AutoToolTipPrecision="1"
+                Foreground="White"
                 />
             <StackPanel 
                 VerticalAlignment="Center" 
