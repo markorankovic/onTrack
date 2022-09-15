@@ -1,14 +1,14 @@
-﻿<Page x:Class="onTrack.Views.TimerView"
+﻿<UserControl x:Class="onTrack.Views.TimerView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:onTrack.Views"
       mc:Ignorable="d" 
-      Title="TimerView" Width="800" Height="510"
+      Width="800" Height="510"
       Background="#00bbff">
 
-    <Page.Resources>
+    <UserControl.Resources>
         <ControlTemplate x:Key="ButtonControlTemplate" TargetType="{x:Type Button}">
             <Border Background="{TemplateBinding Background}">
                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" 
@@ -82,7 +82,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-    </Page.Resources>
+    </UserControl.Resources>
     
     <StackPanel
         VerticalAlignment="Center" 
@@ -158,4 +158,4 @@
             </Button>
         </StackPanel>
     </StackPanel>
-</Page>
+</UserControl>

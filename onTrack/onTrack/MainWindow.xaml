@@ -76,10 +76,6 @@
             <Rectangle Width="90" Height="5" Fill="White"/>
         </StackPanel>
 
-        <StackPanel
-            Grid.Row="2"
-        >
-
-        </StackPanel>
+        <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="2"/>
     </Grid>
 </Window>

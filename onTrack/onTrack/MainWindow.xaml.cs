@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using onTrack.ViewModels;
+using System.Windows;
 using System.Windows.Input;
 
 namespace onTrack
@@ -9,6 +10,8 @@ namespace onTrack
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new MainViewModel();
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
