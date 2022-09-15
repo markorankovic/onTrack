@@ -9,81 +9,6 @@
         Title="onTrack" Width="800" Height="600"
         Background="#00bbff"
         >
-    <Window.Resources>
-        <ControlTemplate x:Key="ButtonControlTemplate" TargetType="{x:Type Button}">
-            <Border Background="{TemplateBinding Background}">
-                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                  Margin="{TemplateBinding Padding}"/>
-            </Border>
-        </ControlTemplate>
-        <Style x:Key="ButtonAnimation" TargetType="Button">
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="Button.MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Button.MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1.1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1.1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Button.PreviewMouseDown">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1.1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1.1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="Button.PreviewMouseUp">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1.1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1.1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="PlayButtonStyle" BasedOn="{StaticResource ButtonAnimation}" TargetType="Button">
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Transparent"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
     <Grid>
 
         <Grid.RowDefinitions>
@@ -134,13 +59,17 @@
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button 
+                    Command="{Binding UpdateViewCommand}"
+                    CommandParameter="Timer"
                     Background="Transparent"
                     BorderThickness="0">
                     <TextBlock Text="⌛" 
                                FontSize="30"
                                Foreground="White"/>
                 </Button>
-                <Button 
+                <Button
+                    Command="{Binding UpdateViewCommand}"
+                    CommandParameter="Settings"
                     Background="Transparent"
                     BorderThickness="0">
                     <TextBlock Text="⚙️" 
@@ -151,81 +80,6 @@
             <Rectangle Width="90" Height="5" Fill="White"/>
         </StackPanel>
 
-
-        <StackPanel
-                Grid.Row="2"
-                VerticalAlignment="Center" 
-                HorizontalAlignment="Center" 
-            >
-            <TextBox 
-                Name="objective"
-                Height="70"
-                FontSize="50"
-                Margin="0 0 0 30"
-                Background="Transparent"
-                Foreground="White"
-                TextAlignment="Center"
-                Text="Your Objective"
-                BorderThickness="0"
-                />
-            <Slider
-                Name="slTime"
-                Minimum="0.5"
-                Maximum="30"
-                TickFrequency="0.5"
-                TickPlacement="BottomRight"
-                IsSnapToTickEnabled="True"
-                Margin="0 0 0 30"
-                Width="520"
-                AutoToolTipPlacement="TopLeft"
-                AutoToolTipPrecision="1"
-                Foreground="White"
-                />
-            <StackPanel 
-                VerticalAlignment="Center" 
-                HorizontalAlignment="Center" 
-                Orientation="Horizontal"
-                >
-                <Button x:Name="PlayButton"
-                        FontSize="264"
-                        Width="300"
-                        Height="300"
-                        FontFamily="Calibri"
-                        Click="PlayButton_Click"
-                        Template="{StaticResource ButtonControlTemplate}"
-                        BorderThickness="0"
-                        Foreground="White"
-                        Background="Transparent"
-                        Style="{StaticResource PlayButtonStyle}"
-                        Padding="-25 0 0 0"
-                        RenderTransformOrigin="0.5,0.5">
-                    <Button.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                        </TransformGroup>
-                    </Button.RenderTransform>
-                    ▶️
-                </Button>
-                <Button x:Name="StopButton"
-                        Style="{StaticResource ButtonAnimation}"
-                        FontSize="200"
-                        Width="300"
-                        Height="300"
-                        FontFamily="Calibri"
-                        Click="StopButton_Click"
-                        Template="{StaticResource ButtonControlTemplate}"
-                        BorderThickness="0"
-                        Foreground="White"
-                        Background="Transparent" 
-                        RenderTransformOrigin="0.5,0.5">
-                    <Button.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                        </TransformGroup>
-                    </Button.RenderTransform>
-                    ⏹️
-                </Button>
-            </StackPanel>
-        </StackPanel>
+        <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="2"/>
     </Grid>
 </Window>
