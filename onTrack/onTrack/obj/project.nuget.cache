@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+4BcNopJDHkbHPDikKvZelh11r/gKQ1pFRWbm1nx2Y6K1o0QqlDtnBs7Q2uV+O6u38vOUnaLprfPJpZd05A9Xw==",
+  "dgSpecHash": "Y0/KIHckZ4H1PBlCP7W1Mfq6xfHnwtC/PtFYxX6etG1aD8xsMXgtwwFLE4gyawS+dooieMMOYZciqqABiv8YGw==",
   "success": true,
   "projectFilePath": "C:\\Users\\marko\\Documents\\GitHub\\onTrack\\onTrack\\onTrack\\onTrack.csproj",
   "expectedPackageFiles": [
@@ -13,7 +13,7 @@
     "C:\\Users\\marko\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\marko\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\marko\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
-    "C:\\Users\\marko\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.17763.22\\microsoft.windows.sdk.net.ref.10.0.17763.22.nupkg.sha512"
+    "C:\\Users\\marko\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.17763.26\\microsoft.windows.sdk.net.ref.10.0.17763.26.nupkg.sha512"
   ],
   "logs": []
 }

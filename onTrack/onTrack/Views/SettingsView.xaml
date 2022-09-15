@@ -1,4 +1,4 @@
-﻿<Page x:Class="onTrack.Views.SettingsView"
+﻿<UserControl x:Class="onTrack.Views.SettingsView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,9 +6,18 @@
       xmlns:local="clr-namespace:onTrack.Views"
       mc:Ignorable="d" 
       Background="#00bbff"
-      Title="onTrack" Width="800" Height="600">
+      Width="800" Height="600">
 
-    <Grid>
-        
+    <Grid Margin="0 10 0 0">
+        <StackPanel>
+            <Label FontSize="50" Foreground="White" HorizontalAlignment="Center">Notifications</Label>
+            <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">No enforcement</Label>
+            <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Prompt to type out the goal</Label>
+            <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Order of Yes or No buttons reversed at random</Label>
+            <Label FontSize="50" Foreground="White" HorizontalAlignment="Center">Sound</Label>
+            <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Notification sound</Label>
+            <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Alarm volume</Label>
+            <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Alarm sound</Label>
+        </StackPanel>
     </Grid>
-</Page>
+</UserControl>

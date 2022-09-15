@@ -59,13 +59,17 @@
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button 
+                    Command="{Binding UpdateViewCommand}"
+                    CommandParameter="Timer"
                     Background="Transparent"
                     BorderThickness="0">
                     <TextBlock Text="⌛" 
                                FontSize="30"
                                Foreground="White"/>
                 </Button>
-                <Button 
+                <Button
+                    Command="{Binding UpdateViewCommand}"
+                    CommandParameter="Settings"
                     Background="Transparent"
                     BorderThickness="0">
                     <TextBlock Text="⚙️" 
