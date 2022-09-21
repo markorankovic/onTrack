@@ -71,11 +71,26 @@ namespace onTrack.Views
         }
     }
 
+    public class NoneReinforcement : Reinforcement
+    {
+        string Goal = null;
+        public ToastContentBuilder CreateToast(string goal)
+        {
+            this.Goal = goal;
+            return new ToastContentBuilder()
+                .AddText("Objective: " + goal);
+        }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
+        {
+            return true;
+        }
+    }
+
     public partial class TimerView : UserControl {
         static Timer timer;
         SoundPlayer soundPlayer;
 
-        Reinforcement CurrentReinforcement = new StandardReinforcement();
+        Reinforcement CurrentReinforcement = new NoneReinforcement();
 
         static string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
         static string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\alert.wav");
@@ -101,6 +116,7 @@ namespace onTrack.Views
                     }
                 });
             };
+
         }
 
         private void WakeUser()
@@ -119,7 +135,7 @@ namespace onTrack.Views
             Trace.WriteLine("Duration: " + duration);
             timer?.Stop();
             timer = new(duration);
-            timer.Elapsed += OnTimedEvent;
+             timer.Elapsed += OnTimedEvent;
             timer.AutoReset = false;
             timer.Enabled = true;
         }
@@ -142,13 +158,16 @@ namespace onTrack.Views
             Dispatcher.Invoke(() =>
             {
                 AlertUser();
-                timer = new(10 * 1000);
-                timer.Elapsed += OnToastPassed;
                 timer.AutoReset = false;
                 timer.Enabled = true;
+                if (!(CurrentReinforcement is NoneReinforcement))
+                {
+                    timer = new(10 * 1000);
+                    timer.Elapsed += OnToastPassed;
+                } else { ResetTimer(); }
             });
         }
-
+        
         private void OnToastPassed(System.Object source, ElapsedEventArgs e)
         {
             WakeUser();
