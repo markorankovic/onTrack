@@ -17,9 +17,65 @@ using Windows.Foundation.Collections;
 
 namespace onTrack.Views
 {
+    public interface Reinforcement
+    {
+        public ToastContentBuilder CreateToast(string goal) { return null; }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs) { return false; }
+    }
+
+    public class TypeOutTheGoalReinforcement: Reinforcement
+    {
+        string Goal = null;
+        public ToastContentBuilder CreateToast(string goal)
+        {
+            this.Goal = goal;
+            return new ToastContentBuilder()
+                .AddText("Are you focusing?")
+                .AddText("Objective: " + goal)
+                .AddInputTextBox("tbReply", "Type out the goal here")
+                .AddButton(new ToastButton()
+                    .SetContent("Submit")
+                    .AddArgument("action", "wakeup")
+                    .SetBackgroundActivation()
+                );
+        }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs) 
+        {
+            string typedOutGoal = toastArgs.UserInput["tbReply"].ToString();
+            if (typedOutGoal == Goal)
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public class StandardReinforcement : Reinforcement
+    {
+        string Goal = null;
+        public ToastContentBuilder CreateToast(string goal)
+        {
+            this.Goal = goal;
+            return new ToastContentBuilder()
+                .AddText("Are you focusing?")
+                .AddText("Objective: " + goal)
+                .AddButton(new ToastButton()
+                    .SetContent("Yes")
+                    .AddArgument("action", "wakeup")
+                    .SetBackgroundActivation()
+                );
+        }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
+        {
+            return true;
+        }
+    }
+
     public partial class TimerView : UserControl {
         static Timer timer;
         SoundPlayer soundPlayer;
+
+        Reinforcement CurrentReinforcement = new StandardReinforcement();
 
         static string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
         static string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\alert.wav");
@@ -39,8 +95,7 @@ namespace onTrack.Views
             {
                 Dispatcher.Invoke(() =>
                 {
-                    string typedOutGoal = toastArgs.UserInput["tbReply"].ToString();
-                    if (typedOutGoal == objective.Text)
+                    if (CurrentReinforcement.IsValidResponse(toastArgs))
                     {
                         Reset();
                     }
@@ -79,16 +134,7 @@ namespace onTrack.Views
 
         private void AlertUser()
         {
-            new ToastContentBuilder()
-                .AddText("Are you focusing?")
-                .AddText("Objective: " + objective.Text)
-                .AddInputTextBox("tbReply", "Type out the goal here")
-                .AddButton(new ToastButton()
-                    .SetContent("Submit")
-                    .AddArgument("action", "wakeup")
-                    .SetBackgroundActivation()
-                )
-                .Show();
+            CurrentReinforcement.CreateToast(objective.Text).Show();
         }
 
         private void OnTimedEvent(System.Object source, ElapsedEventArgs e)
