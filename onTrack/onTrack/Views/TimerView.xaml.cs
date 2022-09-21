@@ -86,6 +86,51 @@ namespace onTrack.Views
         }
     }
 
+    public class PressTheRightYesReinforcement : Reinforcement
+    {
+        string Goal = null;
+        public ToastContentBuilder CreateToast(string goal)
+        {
+            this.Goal = goal;
+            var buttonsFirst = (new Random()).NextDouble() >= 0.5;
+            var content = new ToastContentBuilder()
+                            .AddText("Are you focusing?")
+                            .AddText("Objective: " + goal);
+            if (buttonsFirst)
+            {
+                content
+                    .AddButton(new ToastButton()
+                        .SetContent("Yes")
+                        .AddArgument("focused", "yes")
+                        .SetBackgroundActivation()
+                        )
+                    .AddButton(new ToastButton()
+                        .SetContent("No")
+                );
+            } else
+            {
+                content
+                    .AddButton(new ToastButton()
+                        .SetContent("No")
+                        )
+                    .AddButton(new ToastButton()
+                        .SetContent("Yes")
+                        .AddArgument("focused", "yes")
+                        .SetBackgroundActivation()
+                );
+            }
+            return content;
+        }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
+        {
+            if (toastArgs.Argument == "focused=yes")
+            {
+                return true;
+            } 
+            return false;
+        }
+    }
+
     public partial class TimerView : UserControl {
         static Timer timer;
         SoundPlayer soundPlayer;
@@ -132,10 +177,11 @@ namespace onTrack.Views
         private void ResetTimer()
         {
             float duration = (float)slTime.Value * 60 * 1000;
+            duration = 10 * 1000;
             Trace.WriteLine("Duration: " + duration);
             timer?.Stop();
             timer = new(duration);
-             timer.Elapsed += OnTimedEvent;
+            timer.Elapsed += OnTimedEvent;
             timer.AutoReset = false;
             timer.Enabled = true;
         }
@@ -158,13 +204,14 @@ namespace onTrack.Views
             Dispatcher.Invoke(() =>
             {
                 AlertUser();
-                timer.AutoReset = false;
-                timer.Enabled = true;
                 if (!(CurrentReinforcement is NoneReinforcement))
                 {
                     timer = new(10 * 1000);
+                    timer.AutoReset = false;
+                    timer.Enabled = true;
                     timer.Elapsed += OnToastPassed;
-                } else { ResetTimer(); }
+                }
+                else { ResetTimer(); }
             });
         }
         
