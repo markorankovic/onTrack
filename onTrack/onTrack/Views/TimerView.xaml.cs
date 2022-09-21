@@ -39,10 +39,13 @@ namespace onTrack.Views
             {
                 Dispatcher.Invoke(() =>
                 {
-                    Reset();
+                    string typedOutGoal = toastArgs.UserInput["tbReply"].ToString();
+                    if (typedOutGoal == objective.Text)
+                    {
+                        Reset();
+                    }
                 });
             };
-
         }
 
         private void WakeUser()
@@ -79,8 +82,9 @@ namespace onTrack.Views
             new ToastContentBuilder()
                 .AddText("Are you focusing?")
                 .AddText("Objective: " + objective.Text)
+                .AddInputTextBox("tbReply", "Type out the goal here")
                 .AddButton(new ToastButton()
-                    .SetContent("Yes")
+                    .SetContent("Submit")
                     .AddArgument("action", "wakeup")
                     .SetBackgroundActivation()
                 )
