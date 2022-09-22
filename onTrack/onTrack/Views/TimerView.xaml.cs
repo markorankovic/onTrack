@@ -131,11 +131,55 @@ namespace onTrack.Views
         }
     }
 
+    public class WhatYouGonnaDoNowReinforcement : Reinforcement
+    {
+        string Goal = null;
+        string previousResponse = null;
+        public ToastContentBuilder CreateToast(string goal)
+        {
+            this.Goal = goal;
+            if (previousResponse != null)
+            {
+                return new ToastContentBuilder()
+                    .AddText("Objective: " + goal)
+                    .AddText("What smaller thing are you gonna do right now?")
+                    .AddText("Previous response: " + previousResponse)
+                    .AddInputTextBox("tbReply", "")
+                    .AddButton(new ToastButton()
+                        .SetContent("Submit")
+                        .AddArgument("action", "wakeup")
+                        .SetBackgroundActivation()
+                    );
+            }
+            else
+            {
+                return new ToastContentBuilder()
+                    .AddText("Objective: " + goal)
+                    .AddText("What smaller thing are you gonna do right now?")
+                    .AddInputTextBox("tbReply", "")
+                    .AddButton(new ToastButton()
+                        .SetContent("Submit")
+                        .AddArgument("action", "wakeup")
+                        .SetBackgroundActivation()
+                    );
+            }
+        }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
+        {
+            if (toastArgs.UserInput["tbReply"] != null)
+            {
+                previousResponse = toastArgs.UserInput["tbReply"].ToString();
+                return true;
+            }
+            return false;
+        }
+    }
+
     public partial class TimerView : UserControl {
         static Timer timer;
         SoundPlayer soundPlayer;
 
-        Reinforcement CurrentReinforcement = new NoneReinforcement();
+        Reinforcement CurrentReinforcement = new WhatYouGonnaDoNowReinforcement();
 
         static string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
         static string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\alert.wav");
