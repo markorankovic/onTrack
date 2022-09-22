@@ -17,9 +17,169 @@ using Windows.Foundation.Collections;
 
 namespace onTrack.Views
 {
+    public interface Reinforcement
+    {
+        public ToastContentBuilder CreateToast(string goal) { return null; }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs) { return false; }
+    }
+
+    public class TypeOutTheGoalReinforcement: Reinforcement
+    {
+        string Goal = null;
+        public ToastContentBuilder CreateToast(string goal)
+        {
+            this.Goal = goal;
+            return new ToastContentBuilder()
+                .AddText("Are you focusing?")
+                .AddText("Objective: " + goal)
+                .AddInputTextBox("tbReply", "Type out the goal here")
+                .AddButton(new ToastButton()
+                    .SetContent("Submit")
+                    .AddArgument("action", "wakeup")
+                    .SetBackgroundActivation()
+                );
+        }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs) 
+        {
+            string typedOutGoal = toastArgs.UserInput["tbReply"].ToString();
+            if (typedOutGoal == Goal)
+            {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public class StandardReinforcement : Reinforcement
+    {
+        string Goal = null;
+        public ToastContentBuilder CreateToast(string goal)
+        {
+            this.Goal = goal;
+            return new ToastContentBuilder()
+                .AddText("Are you focusing?")
+                .AddText("Objective: " + goal)
+                .AddButton(new ToastButton()
+                    .SetContent("Yes")
+                    .AddArgument("action", "wakeup")
+                    .SetBackgroundActivation()
+                );
+        }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
+        {
+            return true;
+        }
+    }
+
+    public class NoneReinforcement : Reinforcement
+    {
+        string Goal = null;
+        public ToastContentBuilder CreateToast(string goal)
+        {
+            this.Goal = goal;
+            return new ToastContentBuilder()
+                .AddText("Objective: " + goal);
+        }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
+        {
+            return true;
+        }
+    }
+
+    public class PressTheRightYesReinforcement : Reinforcement
+    {
+        string Goal = null;
+        public ToastContentBuilder CreateToast(string goal)
+        {
+            this.Goal = goal;
+            var buttonsFirst = (new Random()).NextDouble() >= 0.5;
+            var content = new ToastContentBuilder()
+                            .AddText("Are you focusing?")
+                            .AddText("Objective: " + goal);
+            if (buttonsFirst)
+            {
+                content
+                    .AddButton(new ToastButton()
+                        .SetContent("Yes")
+                        .AddArgument("focused", "yes")
+                        .SetBackgroundActivation()
+                        )
+                    .AddButton(new ToastButton()
+                        .SetContent("No")
+                );
+            } else
+            {
+                content
+                    .AddButton(new ToastButton()
+                        .SetContent("No")
+                        )
+                    .AddButton(new ToastButton()
+                        .SetContent("Yes")
+                        .AddArgument("focused", "yes")
+                        .SetBackgroundActivation()
+                );
+            }
+            return content;
+        }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
+        {
+            if (toastArgs.Argument == "focused=yes")
+            {
+                return true;
+            } 
+            return false;
+        }
+    }
+
+    public class WhatYouGonnaDoNowReinforcement : Reinforcement
+    {
+        string Goal = null;
+        string previousResponse = null;
+        public ToastContentBuilder CreateToast(string goal)
+        {
+            this.Goal = goal;
+            if (previousResponse != null)
+            {
+                return new ToastContentBuilder()
+                    .AddText("Objective: " + goal)
+                    .AddText("What smaller thing are you gonna do right now?")
+                    .AddText("Previous response: " + previousResponse)
+                    .AddInputTextBox("tbReply", "")
+                    .AddButton(new ToastButton()
+                        .SetContent("Submit")
+                        .AddArgument("action", "wakeup")
+                        .SetBackgroundActivation()
+                    );
+            }
+            else
+            {
+                return new ToastContentBuilder()
+                    .AddText("Objective: " + goal)
+                    .AddText("What smaller thing are you gonna do right now?")
+                    .AddInputTextBox("tbReply", "")
+                    .AddButton(new ToastButton()
+                        .SetContent("Submit")
+                        .AddArgument("action", "wakeup")
+                        .SetBackgroundActivation()
+                    );
+            }
+        }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
+        {
+            if (toastArgs.UserInput["tbReply"] != null)
+            {
+                previousResponse = toastArgs.UserInput["tbReply"].ToString();
+                return true;
+            }
+            return false;
+        }
+    }
+
     public partial class TimerView : UserControl {
         static Timer timer;
         SoundPlayer soundPlayer;
+
+        Reinforcement CurrentReinforcement = new WhatYouGonnaDoNowReinforcement();
 
         static string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
         static string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\alert.wav");
@@ -39,7 +199,10 @@ namespace onTrack.Views
             {
                 Dispatcher.Invoke(() =>
                 {
-                    Reset();
+                    if (CurrentReinforcement.IsValidResponse(toastArgs))
+                    {
+                        Reset();
+                    }
                 });
             };
 
@@ -76,15 +239,7 @@ namespace onTrack.Views
 
         private void AlertUser()
         {
-            new ToastContentBuilder()
-                .AddText("Are you focusing?")
-                .AddText("Objective: " + objective.Text)
-                .AddButton(new ToastButton()
-                    .SetContent("Yes")
-                    .AddArgument("action", "wakeup")
-                    .SetBackgroundActivation()
-                )
-                .Show();
+            CurrentReinforcement.CreateToast(objective.Text).Show();
         }
 
         private void OnTimedEvent(System.Object source, ElapsedEventArgs e)
@@ -92,13 +247,17 @@ namespace onTrack.Views
             Dispatcher.Invoke(() =>
             {
                 AlertUser();
-                timer = new(10 * 1000);
-                timer.Elapsed += OnToastPassed;
-                timer.AutoReset = false;
-                timer.Enabled = true;
+                if (!(CurrentReinforcement is NoneReinforcement))
+                {
+                    timer = new(10 * 1000);
+                    timer.AutoReset = false;
+                    timer.Enabled = true;
+                    timer.Elapsed += OnToastPassed;
+                }
+                else { ResetTimer(); }
             });
         }
-
+        
         private void OnToastPassed(System.Object source, ElapsedEventArgs e)
         {
             WakeUser();
