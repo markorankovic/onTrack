@@ -221,7 +221,6 @@ namespace onTrack.Views
         private void ResetTimer()
         {
             float duration = (float)slTime.Value * 60 * 1000;
-            duration = 10 * 1000;
             Trace.WriteLine("Duration: " + duration);
             timer?.Stop();
             timer = new(duration);
