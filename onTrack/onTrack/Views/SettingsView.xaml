@@ -11,9 +11,6 @@
     <Grid Margin="0 10 0 0">
         <StackPanel>
             <Label FontSize="50" Foreground="White" HorizontalAlignment="Center">Notifications</Label>
-            <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">No enforcement</Label>
-            <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Prompt to type out the goal</Label>
-            <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Order of Yes or No buttons reversed at random</Label>
             <Label FontSize="50" Foreground="White" HorizontalAlignment="Center">Sound</Label>
             <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Notification sound</Label>
             <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Alarm volume</Label>

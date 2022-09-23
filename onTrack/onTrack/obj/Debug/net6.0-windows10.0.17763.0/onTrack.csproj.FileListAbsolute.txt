@@ -8,7 +8,6 @@ C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\WinRT.Runtime.dll
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.csproj.AssemblyReference.cache
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\MainWindow.baml
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\TimerView.baml
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\MainWindow.g.cs
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\SettingsView.g.cs
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\TimerView.g.cs
@@ -18,6 +17,7 @@ C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack_MarkupCompile.lref
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\App.baml
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\SettingsView.baml
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\TimerView.baml
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.g.resources
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.AssemblyInfoInputs.cache

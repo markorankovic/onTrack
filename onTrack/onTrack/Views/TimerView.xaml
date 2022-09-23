@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:s="clr-namespace:onTrack"
       mc:Ignorable="d" 
       Width="800" Height="510"
       Background="#00bbff">
@@ -95,7 +96,8 @@
                 Background="Transparent"
                 Foreground="White"
                 TextAlignment="Center"
-                Text="Your Objective"
+                Text="{x:Static s:Timer.Objective}"
+                TextChanged="objective_TextChanged"
                 BorderThickness="0"
                 />
         <Slider
@@ -110,6 +112,8 @@
                 AutoToolTipPlacement="TopLeft"
                 AutoToolTipPrecision="1"
                 Foreground="White"
+                Value="{x:Static s:Timer.Duration}"
+                ValueChanged="slTime_ValueChanged"
                 />
         <StackPanel 
                 VerticalAlignment="Center" 
