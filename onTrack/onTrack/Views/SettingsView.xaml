@@ -23,12 +23,12 @@
             <Label FontSize="50" Foreground="White" HorizontalAlignment="Center">Sound</Label>
             <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Alarm sound</Label>
             <Menu HorizontalAlignment="Center">
-                <MenuItem Header="Intruder Alert" />
-                <MenuItem Header="Wake Up" />
-                <MenuItem Header="Police" />
+                <MenuItem Header="Evacuation" Click="Evacuation_Click" />
+                <MenuItem Header="Wake Up" Click="WakeUp_Click" />
+                <MenuItem Header="Police" Click="Police_Click" />
             </Menu>
             <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Alarm volume</Label>
-            <Slider Width="150" />
+            <Slider Width="150" Minimum="0" Maximum="100" />
         </StackPanel>
     </Grid>
 </UserControl>

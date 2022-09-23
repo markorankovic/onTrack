@@ -43,5 +43,20 @@ namespace onTrack.Views
         {
             Timer.SetReinforcement(new NoneReinforcement());
         }
+
+        private void Evacuation_Click(object sender, RoutedEventArgs e)
+        {
+            Timer.SetAlarmName("Evacuation");
+        }
+
+        private void Police_Click(object sender, RoutedEventArgs e)
+        {
+            Timer.SetAlarmName("Police");
+        }
+
+        private void WakeUp_Click(object sender, RoutedEventArgs e)
+        {
+            Timer.SetAlarmName("Wake Up");
+        }
     }
 }

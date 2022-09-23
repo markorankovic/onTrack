@@ -22,7 +22,7 @@ namespace onTrack
         static Reinforcement CurrentReinforcement = new WhatYouGonnaDoNowReinforcement();
 
         static string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        static string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\alert.wav");
+        static string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\Alarm Sounds\" + "Wake Up" + ".wav");
         static string sFilePath = Path.GetFullPath(sFile);
         static string alertSoundPath = sFilePath;
 
@@ -44,6 +44,15 @@ namespace onTrack
                     }
                 });
             };
+        }
+
+        public static void SetAlarmName(string alarmName)
+        {
+            sFile = Path.Combine(sCurrentDirectory, @"..\..\..\Alarm Sounds\" + alarmName + ".wav");
+            sFilePath = Path.GetFullPath(sFile);
+            alertSoundPath = sFilePath;
+            Trace.WriteLine(alertSoundPath);
+            soundPlayer = new(alertSoundPath);
         }
 
         public static void SetDuration(double duration)
