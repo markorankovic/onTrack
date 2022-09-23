@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Media;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Toolkit.Uwp.Notifications;
+using onTrack.Reinforcements;
 using Windows.Foundation.Collections;
 
 namespace onTrack.Views
@@ -16,6 +18,64 @@ namespace onTrack.Views
         public SettingsView()
         {
             InitializeComponent();
+        }
+
+        private void Standard_Click(object sender, RoutedEventArgs e)
+        {
+            Timer.SetReinforcement(new StandardReinforcement());
+        }
+
+        private void TypeOutTheTask_Click(object sender, RoutedEventArgs e)
+        {
+            Timer.SetReinforcement(new TypeOutTheGoalReinforcement());
+        }
+
+        private void PressTheRightYes_Click(object sender, RoutedEventArgs e)
+        {
+            Timer.SetReinforcement(new PressTheRightYesReinforcement());
+        }
+
+        private void WhatYouGonnaDoNow_Click(object sender, RoutedEventArgs e)
+        {
+            Timer.SetReinforcement(new WhatYouGonnaDoNowReinforcement());
+        }
+
+        private void None_Click(object sender, RoutedEventArgs e)
+        {
+            Timer.SetReinforcement(new NoneReinforcement());
+        }
+
+        private void Evacuation_Click(object sender, RoutedEventArgs e)
+        {
+            Timer.SetAlarmName("Evacuation");
+        }
+
+        private void Police_Click(object sender, RoutedEventArgs e)
+        {
+            Timer.SetAlarmName("Police");
+        }
+
+        private void WakeUp_Click(object sender, RoutedEventArgs e)
+        {
+            Timer.SetAlarmName("Wake Up");
+        }
+
+        private void AlarmVolume_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            if (((Button)e.OriginalSource).Content.Equals("Test"))
+            {
+                Timer.PlayAlarm();
+                ((Button)e.OriginalSource).Content = "Stop";
+            } else
+            {
+                Timer.StopAlarm();
+                ((Button)e.OriginalSource).Content = "Test";
+            }
         }
     }
 }

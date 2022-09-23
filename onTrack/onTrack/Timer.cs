@@ -22,12 +22,13 @@ namespace onTrack
         static Reinforcement CurrentReinforcement = new WhatYouGonnaDoNowReinforcement();
 
         static string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        static string sFile = Path.Combine(sCurrentDirectory, @"..\..\alert.wav");
+        static string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\Alarm Sounds\" + "Wake Up" + ".wav");
         static string sFilePath = Path.GetFullPath(sFile);
         static string alertSoundPath = sFilePath;
 
         static System.Timers.Timer timer;
         static SoundPlayer soundPlayer = new (alertSoundPath);
+        static double AlarmVolume = 100;
 
         public static double Duration = 20.0;
         public static string Objective = "Your Objective";
@@ -46,6 +47,15 @@ namespace onTrack
             };
         }
 
+        public static void SetAlarmName(string alarmName)
+        {
+            sFile = Path.Combine(sCurrentDirectory, @"..\..\..\Alarm Sounds\" + alarmName + ".wav");
+            sFilePath = Path.GetFullPath(sFile);
+            alertSoundPath = sFilePath;
+            Trace.WriteLine(alertSoundPath);
+            soundPlayer = new(alertSoundPath);
+        }
+
         public static void SetDuration(double duration)
         {
             Duration = duration;
@@ -54,6 +64,11 @@ namespace onTrack
         public static void SetObjective(string objective)
         {
             Objective = objective;
+        }
+
+        public static void SetReinforcement(Reinforcement reinforcement)
+        {
+            CurrentReinforcement = reinforcement;
         }
 
         public static void Stop()
@@ -65,6 +80,16 @@ namespace onTrack
         private static void WakeUser()
         {
             soundPlayer.Play();
+        }
+
+        public static void PlayAlarm()
+        {
+            soundPlayer.Play();
+        }
+
+        public static void StopAlarm()
+        {
+            soundPlayer.Stop();
         }
 
         private static void ResetTimer()
