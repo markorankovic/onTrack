@@ -28,6 +28,7 @@ namespace onTrack
 
         static System.Timers.Timer timer;
         static SoundPlayer soundPlayer = new (alertSoundPath);
+        static double AlarmVolume = 100;
 
         public static double Duration = 20.0;
         public static string Objective = "Your Objective";
@@ -79,6 +80,16 @@ namespace onTrack
         private static void WakeUser()
         {
             soundPlayer.Play();
+        }
+
+        public static void PlayAlarm()
+        {
+            soundPlayer.Play();
+        }
+
+        public static void StopAlarm()
+        {
+            soundPlayer.Stop();
         }
 
         private static void ResetTimer()

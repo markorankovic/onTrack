@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Media;
 using System.Threading.Tasks;
@@ -57,6 +58,24 @@ namespace onTrack.Views
         private void WakeUp_Click(object sender, RoutedEventArgs e)
         {
             Timer.SetAlarmName("Wake Up");
+        }
+
+        private void AlarmVolume_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            if (((Button)e.OriginalSource).Content.Equals("Test"))
+            {
+                Timer.PlayAlarm();
+                ((Button)e.OriginalSource).Content = "Stop";
+            } else
+            {
+                Timer.StopAlarm();
+                ((Button)e.OriginalSource).Content = "Test";
+            }
         }
     }
 }
