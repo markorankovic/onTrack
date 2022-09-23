@@ -22,7 +22,7 @@ namespace onTrack
         static Reinforcement CurrentReinforcement = new WhatYouGonnaDoNowReinforcement();
 
         static string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        static string sFile = Path.Combine(sCurrentDirectory, @"..\..\alert.wav");
+        static string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\alert.wav");
         static string sFilePath = Path.GetFullPath(sFile);
         static string alertSoundPath = sFilePath;
 
@@ -54,6 +54,11 @@ namespace onTrack
         public static void SetObjective(string objective)
         {
             Objective = objective;
+        }
+
+        public static void SetReinforcement(Reinforcement reinforcement)
+        {
+            CurrentReinforcement = reinforcement;
         }
 
         public static void Stop()
