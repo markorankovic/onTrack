@@ -30,7 +30,7 @@ namespace onTrack
         static SoundPlayer soundPlayer = new (alertSoundPath);
         static double AlarmVolume = 100;
 
-        public static double Duration = 20.0;
+        public static double Duration = 0.5;
         public static string Objective = "Your Objective";
 
         static Timer()
