@@ -21,14 +21,15 @@ namespace onTrack
     {
         static Reinforcement CurrentReinforcement = new StandardReinforcement();
 
+        static string AlarmName = "Wake Up";
+
         static string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        static string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\Alarm Sounds\" + "Wake Up" + ".wav");
+        static string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\Alarm Sounds\" + AlarmName + ".wav");
         static string sFilePath = Path.GetFullPath(sFile);
         static string alertSoundPath = sFilePath;
 
         static System.Timers.Timer timer;
         static SoundPlayer soundPlayer = new (alertSoundPath);
-        static double AlarmVolume = 100;
 
         public static double Duration = 0.5;
         public static string Objective = "Your Objective";
@@ -47,9 +48,15 @@ namespace onTrack
             };
         }
 
+        public static string GetAlarmName()
+        {
+            return AlarmName;
+        }
+
         public static void SetAlarmName(string alarmName)
         {
-            sFile = Path.Combine(sCurrentDirectory, @"..\..\..\Alarm Sounds\" + alarmName + ".wav");
+            AlarmName = alarmName;
+            sFile = Path.Combine(sCurrentDirectory, @"..\..\..\Alarm Sounds\" + AlarmName + ".wav");
             sFilePath = Path.GetFullPath(sFile);
             alertSoundPath = sFilePath;
             Trace.WriteLine(alertSoundPath);
@@ -64,6 +71,11 @@ namespace onTrack
         public static void SetObjective(string objective)
         {
             Objective = objective;
+        }
+
+        public static Reinforcement GetReinforcement()
+        {
+            return CurrentReinforcement;
         }
 
         public static void SetReinforcement(Reinforcement reinforcement)

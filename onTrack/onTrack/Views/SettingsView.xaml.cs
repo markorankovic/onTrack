@@ -18,46 +18,24 @@ namespace onTrack.Views
         public SettingsView()
         {
             InitializeComponent();
-        }
 
-        private void Standard_Click(object sender, RoutedEventArgs e)
-        {
-            Timer.SetReinforcement(new StandardReinforcement());
-        }
+            var reinforcementRadioButtons = LogicalTreeHelper.GetChildren(reinforcements).OfType<RadioButton>();
+            foreach(var rb in reinforcementRadioButtons)
+            {
+                if (("onTrack.Reinforcements." + rb.Name).Equals(Timer.GetReinforcement().GetType().ToString()))
+                {
+                    rb.IsChecked = true;
+                }
+            }
 
-        private void TypeOutTheTask_Click(object sender, RoutedEventArgs e)
-        {
-            Timer.SetReinforcement(new TypeOutTheGoalReinforcement());
-        }
-
-        private void PressTheRightYes_Click(object sender, RoutedEventArgs e)
-        {
-            Timer.SetReinforcement(new PressTheRightYesReinforcement());
-        }
-
-        private void WhatYouGonnaDoNow_Click(object sender, RoutedEventArgs e)
-        {
-            Timer.SetReinforcement(new WhatYouGonnaDoNowReinforcement());
-        }
-
-        private void None_Click(object sender, RoutedEventArgs e)
-        {
-            Timer.SetReinforcement(new NoneReinforcement());
-        }
-
-        private void Evacuation_Click(object sender, RoutedEventArgs e)
-        {
-            Timer.SetAlarmName("Evacuation");
-        }
-
-        private void Police_Click(object sender, RoutedEventArgs e)
-        {
-            Timer.SetAlarmName("Police");
-        }
-
-        private void WakeUp_Click(object sender, RoutedEventArgs e)
-        {
-            Timer.SetAlarmName("Wake Up");
+            var alarmSoundRadioButtons = LogicalTreeHelper.GetChildren(alarmSound).OfType<RadioButton>();
+            foreach (var rb in alarmSoundRadioButtons)
+            {
+                if (rb.Content.Equals(Timer.GetAlarmName()))
+                {
+                    rb.IsChecked = true;
+                }
+            }
         }
 
         private void Test_Click(object sender, RoutedEventArgs e)
@@ -70,6 +48,32 @@ namespace onTrack.Views
             {
                 Timer.StopAlarm();
                 ((Button)e.OriginalSource).Content = "Test";
+            }
+        }
+
+        private void Reinforcement_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            switch(radioButton.Content)
+            {
+                case "Standard": Timer.SetReinforcement(new StandardReinforcement()); return;
+                case "Type out the task": Timer.SetReinforcement(new TypeOutTheGoalReinforcement()); return;
+                case "Press the right yes": Timer.SetReinforcement(new PressTheRightYesReinforcement()); return;
+                case "What you gonna do now": Timer.SetReinforcement(new WhatYouGonnaDoNowReinforcement()); return;
+                case "None": Timer.SetReinforcement(new NoneReinforcement()); return;
+                default: return;
+            }
+        }
+
+        private void AlarmSound_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            switch (radioButton.Content)
+            {
+                case "Evacuation": Timer.SetAlarmName("Evacuation"); return;
+                case "Wake Up": Timer.SetAlarmName("Wake Up"); return;
+                case "Police": Timer.SetAlarmName("Police"); return;
+                default: return;
             }
         }
     }

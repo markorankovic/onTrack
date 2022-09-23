@@ -68,7 +68,7 @@ namespace onTrack.Reinforcements
         {
             this.Goal = goal;
             return new ToastContentBuilder()
-                .AddText("Objective: " + goal);
+                .AddText(goal);
         }
         public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
         {
