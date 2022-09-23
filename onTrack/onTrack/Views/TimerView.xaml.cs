@@ -49,5 +49,10 @@ namespace onTrack.Views
             }
             Timer.SetDuration(slTime.Value);
         }
+
+        private void slTime_ToolTipOpening(object sender, ToolTipEventArgs e)
+        {
+            Trace.WriteLine("Tool tip opening");
+        }
     }
 }
