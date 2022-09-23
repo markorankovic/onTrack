@@ -60,11 +60,6 @@ namespace onTrack.Views
             Timer.SetAlarmName("Wake Up");
         }
 
-        private void AlarmVolume_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-
         private void Test_Click(object sender, RoutedEventArgs e)
         {
             if (((Button)e.OriginalSource).Content.Equals("Test"))
