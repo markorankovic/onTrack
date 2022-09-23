@@ -19,7 +19,7 @@ namespace onTrack
 {
     public class Timer
     {
-        static Reinforcement CurrentReinforcement = new WhatYouGonnaDoNowReinforcement();
+        static Reinforcement CurrentReinforcement = new StandardReinforcement();
 
         static string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
         static string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\Alarm Sounds\" + "Wake Up" + ".wav");
