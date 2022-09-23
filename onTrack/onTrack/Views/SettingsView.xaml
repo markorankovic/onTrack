@@ -19,10 +19,16 @@
                 <MenuItem Header="What you gonna do now" Click="WhatYouGonnaDoNow_Click" />
                 <MenuItem Header="None" Click="None_Click" />
             </Menu>
+            <Border Height="5" Background="White" Margin="0 30 0 0" />
             <Label FontSize="50" Foreground="White" HorizontalAlignment="Center">Sound</Label>
-            <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Notification sound</Label>
-            <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Alarm volume</Label>
             <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Alarm sound</Label>
+            <Menu HorizontalAlignment="Center">
+                <MenuItem Header="Intruder Alert" />
+                <MenuItem Header="Wake Up" />
+                <MenuItem Header="Police" />
+            </Menu>
+            <Label FontSize="20" Foreground="White" HorizontalAlignment="Center">Alarm volume</Label>
+            <Slider Width="150" />
         </StackPanel>
     </Grid>
 </UserControl>
