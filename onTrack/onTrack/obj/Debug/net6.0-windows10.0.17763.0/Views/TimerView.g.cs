@@ -31,7 +31,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
 using onTrack;
-using onTrack.Views;
 
 
 namespace onTrack.Views {

@@ -100,12 +100,12 @@ namespace onTrack
 
         private static void WakeUser()
         {
-            soundPlayer.Play();
+            soundPlayer.PlayLooping();
         }
 
         public static void PlayAlarm()
         {
-            soundPlayer.Play();
+            soundPlayer.PlayLooping();
             SoundPlaying = true;
         }
 
