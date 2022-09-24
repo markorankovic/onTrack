@@ -38,4 +38,4 @@ What you gonna now, the moment the notification is gone? Not the ultimate task y
 The idea here is to make the user think about smaller milestones for reaching the objective they've set. The next time this notification fires, it will display the previous response made by the user. 
 ## Sound
 ### Alarm Sounds
-Here you can choose which alarm sound will play on failure to respond to the notification within 10 seconds. The default sound is Wake Up which is an wake-up alarm sound effect, the other two is Evacuation featuring a nuclear warning alarm sound effect and the Police siren. Below is the Test button allowing you to test out the selected alarm sound.
+Here you can choose which alarm sound will play on failure to respond to the notification within 10 seconds. The default sound is Wake Up which is a wake-up alarm sound effect, the other two is Evacuation featuring a nuclear warning alarm sound effect and the Police siren. Below is the Test button allowing you to test out the selected alarm sound.
