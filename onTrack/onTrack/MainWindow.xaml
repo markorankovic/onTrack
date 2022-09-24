@@ -77,8 +77,16 @@
                                FontSize="30"
                                Foreground="White"/>
                 </Button>
+                <Button
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Click="Help_Click">
+                    <TextBlock Text="❓" 
+                               FontSize="30"
+                               Foreground="White"/>
+                </Button>
             </StackPanel>
-            <Rectangle Width="90" Height="5" Fill="White"/>
+            <Rectangle Width="120" Height="5" Fill="White"/>
         </StackPanel>
 
         <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="2"/>
