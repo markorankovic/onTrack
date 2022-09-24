@@ -36,6 +36,14 @@ namespace onTrack.Views
                     rb.IsChecked = true;
                 }
             }
+
+            if (Timer.SoundPlaying)
+            {
+                test_button.Content = "Stop";
+            } else
+            {
+                test_button.Content = "Test";
+            }
         }
 
         private void Test_Click(object sender, RoutedEventArgs e)

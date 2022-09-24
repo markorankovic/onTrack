@@ -31,7 +31,7 @@
                     <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="AlarmSounds" Content="Police" Foreground="White" Checked="AlarmSound_Checked" />
                 </StackPanel>
             </StackPanel>
-            <Button Margin="10" HorizontalAlignment="Center" Width="70" Click="Test_Click">Test</Button>
+            <Button Margin="10" HorizontalAlignment="Center" Width="70" Click="Test_Click" x:Name="test_button">Test</Button>
         </StackPanel>
     </Grid>
 </UserControl>

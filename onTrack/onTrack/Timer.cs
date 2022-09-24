@@ -34,6 +34,10 @@ namespace onTrack
         public static double Duration = 0.5;
         public static string Objective = "Your Objective";
 
+        public static bool SoundPlaying = false;
+
+        static List<Reinforcement> previousReinforcements = new();
+
         static Timer()
         {
             ToastNotificationManagerCompat.OnActivated += toastArgs =>
@@ -80,7 +84,12 @@ namespace onTrack
 
         public static void SetReinforcement(Reinforcement reinforcement)
         {
+            foreach(Reinforcement previousReinforcement in previousReinforcements)
+            {
+                if (reinforcement.GetType().Equals(previousReinforcement.GetType())) { CurrentReinforcement = previousReinforcement; return; }
+            }
             CurrentReinforcement = reinforcement;
+            previousReinforcements.Add(reinforcement);
         }
 
         public static void Stop()
@@ -97,11 +106,13 @@ namespace onTrack
         public static void PlayAlarm()
         {
             soundPlayer.Play();
+            SoundPlaying = true;
         }
 
         public static void StopAlarm()
         {
             soundPlayer.Stop();
+            SoundPlaying = false;
         }
 
         private static void ResetTimer()
