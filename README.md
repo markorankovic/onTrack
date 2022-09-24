@@ -3,7 +3,7 @@ The aim of onTrack is to help people who struggle to focus on a given task and s
 
 # Usage
 1. Open the app and you should see the following screen.
-(Image)
+![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/0.png)
 2. Where it says "Your Objective", replace that with the title of your task.
 3. The slider below is for you to adjust how often you want the notification to fire in minutes. By default it is 30s.
 4. Before you start the timer by pressing the play button, check the settings by pressing the ⚙️ button.
@@ -11,23 +11,29 @@ The aim of onTrack is to help people who struggle to focus on a given task and s
 6. You're ready to get onTrack!
 
 # Settings
-(Image)
+![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/2.png)
 ## Notifications
 ### Reinforcements
 Reinforcements offer a variety of UIs on the notifications aimed to reinforce the user's awareness of the task by demanding certain responses that require the user's attention.
 #### Standard
-(Image)
+![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/3.png)
+
 The Standard reinforcement features a notification which asks the user if they're focusing with their task displayed and the user must respond by clicking on the Yes button.
 #### Type out the task
-(Image)
+![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/4.png)
+
 This reinforcement requires that the user types out the task they're supposed to do and then press the submit button.
 #### Press the right yes
-(Image)
+![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/7.png)
+
 Like the Standard reinforcement, the user is required to press the Yes button, only in this case there is a No button present. Often one would expect the Yes button to be located on the left hand side with the No button on the right hand side, however that is not necessarily the case as shown below.
-(Image)
-The idea behind this reinforcement is that the user does not press the Yes button in the same location of the screen every time with hopes that the user will be wary about the notification and that way the task.
+
+![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/6.png)
+
+The idea behind this reinforcement is that the user does not press the Yes button in the same location of the screen every time with hopes that the user will be wary about the notification and that way also the task.
 #### What you gonna do now
-(Image)
+![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/8.png)
+
 What you gonna now, the moment the notification is gone? Not the ultimate task you have set, but the exact action you will take right at the moment?
 The idea here is to make the user think about smaller milestones for reaching the objective they've set. The next time this notification fires, it will display the previous response made by the user. 
 ## Sound
