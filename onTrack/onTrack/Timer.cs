@@ -82,6 +82,15 @@ namespace onTrack
             return CurrentReinforcement;
         }
 
+        public static Reinforcement GetReinforcementInstance(Reinforcement reinforcement)
+        {
+            foreach (Reinforcement previousReinforcement in previousReinforcements)
+            {
+                if (reinforcement.GetType().Equals(previousReinforcement.GetType())) { return previousReinforcement; }
+            }
+            return reinforcement;
+        }
+
         public static void SetReinforcement(Reinforcement reinforcement)
         {
             foreach(Reinforcement previousReinforcement in previousReinforcements)

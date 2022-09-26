@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -163,6 +164,29 @@ namespace onTrack.Reinforcements
                 return true;
             }
             return false;
+        }
+    }
+
+    public class RandomReinforcement : Reinforcement
+    {
+        string Goal = null;
+        Reinforcement chosenReinforcement = null;
+        Reinforcement[] reinforcements = { new StandardReinforcement(), new PressTheRightYesReinforcement(), new TypeOutTheGoalReinforcement(), new WhatYouGonnaDoNowReinforcement() };
+        Random random = new Random();
+        Reinforcement GetReinforcement()
+        {
+            var randIndex = random.Next(reinforcements.Length);
+            var reinforcement = reinforcements[randIndex];
+            return Timer.GetReinforcementInstance(reinforcement);
+        }
+        public ToastContentBuilder CreateToast(string goal)
+        {
+            chosenReinforcement = GetReinforcement();
+            return chosenReinforcement.CreateToast(goal);
+        }
+        public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
+        {
+            return chosenReinforcement.IsValidResponse(toastArgs);
         }
     }
 }

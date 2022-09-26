@@ -18,6 +18,7 @@
                     <RadioButton Name="TypeOutTheGoalReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="Type out the task" Foreground="White" Checked="Reinforcement_Checked" />
                     <RadioButton Name="PressTheRightYesReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="Press the right yes" Foreground="White" Checked="Reinforcement_Checked" />
                     <RadioButton Name="WhatYouGonnaDoNowReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="What you gonna do now" Foreground="White" Checked="Reinforcement_Checked" />
+                    <RadioButton Name="RandomReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="Random" Foreground="White" Checked="Reinforcement_Checked" />
                     <RadioButton Name="NoneReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="None" Foreground="White" Checked="Reinforcement_Checked" />
                 </StackPanel>
             </StackPanel>
