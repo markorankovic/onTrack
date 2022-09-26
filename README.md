@@ -36,6 +36,8 @@ The idea behind this reinforcement is that the user does not press the Yes butto
 
 What you gonna now, the moment the notification is gone? Not the ultimate task you have set, but the exact action you will take right at the moment?
 The idea here is to make the user think about smaller milestones for reaching the objective they've set. The next time this notification fires, it will display the previous response made by the user. 
+#### Random
+Randomly selects a reinforcement after every interval. This way users don't get too habitual with their responses.
 ## Sound
 ### Alarm Sounds
 Here you can choose which alarm sound will play on failure to respond to the notification within 10 seconds. The default sound is Wake Up which is a wake-up alarm sound effect, the other two is Evacuation featuring a nuclear warning alarm sound effect and the Police siren. Below is the Test button allowing you to test out the selected alarm sound.
