@@ -7,6 +7,26 @@
       mc:Ignorable="d" 
       Background="#00bbff"
       Width="800" Height="600">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontSize" Value="15" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderThickness="2" BorderBrush="White">
+                            <Grid>
+                                <Path x:Name="PathIcon" Width="15" Height="25" />
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
 
     <Grid Margin="0 10 0 0">
         <StackPanel>
@@ -33,7 +53,11 @@
                 </StackPanel>
                 <Label Foreground="White">Sound effects obtained from https://www.zapsplat.com</Label>
             </StackPanel>
-            <Button Margin="10" HorizontalAlignment="Center" Width="70" Click="Test_Click" x:Name="test_button">Test</Button>
+            <Button Margin="10" HorizontalAlignment="Center" Width="70" Click="Test_Click" x:Name="test_button">
+                <StackPanel>
+                    <TextBlock Text="Test" />
+                </StackPanel>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>
