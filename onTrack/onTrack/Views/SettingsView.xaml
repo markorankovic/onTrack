@@ -31,6 +31,7 @@
                     <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="AlarmSounds" Content="Wake Up" Foreground="White" Checked="AlarmSound_Checked" />
                     <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="AlarmSounds" Content="Police" Foreground="White" Checked="AlarmSound_Checked" />
                 </StackPanel>
+                <Label Foreground="White">Sound effects obtained from https://www.zapsplat.com</Label>
             </StackPanel>
             <Button Margin="10" HorizontalAlignment="Center" Width="70" Click="Test_Click" x:Name="test_button">Test</Button>
         </StackPanel>
