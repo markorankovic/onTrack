@@ -160,7 +160,9 @@ namespace onTrack.Reinforcements
         {
             if (toastArgs.UserInput["tbReply"] != null)
             {
-                previousResponse = toastArgs.UserInput["tbReply"].ToString();
+                var response = toastArgs.UserInput["tbReply"].ToString();
+                if (response == null || response.Length == 0) return false;
+                previousResponse = response;
                 return true;
             }
             return false;

@@ -9,21 +9,21 @@
       "onTrack/1.0.0": {
         "dependencies": {
           "Microsoft.Toolkit.Uwp.Notifications": "7.1.2",
-          "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.17763.26"
+          "runtimepack.Microsoft.Windows.SDK.NET.Ref": "10.0.17763.27"
         },
         "runtime": {
           "onTrack.dll": {}
         }
       },
-      "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.17763.26": {
+      "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.17763.27": {
         "runtime": {
           "Microsoft.Windows.SDK.NET.dll": {
             "assemblyVersion": "10.0.17763.24",
-            "fileVersion": "10.0.17763.26"
+            "fileVersion": "10.0.17763.27"
           },
           "WinRT.Runtime.dll": {
-            "assemblyVersion": "1.6.0.0",
-            "fileVersion": "1.6.4.39141"
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.39961"
           }
         }
       },
@@ -76,7 +76,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.17763.26": {
+    "runtimepack.Microsoft.Windows.SDK.NET.Ref/10.0.17763.27": {
       "type": "runtimepack",
       "serviceable": false,
       "sha512": ""
