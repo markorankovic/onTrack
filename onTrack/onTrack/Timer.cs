@@ -154,7 +154,7 @@ namespace onTrack
                 AlertUser();
                 if (!(CurrentReinforcement is NoneReinforcement))
                 {
-                    timer = new(10 * 1000);
+                    timer = new(15 * 1000);
                     timer.AutoReset = false;
                     timer.Enabled = true;
                     timer.Elapsed += OnToastPassed;
