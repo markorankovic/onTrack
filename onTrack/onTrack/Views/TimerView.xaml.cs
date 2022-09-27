@@ -34,6 +34,7 @@ namespace onTrack.Views
         public TimerView()
         {
             InitializeComponent();
+            Trace.WriteLine(Resources["mouseover"]);
         }
 
         private void objective_TextChanged(object sender, TextChangedEventArgs e)

@@ -8,6 +8,10 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
     <Content Include="favicon.ico" />
   </ItemGroup>

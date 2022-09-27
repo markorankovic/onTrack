@@ -15,61 +15,39 @@
                                   Margin="{TemplateBinding Padding}"/>
             </Border>
         </ControlTemplate>
+        <Storyboard x:Key="mouseover">
+            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.1"/>
+            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.1"/>
+        </Storyboard>
+        <Storyboard x:Key="mouseleave">
+            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.0"/>
+            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.0"/>
+        </Storyboard>
         <Style x:Key="ButtonAnimation" TargetType="Button">
             <Style.Triggers>
                 <EventTrigger RoutedEvent="Button.MouseEnter">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1.1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
+                    <EventTrigger.Actions>
+                        <BeginStoryboard Storyboard="{StaticResource mouseover}" />
+                    </EventTrigger.Actions>
                 </EventTrigger>
                 <EventTrigger RoutedEvent="Button.MouseLeave">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1.1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1.1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
+                    <EventTrigger.Actions>
+                        <BeginStoryboard Storyboard="{StaticResource mouseleave}" />
+                    </EventTrigger.Actions>
                 </EventTrigger>
                 <EventTrigger RoutedEvent="Button.PreviewMouseDown">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1.1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1.1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1"/>
-                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.0"/>
+                            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.0"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
                 <EventTrigger RoutedEvent="Button.PreviewMouseUp">
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1.1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
-                                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
-                                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1.1"/>
-                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.1"/>
+                            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.1"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
