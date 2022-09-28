@@ -55,5 +55,10 @@ namespace onTrack.Views
         {
             Trace.WriteLine("Tool tip opening");
         }
+
+        private void UserControl_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            objective.MoveFocus(new TraversalRequest(new FocusNavigationDirection()));
+        }
     }
 }

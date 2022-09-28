@@ -6,7 +6,8 @@
       xmlns:s="clr-namespace:onTrack"
       mc:Ignorable="d" 
       Width="800" Height="510"
-      Background="#00bbff">
+      Background="#00bbff"
+      MouseUp="UserControl_MouseUp">
 
     <UserControl.Resources>
         <ControlTemplate x:Key="ButtonControlTemplate" TargetType="{x:Type Button}">
