@@ -1,7 +1,7 @@
+C:\Users\marko\Desktop\onTrack\onTrack.exe
 C:\Users\marko\Desktop\onTrack\Alarm Sounds\Evacuation.wav
 C:\Users\marko\Desktop\onTrack\Alarm Sounds\Police.wav
 C:\Users\marko\Desktop\onTrack\Alarm Sounds\Wake Up.wav
-C:\Users\marko\Desktop\onTrack\onTrack.exe
 C:\Users\marko\Desktop\onTrack\onTrack.dll
 C:\Users\marko\Desktop\onTrack\onTrack.deps.json
 C:\Users\marko\Desktop\onTrack\onTrack.runtimeconfig.json

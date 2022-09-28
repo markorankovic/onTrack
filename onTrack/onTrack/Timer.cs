@@ -23,13 +23,8 @@ namespace onTrack
 
         static string AlarmName = "Wake Up";
 
-        static string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        static string sFile = Path.Combine(sCurrentDirectory, @"..\..\..\Alarm Sounds\" + AlarmName + ".wav");
-        static string sFilePath = Path.GetFullPath(sFile);
-        static string alertSoundPath = sFilePath;
-
         static System.Timers.Timer timer;
-        static SoundPlayer soundPlayer = new (alertSoundPath);
+        static SoundPlayer soundPlayer = new (Properties.Resources.Wake_Up);
 
         public static double Duration = 0.5;
         public static string Objective = "Your Objective";
@@ -60,11 +55,14 @@ namespace onTrack
         public static void SetAlarmName(string alarmName)
         {
             AlarmName = alarmName;
-            sFile = Path.Combine(sCurrentDirectory, @"..\..\..\Alarm Sounds\" + AlarmName + ".wav");
-            sFilePath = Path.GetFullPath(sFile);
-            alertSoundPath = sFilePath;
-            Trace.WriteLine(alertSoundPath);
-            soundPlayer = new(alertSoundPath);
+            Stream stream;
+            switch (alarmName)
+            {
+                case "Police": stream = Properties.Resources.Police; break;
+                case "Evacuation": stream = Properties.Resources.Evacuation; break;
+                default: stream = Properties.Resources.Wake_Up; break;
+            }
+            soundPlayer = new(stream);
         }
 
         public static void SetDuration(double duration)

@@ -1,22 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Media;
-using System.Security.AccessControl;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
+﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
-using Microsoft.Toolkit.Uwp.Notifications;
-using onTrack.Reinforcements;
-using Windows.Foundation.Collections;
 
 namespace onTrack.Views
 {
@@ -44,7 +29,7 @@ namespace onTrack.Views
 
         private void slTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (((System.Windows.Controls.Slider)e.OriginalSource).Maximum != 30) 
+            if (((Slider)e.OriginalSource).Maximum != 30) 
             { 
                 return; 
             }
