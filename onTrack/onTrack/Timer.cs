@@ -88,6 +88,7 @@ namespace onTrack
             {
                 if (reinforcement.GetType().Equals(previousReinforcement.GetType())) { return previousReinforcement; }
             }
+            previousReinforcements.Add(reinforcement);
             return reinforcement;
         }
 

@@ -30,3 +30,6 @@ C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windo
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\onTrack.pdb
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\onTrack.genruntimeconfig.cache
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\ref\onTrack.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\Alarm Sounds\Evacuation.wav
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\Alarm Sounds\Police.wav
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\Alarm Sounds\Wake Up.wav
