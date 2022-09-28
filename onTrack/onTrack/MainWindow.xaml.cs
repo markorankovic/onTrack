@@ -34,7 +34,7 @@ namespace onTrack
 
         private void Help_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer", "https://github.com/markorankovic/onTrack/tree/develop"); // TODO: Change to the main page
+            System.Diagnostics.Process.Start("explorer", "https://github.com/markorankovic/onTrack");
         }
     }
 }
