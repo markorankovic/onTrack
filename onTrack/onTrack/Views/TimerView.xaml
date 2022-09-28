@@ -78,6 +78,7 @@
                 Text="{x:Static s:Timer.Objective}"
                 TextChanged="objective_TextChanged"
                 BorderThickness="0"
+                CaretBrush="White"
                 />
         <s:FormattedSlider
                 x:Name="slTime"
