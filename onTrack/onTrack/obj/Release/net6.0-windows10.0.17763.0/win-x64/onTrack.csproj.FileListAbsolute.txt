@@ -1,0 +1,41 @@
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.deps.json
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.runtimeconfig.json
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\Alarm Sounds\Evacuation.wav
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\Alarm Sounds\Police.wav
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\Alarm Sounds\Wake Up.wav
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.exe
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.dll.manifest
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.application
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.pdb
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\Microsoft.Toolkit.Uwp.Notifications.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\Microsoft.Windows.SDK.NET.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Release\net6.0-windows10.0.17763.0\win-x64\WinRT.Runtime.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.csproj.AssemblyReference.cache
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\MainWindow.baml
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\MainWindow.g.cs
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\Views\SettingsView.g.cs
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\Views\TimerView.g.cs
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\App.g.cs
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack_Content.g.cs
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\GeneratedInternalTypeHelper.g.cs
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack_MarkupCompile.cache
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack_MarkupCompile.lref
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\App.baml
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\Views\SettingsView.baml
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\Views\TimerView.baml
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.g.resources
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.Properties.Resources.resources
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.csproj.GenerateResource.cache
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.AssemblyInfoInputs.cache
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.AssemblyInfo.cs
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.csproj.CoreCompileInputs.cache
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.genruntimeconfig.cache
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.dll.manifest
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.application
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.csproj.CopyComplete
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\refint\onTrack.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\onTrack.pdb
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Release\net6.0-windows10.0.17763.0\win-x64\ref\onTrack.dll
