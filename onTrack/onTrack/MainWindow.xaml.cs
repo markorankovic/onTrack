@@ -1,6 +1,9 @@
 ﻿using onTrack.ViewModels;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
+using Windows.System;
+using static System.Net.WebRequestMethods;
 
 namespace onTrack
 {
@@ -34,7 +37,11 @@ namespace onTrack
 
         private void Help_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("explorer", "https://github.com/markorankovic/onTrack");
+            #if DEBUG
+                Launcher.LaunchUriAsync(new System.Uri("https://github.com/markorankovic/onTrack/tree/develop"));
+            #else
+                 Launcher.LaunchUriAsync(new System.Uri("https://github.com/markorankovic/onTrack"));
+            #endif
         }
     }
 }
