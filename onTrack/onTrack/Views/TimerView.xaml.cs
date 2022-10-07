@@ -33,7 +33,7 @@ namespace onTrack.Views
             { 
                 return; 
             }
-            Timer.SetDuration(slTime.Value);
+            Timer.SetDuration(100); // TODO: Set the duration to the time specified by the Countdown!
         }
 
         private void slTime_ToolTipOpening(object sender, ToolTipEventArgs e)
