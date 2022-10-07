@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:s="clr-namespace:onTrack"
+      xmlns:f="clr-namespace:onTrack.Components"
       mc:Ignorable="d" 
       Width="800" Height="510"
       Background="#00bbff"
@@ -80,7 +81,7 @@
                 BorderThickness="0"
                 CaretBrush="White"
                 />
-        <s:FormattedSlider
+        <f:FormattedSlider
                 x:Name="slTime"
                 Minimum="0.5"
                 Maximum="30"
