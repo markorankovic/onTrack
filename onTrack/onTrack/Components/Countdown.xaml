@@ -7,12 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBox FontSize="100" Foreground="White" Background="Transparent" CaretBrush="White">0</TextBox>
-            <TextBox FontSize="100" Foreground="White" Background="Transparent" CaretBrush="White">0</TextBox>
-            <Label FontSize="100" Foreground="White" Margin="0 -13 0 0">:</Label>
-            <TextBox FontSize="100" Foreground="White" Background="Transparent" CaretBrush="White">0</TextBox>
-            <TextBox FontSize="100" Foreground="White" Background="Transparent" CaretBrush="White">0</TextBox>
+        <StackPanel Cursor="Hand" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox Padding="0 -15 0 0" BorderThickness="0" IsEnabled="False" FontSize="100" Foreground="White" Background="Transparent" CaretBrush="White">0</TextBox>
+            <TextBox Padding="0 -15 0 0" BorderThickness="0" IsEnabled="False" FontSize="100" Foreground="White" Background="Transparent" CaretBrush="White">0</TextBox>
+            <TextBox BorderThickness="0" Padding="0 0 0 10" VerticalContentAlignment="Bottom" Margin="0 0 10 0" IsEnabled="False" FontSize="60" Foreground="White" Background="Transparent" CaretBrush="White">m</TextBox>
+            <TextBox Padding="0 -15 0 0" BorderThickness="0" IsEnabled="False" FontSize="100" Foreground="White" Background="Transparent" CaretBrush="White">0</TextBox>
+            <TextBox Padding="0 -15 0 0" BorderThickness="0" IsEnabled="False" FontSize="100" Foreground="White" Background="Transparent" CaretBrush="White">0</TextBox>
+            <TextBox BorderThickness="0" Padding="0 0 0 10" VerticalContentAlignment="Bottom" IsEnabled="False" FontSize="60" Foreground="White" Background="Transparent" CaretBrush="White">s</TextBox>
         </StackPanel>
     </Grid>
 </UserControl>
