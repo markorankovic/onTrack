@@ -7,13 +7,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel Cursor="Hand" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBox Padding="0 -15 0 0" BorderThickness="0" IsEnabled="False" FontSize="100" Foreground="White" Background="Transparent" CaretBrush="White">0</TextBox>
-            <TextBox Padding="0 -15 0 0" BorderThickness="0" IsEnabled="False" FontSize="100" Foreground="White" Background="Transparent" CaretBrush="White">0</TextBox>
-            <TextBox BorderThickness="0" Padding="0 0 0 10" VerticalContentAlignment="Bottom" Margin="0 0 10 0" IsEnabled="False" FontSize="60" Foreground="White" Background="Transparent" CaretBrush="White">m</TextBox>
-            <TextBox Padding="0 -15 0 0" BorderThickness="0" IsEnabled="False" FontSize="100" Foreground="White" Background="Transparent" CaretBrush="White">0</TextBox>
-            <TextBox Padding="0 -15 0 0" BorderThickness="0" IsEnabled="False" FontSize="100" Foreground="White" Background="Transparent" CaretBrush="White">0</TextBox>
-            <TextBox BorderThickness="0" Padding="0 0 0 10" VerticalContentAlignment="Bottom" IsEnabled="False" FontSize="60" Foreground="White" Background="Transparent" CaretBrush="White">s</TextBox>
+        <StackPanel Cursor="Hand" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="Label_MouseLeftButtonDown">
+            <TextBox 
+                x:Name="textbox" 
+                Padding="0 -15 0 0" 
+                BorderThickness="0" 
+                FontSize="100"
+                Foreground="White"
+                Background="Transparent" 
+                IsEnabled="False" 
+                LostFocus="textbox_LostFocus" 
+                CaretBrush="Transparent"
+                SelectionBrush="Transparent"
+                TextChanged="textbox_TextChanged"
+                >00s 30m</TextBox>
         </StackPanel>
     </Grid>
 </UserControl>

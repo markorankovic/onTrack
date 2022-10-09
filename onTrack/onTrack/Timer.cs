@@ -1,19 +1,12 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
 using onTrack.Reinforcements;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Media;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
-using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Threading;
-using System.Windows;
 using System.IO;
+using System;
 
 namespace onTrack
 {
@@ -26,10 +19,15 @@ namespace onTrack
         static System.Timers.Timer timer;
         static SoundPlayer soundPlayer = new (Properties.Resources.Wake_Up);
 
-        public static double Duration = 0.5;
+        public static double Duration = 30;
+        public static int Counted = 0;
+        public static int Remaining { get { return (int)(Duration - Counted); }  }
+
         public static string Objective = "Your Objective";
 
         public static bool SoundPlaying = false;
+
+        public static bool Playing = false;
 
         static List<Reinforcement> previousReinforcements = new();
 
@@ -45,6 +43,13 @@ namespace onTrack
                     }
                 });
             };
+        }
+
+        static Action Callback;
+
+        public static void AddCallback(Action callback)
+        {
+            Timer.Callback = callback;
         }
 
         public static string GetAlarmName()
@@ -102,6 +107,9 @@ namespace onTrack
 
         public static void Stop()
         {
+            Counted = 0;
+            Callback();
+            Playing = false;
             soundPlayer.Stop();
             timer?.Stop();
         }
@@ -125,11 +133,15 @@ namespace onTrack
 
         private static void ResetTimer()
         {
+            Playing = true;
+            Counted = 0;
+            Callback();
             Trace.WriteLine("Duration: " + Duration);
             timer?.Stop();
-            timer = new(Duration * 60 * 1000);
+            timer = new(Duration * 1000);
             timer.Elapsed += OnTimedEvent;
-            timer.AutoReset = false;
+            timer.Interval = 1000;
+            timer.AutoReset = true;
             timer.Enabled = true;
         }
 
@@ -150,11 +162,18 @@ namespace onTrack
         {
             Dispatcher.CurrentDispatcher.Invoke(() =>
             {
+                Counted += 1;
+                if (Counted <= Duration)
+                {
+                    Callback();
+                    return;
+                }
+                timer.AutoReset = false;
+                timer.Enabled = false;
                 AlertUser();
                 if (!(CurrentReinforcement is NoneReinforcement))
                 {
                     timer = new(15 * 1000);
-                    timer.AutoReset = false;
                     timer.Enabled = true;
                     timer.Elapsed += OnToastPassed;
                 }

@@ -81,7 +81,9 @@
                 BorderThickness="0"
                 CaretBrush="White"
                 />
-        <f:Countdown />
+        <f:Countdown
+            x:Name="countdown"
+        />
         <StackPanel 
                 VerticalAlignment="Center" 
                 HorizontalAlignment="Center" 

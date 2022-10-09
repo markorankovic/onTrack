@@ -27,14 +27,6 @@ namespace onTrack.Views
             Timer.SetObjective(objective.Text);
         }
 
-        private void slTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (((Slider)e.OriginalSource).Maximum != 30) 
-            { 
-                return; 
-            }
-            Timer.SetDuration(100); // TODO: Set the duration to the time specified by the Countdown!
-        }
 
         private void slTime_ToolTipOpening(object sender, ToolTipEventArgs e)
         {
