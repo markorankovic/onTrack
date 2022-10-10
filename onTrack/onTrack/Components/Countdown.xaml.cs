@@ -1,8 +1,4 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using System.Timers;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -28,7 +24,7 @@ namespace onTrack.Components
             }
         }
 
-        public int Duration = 0;
+        public int Duration = 0; 
 
         bool _enabled = false;
         bool Enabled { 
@@ -60,7 +56,8 @@ namespace onTrack.Components
             if (seconds > 3600)
             {
                 return 3600;
-            } else if (seconds < 30)
+            }
+            else if (seconds < 30)
             {
                 return 30;
             }
@@ -123,6 +120,16 @@ namespace onTrack.Components
         public void MoveFocus()
         {
             textbox.MoveFocus(new TraversalRequest(new FocusNavigationDirection()));
+        }
+
+        private void UserControl_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key.Equals(Key.Back) && !Timer.Playing)
+            {
+                if (timeStr.Length < 1) return;
+                timeStr = timeStr.Remove(timeStr.Length - 1);
+                Timer.SetDuration(StringToSeconds());
+            }
         }
     }
 }
