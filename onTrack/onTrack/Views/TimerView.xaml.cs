@@ -36,6 +36,7 @@ namespace onTrack.Views
         private void UserControl_MouseUp(object sender, MouseButtonEventArgs e)
         {
             objective.MoveFocus(new TraversalRequest(new FocusNavigationDirection()));
+            countdown.MoveFocus();
         }
     }
 }

@@ -56,8 +56,18 @@ namespace onTrack.Components
 
         int StringToSeconds()
         {
-            return (time[0] * 60 * 10) + (time[1] * 60) + (time[2] * 10) + time[3];
+            var seconds = (time[0] * 60 * 10) + (time[1] * 60) + (time[2] * 10) + time[3];
+            if (seconds > 3600)
+            {
+                return 3600;
+            } else if (seconds < 30)
+            {
+                return 30;
+            }
+            return seconds;
         }
+
+
 
         private void textbox_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -108,6 +118,11 @@ namespace onTrack.Components
             {
                 Enabled = true;
             }
+        }
+
+        public void MoveFocus()
+        {
+            textbox.MoveFocus(new TraversalRequest(new FocusNavigationDirection()));
         }
     }
 }
