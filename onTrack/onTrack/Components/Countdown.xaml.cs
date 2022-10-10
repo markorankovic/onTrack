@@ -30,11 +30,18 @@ namespace onTrack.Components
 
         public int Duration = 0;
 
+        bool _enabled = false;
+        bool Enabled { 
+            get { return _enabled; } 
+            set { _enabled = value; textbox.Opacity = _enabled ? 0.5 : 1; } 
+        }
+
         public Countdown()
         {
             InitializeComponent();
             UpdateTime();
             Timer.AddCallback(UpdateTime);
+            Enabled = false;
         }
 
         private void UpdateTime()
@@ -52,17 +59,9 @@ namespace onTrack.Components
             return (time[0] * 60 * 10) + (time[1] * 60) + (time[2] * 10) + time[3];
         }
 
-        private void Label_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (!Timer.Playing)
-            {
-                textbox.IsEnabled = true;
-            }
-        }
-
         private void textbox_LostFocus(object sender, RoutedEventArgs e)
         {
-            textbox.IsEnabled = false;
+            Enabled = false;
         }
 
         private string GetDifference(string before, string after)
@@ -86,7 +85,11 @@ namespace onTrack.Components
 
         private void textbox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (Timer.Playing) return;
+            if (Timer.Playing || !Enabled)
+            {
+                textbox.Text = previousText; 
+                return;
+            }
             string diff = GetDifference(previousText, textbox.Text);
             bool parsed = int.TryParse(diff, out _);
             if (parsed)
@@ -96,6 +99,14 @@ namespace onTrack.Components
             } else
             {
                 textbox.Text = previousText;
+            }
+        }
+
+        private void textbox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!Timer.Playing)
+            {
+                Enabled = true;
             }
         }
     }

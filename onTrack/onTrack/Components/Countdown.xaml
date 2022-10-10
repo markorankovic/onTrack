@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel Cursor="Hand" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="Label_MouseLeftButtonDown">
+        <StackPanel Cursor="Hand" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBox 
                 x:Name="textbox" 
                 Padding="0 -15 0 0" 
@@ -15,11 +15,11 @@
                 FontSize="100"
                 Foreground="White"
                 Background="Transparent" 
-                IsEnabled="False" 
-                LostFocus="textbox_LostFocus" 
+                LostFocus="textbox_LostFocus"
                 CaretBrush="Transparent"
                 SelectionBrush="Transparent"
                 TextChanged="textbox_TextChanged"
+                PreviewMouseDown="textbox_PreviewMouseDown"
                 >00s 30m</TextBox>
         </StackPanel>
     </Grid>
