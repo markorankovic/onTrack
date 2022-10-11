@@ -9,11 +9,19 @@ namespace onTrack.Views
     {
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            Timer.Reset();
+            if (Timer.Playing)
+            {
+                Timer.Stop();
+                PlayButton.Content = "▶️ Start";
+            }
+            else
+            {
+                Timer.Reset();
+                PlayButton.Content = "⏹️ Stop";
+            }
         }
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
-            Timer.Stop();
         }
 
         public TimerView()
