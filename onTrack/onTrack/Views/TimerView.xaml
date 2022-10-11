@@ -70,9 +70,9 @@
     >
         <TextBox 
                 Name="objective"
-                Height="70"
-                FontSize="50"
-                Margin="0 0 0 20"
+                Height="80"
+                FontSize="60"
+                Margin="0 0 0 80"
                 Background="Transparent"
                 Foreground="White"
                 TextAlignment="Center"
@@ -90,9 +90,9 @@
                 Orientation="Horizontal"
                 >
             <Button x:Name="PlayButton"
-                        FontSize="250"
-                        Width="290"
-                        Height="260"
+                        FontSize="50"
+                        Width="190"
+                        Height="60"
                         FontFamily="Calibri"
                         Click="PlayButton_Click"
                         Template="{StaticResource ButtonControlTemplate}"
@@ -100,33 +100,14 @@
                         Foreground="White"
                         Background="Transparent"
                         Style="{StaticResource PlayButtonStyle}"
-                        Padding="-25 -16 0 0"
+                        Margin="0 50 0 0"
                         RenderTransformOrigin="0.5,0.5">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
                     </TransformGroup>
                 </Button.RenderTransform>
-                ▶
-            </Button>
-            <Button x:Name="StopButton"
-                        Style="{StaticResource ButtonAnimation}"
-                        FontSize="190"
-                        Width="290"
-                        Height="260"
-                        FontFamily="Calibri"
-                        Click="StopButton_Click"
-                        Template="{StaticResource ButtonControlTemplate}"
-                        BorderThickness="0"
-                        Foreground="White"
-                        Background="Transparent" 
-                        RenderTransformOrigin="0.5,0.5">
-                <Button.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                    </TransformGroup>
-                </Button.RenderTransform>
-                ⏹️
+                ▶ Start
             </Button>
         </StackPanel>
     </StackPanel>

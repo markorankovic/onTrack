@@ -13,7 +13,7 @@
             x:Name="textbox" 
             Padding="0 -15 0 0" 
             BorderThickness="0" 
-            FontSize="100"
+            FontSize="80"
             Foreground="White"
             Background="Transparent" 
             LostFocus="textbox_LostFocus"
@@ -23,7 +23,7 @@
             GotFocus="textbox_GotFocus"
             >00m 30</TextBox>
             <Rectangle x:Name="caret" Width="2" Height="100" Fill="White" Visibility="Hidden" Margin="-2 0 0 0" />
-            <TextBox x:Name="second" Background="Transparent" FontSize="100" Foreground="White" IsReadOnly="True" BorderBrush="Transparent" Padding="-4 -15 0 0" SelectionBrush="Transparent" BorderThickness="0" Focusable="False" PreviewMouseDown="second_PreviewMouseDown">s</TextBox>
+            <TextBox x:Name="second" Background="Transparent" FontSize="80" Foreground="White" IsReadOnly="True" BorderBrush="Transparent" Padding="-4 -15 0 0" SelectionBrush="Transparent" BorderThickness="0" Focusable="False" PreviewMouseDown="second_PreviewMouseDown">s</TextBox>
         </StackPanel>
     </Grid>
 </UserControl>
