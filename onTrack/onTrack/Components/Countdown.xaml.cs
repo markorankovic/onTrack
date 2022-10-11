@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -29,7 +30,14 @@ namespace onTrack.Components
         bool _enabled = false;
         bool Enabled { 
             get { return _enabled; } 
-            set { _enabled = value; textbox.Opacity = _enabled ? 0.5 : 1; caret.Visibility = _enabled ? Visibility.Visible : Visibility.Hidden; textbox.Cursor = _enabled ? Cursors.Arrow : Cursors.Hand; } 
+            set { 
+                _enabled = value; 
+                textbox.Opacity = _enabled ? 0.5 : 1; 
+                second.Opacity = _enabled ? 0.5 : 1; 
+                caret.Visibility = _enabled ? Visibility.Visible : Visibility.Hidden; 
+                textbox.Cursor = _enabled ? Cursors.Arrow : Cursors.Hand; 
+                second.Cursor = _enabled ? Cursors.Arrow : Cursors.Hand; 
+            } 
         }
 
         public Countdown()
@@ -85,7 +93,7 @@ namespace onTrack.Components
 
         private void ApplyTimeFormat()
         {
-            var res = time[0] + "" + time[1] + "m" + " " + time[2] + "" + time[3] + "s";
+            var res = time[0] + "" + time[1] + "m" + " " + time[2] + "" + time[3];
             previousText = res;
             textbox.Text = res;
         }
@@ -117,9 +125,17 @@ namespace onTrack.Components
             }
         }
 
+        bool Second_Clicked = false;
+
         public void MoveFocus()
         {
-            textbox.MoveFocus(new TraversalRequest(new FocusNavigationDirection()));
+            if (Second_Clicked)
+            {
+                Second_Clicked = false; 
+            } else
+            {
+                textbox.MoveFocus(new TraversalRequest(new FocusNavigationDirection()));
+            }
         }
 
         private void UserControl_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -130,6 +146,25 @@ namespace onTrack.Components
                 timeStr = timeStr.Remove(timeStr.Length - 1);
                 Timer.SetDuration(StringToSeconds());
             }
+        }
+
+        private void StackPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            textbox_PreviewMouseDown(sender, e);
+            textbox.Focus();
+        }
+
+        private void textbox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (!Timer.Playing)
+            {
+                Enabled = true;
+            }
+        }
+
+        private void second_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Second_Clicked = true;
         }
     }
 }

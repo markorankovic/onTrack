@@ -8,7 +8,7 @@
              PreviewKeyDown="UserControl_PreviewKeyDown"
              >
     <Grid>
-        <StackPanel Cursor="Hand" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" PreviewMouseDown="StackPanel_PreviewMouseDown">
             <TextBox 
             x:Name="textbox" 
             Padding="0 -15 0 0" 
@@ -20,10 +20,10 @@
             CaretBrush="Transparent"
             SelectionBrush="Transparent"
             TextChanged="textbox_TextChanged"
-            PreviewMouseDown="textbox_PreviewMouseDown"
-            Cursor="Hand"
-            >00m 30s</TextBox>
-            <Rectangle x:Name="caret" Width="2" Height="100" Fill="White" Visibility="Hidden" />
+            GotFocus="textbox_GotFocus"
+            >00m 30</TextBox>
+            <Rectangle x:Name="caret" Width="2" Height="100" Fill="White" Visibility="Hidden" Margin="-2 0 0 0" />
+            <TextBox x:Name="second" Background="Transparent" FontSize="100" Foreground="White" IsReadOnly="True" BorderBrush="Transparent" Padding="-4 -15 0 0" SelectionBrush="Transparent" BorderThickness="0" Focusable="False" PreviewMouseDown="second_PreviewMouseDown">s</TextBox>
         </StackPanel>
     </Grid>
 </UserControl>
