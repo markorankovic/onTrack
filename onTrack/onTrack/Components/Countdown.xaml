@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:onTrack.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              PreviewKeyDown="UserControl_PreviewKeyDown"
@@ -11,18 +10,19 @@
     <Grid>
         <StackPanel Cursor="Hand" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBox 
-                x:Name="textbox" 
-                Padding="0 -15 0 0" 
-                BorderThickness="0" 
-                FontSize="100"
-                Foreground="White"
-                Background="Transparent" 
-                LostFocus="textbox_LostFocus"
-                CaretBrush="Transparent"
-                SelectionBrush="Transparent"
-                TextChanged="textbox_TextChanged"
-                PreviewMouseDown="textbox_PreviewMouseDown"
-                >00s 30m</TextBox>
+            x:Name="textbox" 
+            Padding="0 -15 0 0" 
+            BorderThickness="0" 
+            FontSize="100"
+            Foreground="White"
+            Background="Transparent" 
+            LostFocus="textbox_LostFocus"
+            CaretBrush="Transparent"
+            SelectionBrush="Transparent"
+            TextChanged="textbox_TextChanged"
+            PreviewMouseDown="textbox_PreviewMouseDown"
+            Cursor="Hand"
+            >00m 30s</TextBox>
             <Rectangle x:Name="caret" Width="2" Height="100" Fill="White" Visibility="Hidden" />
         </StackPanel>
     </Grid>
