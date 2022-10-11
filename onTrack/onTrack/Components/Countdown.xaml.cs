@@ -29,7 +29,7 @@ namespace onTrack.Components
         bool _enabled = false;
         bool Enabled { 
             get { return _enabled; } 
-            set { _enabled = value; textbox.Opacity = _enabled ? 0.5 : 1; } 
+            set { _enabled = value; textbox.Opacity = _enabled ? 0.5 : 1; caret.Visibility = _enabled ? Visibility.Visible : Visibility.Hidden; } 
         }
 
         public Countdown()

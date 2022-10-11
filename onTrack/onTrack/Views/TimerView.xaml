@@ -6,7 +6,7 @@
       xmlns:s="clr-namespace:onTrack"
       xmlns:f="clr-namespace:onTrack.Components"
       mc:Ignorable="d" 
-      Width="800" Height="510"
+      Width="800" Height="490"
       Background="#00bbff"
       MouseUp="UserControl_MouseUp">
 

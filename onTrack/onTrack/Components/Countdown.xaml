@@ -23,6 +23,7 @@
                 TextChanged="textbox_TextChanged"
                 PreviewMouseDown="textbox_PreviewMouseDown"
                 >00s 30m</TextBox>
+            <Rectangle x:Name="caret" Width="2" Height="100" Fill="White" Visibility="Hidden" />
         </StackPanel>
     </Grid>
 </UserControl>
