@@ -8,31 +8,33 @@
         ResizeMode="CanMinimize"
         Title="onTrack" Width="800" Height="600"
         WindowStartupLocation="CenterScreen"
-        Background="#00bbff"
+        Background="Transparent"
+        AllowsTransparency="True"
         >
-    <Grid>
+    <Border Background="#00bbff" CornerRadius="5">
+        <Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
-            <RowDefinition Height="50" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <RowDefinition Height="50" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-        <Border 
-            Background="#00bbff"
+            <Border 
+            Background="Transparent"
             Grid.ColumnSpan="2"
             MouseDown="Border_MouseDown">
 
-            <Grid HorizontalAlignment="Stretch">
+                <Grid HorizontalAlignment="Stretch">
 
-                <Label Content="onTrack" 
+                    <Label Content="onTrack" 
                        Foreground="White"
                        FontWeight="SemiBold"
                        FontSize="20"/>
 
-                <StackPanel HorizontalAlignment="Right"
+                    <StackPanel HorizontalAlignment="Right"
                             Orientation="Horizontal">
-                    <Button Width="40"
+                        <Button Width="40"
                             Height="40"
                             Content="🗕"
                             FontSize="20"
@@ -42,7 +44,7 @@
                             Padding="0, 0, 0, 13"
                             Click="Minimize_Click"/>
 
-                    <Button Width="40"
+                        <Button Width="40"
                             Height="40"
                             Content="⨉"
                             FontSize="20"
@@ -51,44 +53,45 @@
                             BorderThickness="0"
                             Click="Close_Click"/>
 
-                </StackPanel>
+                    </StackPanel>
 
-            </Grid>
+                </Grid>
 
-        </Border>
+            </Border>
 
-        <StackPanel Grid.Row="1" Orientation="Vertical">
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Button 
+            <StackPanel Grid.Row="1" Orientation="Vertical">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button 
                     Command="{Binding UpdateViewCommand}"
                     CommandParameter="Timer"
                     Background="Transparent"
                     BorderThickness="0">
-                    <TextBlock Text="⌛" 
+                        <TextBlock Text="⌛" 
                                FontSize="30"
                                Foreground="White"/>
-                </Button>
-                <Button
+                    </Button>
+                    <Button
                     Command="{Binding UpdateViewCommand}"
                     CommandParameter="Settings"
                     Background="Transparent"
                     BorderThickness="0">
-                    <TextBlock Text="⚙️" 
+                        <TextBlock Text="⚙️" 
                                FontSize="30"
                                Foreground="White"/>
-                </Button>
-                <Button
+                    </Button>
+                    <Button
                     Background="Transparent"
                     BorderThickness="0"
                     Click="Help_Click">
-                    <TextBlock Text="❓" 
+                        <TextBlock Text="❓" 
                                FontSize="30"
                                Foreground="White"/>
-                </Button>
+                    </Button>
+                </StackPanel>
+                <Rectangle Width="120" Height="5" Fill="White"/>
             </StackPanel>
-            <Rectangle Width="120" Height="5" Fill="White"/>
-        </StackPanel>
 
-        <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="2"/>
-    </Grid>
+            <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="2"/>
+        </Grid>
+    </Border>
 </Window>

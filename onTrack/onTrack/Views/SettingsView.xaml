@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:onTrack.Views"
       mc:Ignorable="d" 
       Background="#00bbff"
-      Width="800" Height="600">
+      Width="800" Height="490">
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Foreground" Value="White" />

@@ -27,14 +27,6 @@ namespace onTrack.Views
             Timer.SetObjective(objective.Text);
         }
 
-        private void slTime_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (((Slider)e.OriginalSource).Maximum != 30) 
-            { 
-                return; 
-            }
-            Timer.SetDuration(slTime.Value);
-        }
 
         private void slTime_ToolTipOpening(object sender, ToolTipEventArgs e)
         {
@@ -44,6 +36,7 @@ namespace onTrack.Views
         private void UserControl_MouseUp(object sender, MouseButtonEventArgs e)
         {
             objective.MoveFocus(new TraversalRequest(new FocusNavigationDirection()));
+            countdown.MoveFocus();
         }
     }
 }
