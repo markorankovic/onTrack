@@ -63,7 +63,10 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    
+
+    <Grid>
+    <Canvas />
+    <f:Clock />
     <StackPanel
         VerticalAlignment="Center" 
         HorizontalAlignment="Center" 
@@ -71,8 +74,8 @@
         <TextBox 
                 Name="objective"
                 Height="80"
-                FontSize="60"
-                Margin="0 0 0 80"
+                FontSize="30"
+                Margin="0 0 0 10"
                 Background="Transparent"
                 Foreground="White"
                 TextAlignment="Center"
@@ -100,7 +103,7 @@
                         Foreground="White"
                         Background="Transparent"
                         Style="{StaticResource PlayButtonStyle}"
-                        Margin="0 50 0 0"
+                        Margin="0 0 0 0"
                         RenderTransformOrigin="0.5,0.5">
                 <Button.RenderTransform>
                     <TransformGroup>
@@ -111,4 +114,5 @@
             </Button>
         </StackPanel>
     </StackPanel>
+    </Grid>
 </UserControl>

@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Ellipse Width="450" Height="450" Stroke="White" StrokeThickness="4" />
+        <Ellipse Width="485" Height="485" Stroke="White" StrokeThickness="6" />
     </Grid>
 </UserControl>

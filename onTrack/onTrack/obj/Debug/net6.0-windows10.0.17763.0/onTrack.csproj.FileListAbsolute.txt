@@ -37,3 +37,5 @@ C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.pdb
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.genruntimeconfig.cache
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\ref\onTrack.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Components\Clock.g.cs
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Components\Clock.baml
