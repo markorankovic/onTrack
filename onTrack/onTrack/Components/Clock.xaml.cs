@@ -14,6 +14,7 @@ namespace onTrack.Components
         {
             InitializeComponent();
             DataContext = this;
+            Timer.AddFinishCallback(ResetSequence);
             if (Timer.Playing)
             {
                 CurrentTime = 251 * ((Timer.TimeEllapsed / 1000) / Timer.Duration);
@@ -32,8 +33,24 @@ namespace onTrack.Components
         Storyboard timeSequence = new Storyboard();
         DoubleAnimation doubleAnimation = new DoubleAnimation();
 
+        private void ResetSequence()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (Timer.Playing)
+                {
+                    RunSequence();
+                }
+                else
+                {
+                    StopSequence();
+                }
+            });
+        }
+
         public void RunSequence()
         {
+            progressBar.Visibility = Visibility.Visible;
             double max = 251.0;
             doubleAnimation.From = CurrentTime;
             doubleAnimation.To = max;
@@ -49,6 +66,7 @@ namespace onTrack.Components
 
         public void StopSequence()
         {
+            progressBar.Visibility = Visibility.Hidden;
             timeSequence.Stop(this);
             CurrentTime = 0.0;
         }

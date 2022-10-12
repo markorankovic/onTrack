@@ -11,13 +11,11 @@ namespace onTrack.Views
         {
             if (Timer.Playing)
             {
-                clock.StopSequence();
                 Timer.Stop();
                 PlayButton.Content = "▶️ Start";
             }
             else
             {
-                clock.RunSequence();
                 Timer.Reset();
                 PlayButton.Content = "⏹️ Stop";
             }
