@@ -14,6 +14,11 @@ namespace onTrack.Components
         {
             InitializeComponent();
             DataContext = this;
+            if (Timer.Playing)
+            {
+                CurrentTime = 251 * ((Timer.TimeEllapsed / 1000) / Timer.Duration);
+                RunSequence();
+            }
         }
 
         public static DependencyProperty CurrentTimeProperty = DependencyProperty.Register("CurrentTime", typeof(double), typeof(Clock), new PropertyMetadata(0.0));
@@ -24,21 +29,28 @@ namespace onTrack.Components
             set { SetValue(CurrentTimeProperty, value); }
         }
 
+        Storyboard timeSequence = new Storyboard();
+        DoubleAnimation doubleAnimation = new DoubleAnimation();
+
         public void RunSequence()
         {
             double max = 251.0;
-            Storyboard timeSequence = new Storyboard();
-            DoubleAnimation doubleAnimation = new DoubleAnimation();
-            doubleAnimation.From = 0;
+            doubleAnimation.From = CurrentTime;
             doubleAnimation.To = max;
-            doubleAnimation.Duration = TimeSpan.FromSeconds(Timer.Duration);
+            doubleAnimation.Duration = TimeSpan.FromSeconds(Timer.Duration - (Timer.TimeEllapsed / 1000));
 
             timeSequence.Children.Add(doubleAnimation);
 
             Storyboard.SetTarget(doubleAnimation, this);
             Storyboard.SetTargetProperty(doubleAnimation, new PropertyPath(CurrentTimeProperty));
 
-            timeSequence.Begin(this);
+            timeSequence.Begin(this, true);
+        }
+
+        public void StopSequence()
+        {
+            timeSequence.Stop(this);
+            CurrentTime = 0.0;
         }
 
         private void progressBar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

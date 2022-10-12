@@ -7,6 +7,7 @@ using System.Timers;
 using System.Windows.Threading;
 using System.IO;
 using System;
+using onTrack.Components;
 
 namespace onTrack
 {
@@ -28,6 +29,10 @@ namespace onTrack
         public static bool SoundPlaying = false;
 
         public static bool Playing = false;
+
+        public static DateTime? TimeInitiated = null;
+
+        public static int TimeEllapsed { get { return (int) DateTime.UtcNow.Subtract(TimeInitiated != null ? TimeInitiated.Value : DateTime.UtcNow).TotalMilliseconds; } }
 
         static List<Reinforcement> previousReinforcements = new();
 
@@ -133,6 +138,7 @@ namespace onTrack
 
         private static void ResetTimer()
         {
+            TimeInitiated = DateTime.UtcNow;
             Playing = true;
             Counted = 0;
             Callback();
