@@ -28,6 +28,7 @@ namespace onTrack.Views
         {
             InitializeComponent();
             Trace.WriteLine(Resources["mouseover"]);
+            PlayButton.Content = Timer.Playing ? "⏹️ Stop" : "▶️ Start";
         }
 
         private void objective_TextChanged(object sender, TextChangedEventArgs e)
