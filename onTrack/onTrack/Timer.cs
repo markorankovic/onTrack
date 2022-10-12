@@ -29,6 +29,10 @@ namespace onTrack
 
         public static bool Playing = false;
 
+        public static DateTime? TimeInitiated = null;
+
+        public static int TimeEllapsed { get { return (int) DateTime.UtcNow.Subtract(TimeInitiated != null ? TimeInitiated.Value : DateTime.UtcNow).TotalMilliseconds; } }
+
         static List<Reinforcement> previousReinforcements = new();
 
         static Timer()
@@ -46,10 +50,16 @@ namespace onTrack
         }
 
         static Action Callback;
+        static Action FinishCallback;
 
         public static void AddCallback(Action callback)
         {
-            Timer.Callback = callback;
+            Callback = callback;
+        }
+
+        public static void AddFinishCallback(Action callback)
+        {
+            FinishCallback = callback;
         }
 
         public static string GetAlarmName()
@@ -105,13 +115,27 @@ namespace onTrack
             previousReinforcements.Add(reinforcement);
         }
 
+        private static void ExecuteCallbacks()
+        {
+            Callback();
+        }
+
+        private static void ExecuteFinishCallbacks()
+        {
+            FinishCallback();
+        }
+
         public static void Stop()
         {
-            Counted = 0;
-            Callback();
-            Playing = false;
-            soundPlayer.Stop();
-            timer?.Stop();
+            Dispatcher.CurrentDispatcher.Invoke(() =>
+            {
+                Counted = 0;
+                Playing = false;
+                ExecuteCallbacks();
+                ExecuteFinishCallbacks();
+                soundPlayer.Stop();
+                timer?.Stop();
+            });
         }
 
         private static void WakeUser()
@@ -133,9 +157,11 @@ namespace onTrack
 
         private static void ResetTimer()
         {
+            TimeInitiated = DateTime.UtcNow;
             Playing = true;
+            ExecuteCallbacks();
+            ExecuteFinishCallbacks();
             Counted = 0;
-            Callback();
             Trace.WriteLine("Duration: " + Duration);
             timer?.Stop();
             timer = new(Duration * 1000);
@@ -148,7 +174,7 @@ namespace onTrack
         public static void Reset()
         {
             Dispatcher.CurrentDispatcher.Invoke(() => {
-                soundPlayer.Stop();
+                Stop();
                 ResetTimer();
             });
         }
@@ -165,7 +191,7 @@ namespace onTrack
                 Counted += 1;
                 if (Counted <= Duration)
                 {
-                    Callback();
+                    ExecuteCallbacks();
                     return;
                 }
                 timer.AutoReset = false;
