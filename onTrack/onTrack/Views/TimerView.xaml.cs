@@ -16,6 +16,7 @@ namespace onTrack.Views
             }
             else
             {
+                clock.RunSequence();
                 Timer.Reset();
                 PlayButton.Content = "⏹️ Stop";
             }

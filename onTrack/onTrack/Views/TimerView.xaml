@@ -66,7 +66,7 @@
 
     <Grid>
     <Canvas />
-    <f:Clock />
+    <f:Clock x:Name="clock" />
     <StackPanel
         VerticalAlignment="Center" 
         HorizontalAlignment="Center" 
