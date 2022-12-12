@@ -54,6 +54,7 @@ namespace onTrack.Components
             {
                 var minutes = Timer.Remaining / 60;
                 var seconds = Timer.Remaining - (minutes * 60);
+                seconds = seconds < 0 ? 0 : seconds;
                 timeStr = (minutes < 10 ? 0 + "" + minutes : "" + minutes) + "" + (seconds < 10 ? 0 + "" + seconds : "" + seconds);
             });
         }

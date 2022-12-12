@@ -54,7 +54,8 @@ namespace onTrack.Components
             double max = 251.0;
             doubleAnimation.From = CurrentTime;
             doubleAnimation.To = max;
-            doubleAnimation.Duration = TimeSpan.FromSeconds(Timer.Duration - (Timer.TimeEllapsed / 1000));
+            double duration = Timer.Duration - (Timer.TimeEllapsed / 1000);
+            doubleAnimation.Duration = TimeSpan.FromSeconds(duration >= 0 ? duration : 0);
 
             timeSequence.Children.Add(doubleAnimation);
 
