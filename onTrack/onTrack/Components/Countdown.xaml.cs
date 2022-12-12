@@ -72,8 +72,6 @@ namespace onTrack.Components
             return seconds;
         }
 
-
-
         private void textbox_LostFocus(object sender, RoutedEventArgs e)
         {
             Enabled = false;
@@ -83,6 +81,10 @@ namespace onTrack.Components
         {
             var afterArr = after.ToCharArray();
             var beforeArr = before.ToCharArray();
+            if (afterArr.Length > beforeArr.Length)
+            {
+                return afterArr[0].ToString();
+            }
             for (int index = 0; index < afterArr.Length; index++)
             {
                 if (beforeArr.Length == 0) break;
@@ -140,6 +142,7 @@ namespace onTrack.Components
 
         private void UserControl_PreviewKeyDown(object sender, KeyEventArgs e)
         {
+            textbox.Select(0, 0);
             if (e.Key.Equals(Key.Back) && !Timer.Playing)
             {
                 if (timeStr.Length < 1) return;
