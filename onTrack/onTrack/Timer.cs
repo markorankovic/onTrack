@@ -46,6 +46,9 @@ namespace onTrack
                     if (CurrentReinforcement.IsValidResponse(toastArgs))
                     {
                         Reset();
+                    } else
+                    {
+                        WakeUser();
                     }
                 });
             };
@@ -204,17 +207,15 @@ namespace onTrack
                 timer.AutoReset = false;
                 timer.Enabled = false;
                 AlertUser();
-*/            });
+            });
         }
 
         private static void OnToastPassed(object sender, ToastDismissedEventArgs e)
         {
-            if (!(CurrentReinforcement is NoneReinforcement))
+            if (!(CurrentReinforcement is NoneReinforcement) && Remaining == -1)
             {
-
                 WakeUser();
             }
-            else { ResetTimer(); }
         }
     }
 }

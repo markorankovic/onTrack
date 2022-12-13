@@ -58,6 +58,7 @@ namespace onTrack.Reinforcements
         }
         public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
         {
+            if (toastArgs.Argument == "") return false;
             return true;
         }
     }
