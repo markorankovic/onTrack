@@ -47,6 +47,7 @@ namespace onTrack
                     }
                 });
             };
+            
         }
 
         static Action Callback;
@@ -181,7 +182,11 @@ namespace onTrack
 
         private static void AlertUser()
         {
-            CurrentReinforcement.CreateToast(Objective).Show();
+            CurrentReinforcement.CreateToast(Objective)
+                .Show(toast =>
+                {
+                    toast.ExpirationTime = DateTime.Now;
+                });
         }
 
         private static void OnTimedEvent(System.Object source, ElapsedEventArgs e)
