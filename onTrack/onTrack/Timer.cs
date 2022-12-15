@@ -216,6 +216,7 @@ namespace onTrack
             {
                 WakeUser();
             }
+            ToastNotificationManagerCompat.History.Clear();
         }
     }
 }
