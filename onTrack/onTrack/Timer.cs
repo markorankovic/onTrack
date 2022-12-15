@@ -7,6 +7,8 @@ using System.Timers;
 using System.Windows.Threading;
 using System.IO;
 using System;
+using Windows.UI.Notifications;
+using Windows.Foundation;
 
 namespace onTrack
 {
@@ -44,9 +46,13 @@ namespace onTrack
                     if (CurrentReinforcement.IsValidResponse(toastArgs))
                     {
                         Reset();
+                    } else
+                    {
+                        WakeUser();
                     }
                 });
             };
+            
         }
 
         static Action Callback;
@@ -181,7 +187,11 @@ namespace onTrack
 
         private static void AlertUser()
         {
-            CurrentReinforcement.CreateToast(Objective).Show();
+            CurrentReinforcement.CreateToast(Objective)
+                .Show(toast =>
+                {
+                    toast.Dismissed += OnToastPassed;
+                });
         }
 
         private static void OnTimedEvent(System.Object source, ElapsedEventArgs e)
@@ -197,19 +207,15 @@ namespace onTrack
                 timer.AutoReset = false;
                 timer.Enabled = false;
                 AlertUser();
-                if (!(CurrentReinforcement is NoneReinforcement))
-                {
-                    timer = new(15 * 1000);
-                    timer.Enabled = true;
-                    timer.Elapsed += OnToastPassed;
-                }
-                else { ResetTimer(); }
             });
         }
 
-        private static void OnToastPassed(System.Object source, ElapsedEventArgs e)
+        private static void OnToastPassed(object sender, ToastDismissedEventArgs e)
         {
-            WakeUser();
+            if (!(CurrentReinforcement is NoneReinforcement) && Remaining == -1)
+            {
+                WakeUser();
+            }
         }
     }
 }

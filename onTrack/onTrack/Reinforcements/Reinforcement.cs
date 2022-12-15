@@ -1,10 +1,7 @@
 ﻿using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace onTrack.Reinforcements
 {
@@ -58,6 +55,7 @@ namespace onTrack.Reinforcements
         }
         public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
         {
+            if (toastArgs.Argument == "") return false;
             return true;
         }
     }
@@ -77,39 +75,126 @@ namespace onTrack.Reinforcements
         }
     }
 
-    public class PressTheRightYesReinforcement : Reinforcement
+    public class PressTheRightGoalReinforcement : Reinforcement
     {
+        public class CharacterMutater
+        {
+            Random rand = new Random();
+            private List<int> generatedIndices = new List<int>();
+
+            public void AddGeneratedIndex(int index, string objective)
+            {
+                generatedIndices.Add(index);
+                if (generatedIndices.Count == Max(objective) + 2)
+                    generatedIndices.Clear();
+            }
+
+            public enum Mutation
+            {
+                add,
+                sub
+            }
+
+            public Mutation RandomMutation()
+            {
+                int randomInt = rand.Next(0, 2);
+                return randomInt == 0 ? Mutation.add : Mutation.sub;
+            }
+
+            public List<int> NonGeneratedIndices(string objective, bool outsideRange)
+            {
+                List<int> indices = new List<int>();
+
+                for (int i = 0; i < Max(objective); i++)
+                    if (!generatedIndices.Contains(i))
+                        indices.Add(i);
+
+                if (outsideRange)
+                {
+                    if (!generatedIndices.Contains(-1))
+                    {
+                        indices.Add(-1);
+                        AddGeneratedIndex(-1, objective);
+                    }
+                    if (!generatedIndices.Contains(Max(objective)))
+                    {
+                        indices.Add(objective.Length);
+                        AddGeneratedIndex(Max(objective), objective);
+                    }
+                }
+
+                return indices;
+            }
+
+            public int Max(string objective)
+            {
+                return 10 < objective.Length ? 10 : objective.Length;
+            }
+
+            public int RandomIndex(string objective, bool outsideRange = true)
+            {
+                List<int> nonGeneratedIndices = NonGeneratedIndices(objective, outsideRange);
+                int randomInt = rand.Next(0, nonGeneratedIndices.Count);
+                int index = nonGeneratedIndices[randomInt];
+                AddGeneratedIndex(index, objective);
+                return index;
+            }
+
+            public string AddChar(string objective)
+            {
+                int randomIndex = RandomIndex(objective);
+                if (randomIndex < 0) return "." + objective;
+                else if (randomIndex > Max(objective)) return objective + ".";
+                return objective.Insert(randomIndex, ".");
+            }
+
+            public string SubChar(string objective)
+            {
+                int randomIndex = RandomIndex(objective, false);
+                return objective.Remove(randomIndex, 1);
+            }
+
+            public string GenerateCharacterMutation(string objective)
+            {
+                return RandomMutation() == Mutation.add ? AddChar(objective) : SubChar(objective);
+            }
+
+            public string[] GenerateCharacterMutations(string objective, int count)
+            {
+                string[] results = new string[count];
+                for (var i = 0; i < count; i++)
+                    results[i] = GenerateCharacterMutation(objective);
+                generatedIndices.Clear();
+                return results;
+            }
+
+            public string[] GenerateMutationsOfObjective(string objective, int count)
+            {
+                int randPlace = rand.Next(count);
+                string[] mutations = GenerateCharacterMutations(objective, count - 1);
+                List<string> results = mutations.ToList();
+                results.Insert(randPlace, objective);
+                return results.ToArray();
+            }
+        }
+
         string Goal = null;
         public ToastContentBuilder CreateToast(string goal)
         {
+            CharacterMutater characterMutater = new CharacterMutater();
             this.Goal = goal;
-            var buttonsFirst = (new Random()).NextDouble() >= 0.5;
             var content = new ToastContentBuilder()
                             .AddText("Are you focusing?")
                             .AddText("Objective: " + goal);
-            if (buttonsFirst)
+            string[] mutations = characterMutater.GenerateMutationsOfObjective(goal, 4);
+            foreach (string mutation in mutations)
             {
-                content
-                    .AddButton(new ToastButton()
-                        .SetContent("Yes")
-                        .AddArgument("focused", "yes")
+                content.AddButton(
+                    new ToastButton()
+                        .SetContent(mutation)
+                        .AddArgument("focused", mutation == goal ? "yes" : "yes")
                         .SetBackgroundActivation()
-                        )
-                    .AddButton(new ToastButton()
-                        .SetContent("No")
-                );
-            }
-            else
-            {
-                content
-                    .AddButton(new ToastButton()
-                        .SetContent("No")
-                        )
-                    .AddButton(new ToastButton()
-                        .SetContent("Yes")
-                        .AddArgument("focused", "yes")
-                        .SetBackgroundActivation()
-                );
+                    );
             }
             return content;
         }
@@ -173,7 +258,7 @@ namespace onTrack.Reinforcements
     {
         string Goal = null;
         Reinforcement chosenReinforcement = null;
-        Reinforcement[] reinforcements = { new StandardReinforcement(), new PressTheRightYesReinforcement(), new TypeOutTheGoalReinforcement(), new WhatYouGonnaDoNowReinforcement() };
+        Reinforcement[] reinforcements = { new StandardReinforcement(), new PressTheRightGoalReinforcement(), new TypeOutTheGoalReinforcement(), new WhatYouGonnaDoNowReinforcement() };
         Random random = new Random();
         Reinforcement GetReinforcement()
         {

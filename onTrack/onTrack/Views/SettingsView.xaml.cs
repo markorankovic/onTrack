@@ -57,7 +57,7 @@ namespace onTrack.Views
             {
                 case "Standard": Timer.SetReinforcement(new StandardReinforcement()); return;
                 case "Type out the task": Timer.SetReinforcement(new TypeOutTheGoalReinforcement()); return;
-                case "Press the right yes": Timer.SetReinforcement(new PressTheRightYesReinforcement()); return;
+                case "Press the right goal": Timer.SetReinforcement(new PressTheRightGoalReinforcement()); return;
                 case "What you gonna do now": Timer.SetReinforcement(new WhatYouGonnaDoNowReinforcement()); return;
                 case "Random": Timer.SetReinforcement(new RandomReinforcement()); return;
                 case "None": Timer.SetReinforcement(new NoneReinforcement()); return;

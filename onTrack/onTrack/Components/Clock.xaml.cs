@@ -2,9 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 
 namespace onTrack.Components
 {
@@ -24,10 +22,12 @@ namespace onTrack.Components
 
         public static DependencyProperty CurrentTimeProperty = DependencyProperty.Register("CurrentTime", typeof(double), typeof(Clock), new PropertyMetadata(0.0));
 
+        private double _CurrentTime = 0.0;
+
         public double CurrentTime
         {
-            get { return (double)GetValue(CurrentTimeProperty); }
-            set { SetValue(CurrentTimeProperty, value); }
+            get { return _CurrentTime; }
+            set { SetValue(CurrentTimeProperty, value); _CurrentTime = value; }
         }
 
         Storyboard timeSequence = new Storyboard();
@@ -39,6 +39,7 @@ namespace onTrack.Components
             {
                 if (Timer.Playing)
                 {
+                    CurrentTime = 0;
                     RunSequence();
                 }
                 else
@@ -54,7 +55,8 @@ namespace onTrack.Components
             double max = 251.0;
             doubleAnimation.From = CurrentTime;
             doubleAnimation.To = max;
-            doubleAnimation.Duration = TimeSpan.FromSeconds(Timer.Duration - (Timer.TimeEllapsed / 1000));
+            double duration = Timer.Duration - (Timer.TimeEllapsed / 1000);
+            doubleAnimation.Duration = TimeSpan.FromSeconds(duration >= 0 ? duration : 0);
 
             timeSequence.Children.Add(doubleAnimation);
 

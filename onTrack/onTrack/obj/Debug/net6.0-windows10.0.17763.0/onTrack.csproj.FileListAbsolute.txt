@@ -1,10 +1,10 @@
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.dll
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\Alarm Sounds\Evacuation.wav
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\Alarm Sounds\Police.wav
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\Alarm Sounds\Wake Up.wav
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.exe
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.deps.json
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.runtimeconfig.json
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.dll
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.pdb
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\Microsoft.Toolkit.Uwp.Notifications.dll
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\Microsoft.Windows.SDK.NET.dll
