@@ -27,7 +27,7 @@ namespace onTrack.Components
         public double CurrentTime
         {
             get { return _CurrentTime; }
-            set { SetValue(CurrentTimeProperty, value); Trace.WriteLine("CurrentTime value: " + value); _CurrentTime = value; }
+            set { SetValue(CurrentTimeProperty, value); _CurrentTime = value; }
         }
 
         Storyboard timeSequence = new Storyboard();
