@@ -1,9 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Security.AccessControl;
-using System.Security.Cryptography;
-using System.Security.Principal;
+using System.Linq;
+using System.Reflection;
 
 namespace onTrack.UnitTests
 {
@@ -13,7 +12,14 @@ namespace onTrack.UnitTests
         public class CharacterMutater
         {
             Random rand = new Random();
-            public List<int> generatedIndices = new List<int>();
+            private List<int> generatedIndices = new List<int>();
+
+            public void AddGeneratedIndex(int index, string objective)
+            {
+                generatedIndices.Add(index);
+                if (generatedIndices.Count == objective.Length + 2)
+                    generatedIndices.Clear();
+            }
 
             public enum Mutation
             {
@@ -23,7 +29,7 @@ namespace onTrack.UnitTests
 
             public Mutation RandomMutation()
             {
-                int randomInt = rand.Next(0, 1);
+                int randomInt = rand.Next(0, 2);
                 return randomInt == 0 ? Mutation.add : Mutation.sub;
             }
 
@@ -36,16 +42,18 @@ namespace onTrack.UnitTests
                         indices.Add(i);
 
                 if (outsideRange)
+                {
                     if (!generatedIndices.Contains(-1))
                     {
                         indices.Add(-1);
-                        generatedIndices.Add(-1);
+                        AddGeneratedIndex(-1, objective);
                     }
                     if (!generatedIndices.Contains(objective.Length))
                     {
                         indices.Add(objective.Length);
-                        generatedIndices.Add(objective.Length);
+                        AddGeneratedIndex(objective.Length, objective);
                     }
+                }
 
                 return indices;
             }
@@ -53,9 +61,9 @@ namespace onTrack.UnitTests
             public int RandomIndex(string objective, bool outsideRange = true)
             {
                 List<int> nonGeneratedIndices = NonGeneratedIndices(objective, outsideRange);
-                int randomInt = rand.Next(0, nonGeneratedIndices.Count - 1);
+                int randomInt = rand.Next(0, nonGeneratedIndices.Count);
                 int index = nonGeneratedIndices[randomInt];
-                generatedIndices.Add(index);
+                AddGeneratedIndex(index, objective);
                 return index;
             }
 
@@ -63,7 +71,7 @@ namespace onTrack.UnitTests
             {
                 int randomIndex = RandomIndex(objective);
                 if (randomIndex < 0) return "." + objective;
-                else if (randomIndex > 0) return objective + ".";
+                else if (randomIndex > objective.Length) return objective + ".";
                 return objective.Insert(randomIndex, ".");
             }
 
@@ -83,7 +91,17 @@ namespace onTrack.UnitTests
                 string[] results = new string[count];
                 for (var i = 0; i < count; i++)
                     results[i] = GenerateCharacterMutation(objective);
+                generatedIndices.Clear();
                 return results;
+            }
+
+            public string[] GenerateMutationsOfObjective(string objective, int count)
+            {
+                int randPlace = rand.Next(count);
+                string[] mutations = GenerateCharacterMutations(objective, count - 1);
+                List<string> results = mutations.ToList();
+                results.Insert(randPlace, objective);
+                return results.ToArray();
             }
         }
 
@@ -93,9 +111,7 @@ namespace onTrack.UnitTests
         public void Test_NonGeneratedIndices()
         {
             CharacterMutater characterMutater2 = new CharacterMutater();
-            characterMutater2.generatedIndices.Add(-1);
-            List<int> indices = characterMutater2.NonGeneratedIndices("Work", true);
-            Assert.IsFalse(indices.Contains(-1));
+            List<int> indices = characterMutater2.NonGeneratedIndices("Work", false);
         }
 
         [TestMethod]
@@ -113,9 +129,26 @@ namespace onTrack.UnitTests
         }
 
         [TestMethod]
+        public void Test_RandomIndex()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                var index = characterMutater.RandomIndex("Work", true);
+            }
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
         public void Test_GenerateCharacterMutations()
         {
             var mutations = characterMutater.GenerateCharacterMutations("Work", 4);
+            Assert.AreEqual(4, mutations.Length);
+        }
+
+        [TestMethod]
+        public void Test_GenerateMutationsOfObjective()
+        {
+            var mutations = characterMutater.GenerateMutationsOfObjective("Work", 4);
             Assert.AreEqual(4, mutations.Length);
         }
     }
