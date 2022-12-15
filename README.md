@@ -23,14 +23,10 @@ The Standard reinforcement features a notification which asks the user if they'r
 ![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/4.png)
 
 This reinforcement requires that the user types out the task they're supposed to do and then press the submit button.
-#### Press the right yes
-![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/7.png)
-
-Like the Standard reinforcement, the user is required to press the Yes button, only in this case there is a No button present. Often one would expect the Yes button to be located on the left hand side with the No button on the right hand side, however that is not necessarily the case as shown below.
-
+#### Press the right goal
 ![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/6.png)
 
-The idea behind this reinforcement is that the user does not press the Yes button in the same location of the screen every time with hopes that the user will be wary about the notification and that way also the task.
+The user has to select the corresponding objective they have specified. The name of the objective is copied and only one is the original one with the rest being modified to look subtly different. This way the user has to carefully look at what the goal is to be reminded of what to do in the event that the user procrastinates. 
 #### What you gonna do now
 ![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/8.png)
 
