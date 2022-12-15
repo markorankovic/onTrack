@@ -184,15 +184,20 @@ namespace onTrack.Reinforcements
             CharacterMutater characterMutater = new CharacterMutater();
             this.Goal = goal;
             var content = new ToastContentBuilder()
-                            .AddText("Are you focusing?")
-                            .AddText("Objective: " + goal);
+                            .AddText("Are you focusing?\nIf so, then press the right goal below");
             string[] mutations = characterMutater.GenerateMutationsOfObjective(goal, 4);
-            foreach (string mutation in mutations)
+            var text = "";
+            for (int i = 0; i < mutations.Length; i++)
+            {
+                text += (char)(65 + i) + ") " + mutations[i] + "\n";
+            }
+            content.AddText(text);
+            for (int i = 0; i < mutations.Length; i++)
             {
                 content.AddButton(
                     new ToastButton()
-                        .SetContent(mutation)
-                        .AddArgument("focused", mutation == goal ? "yes" : "yes")
+                        .SetContent((char)(65 + i) + "")
+                        .AddArgument("focused", mutations[i] == goal ? "yes" : "no")
                         .SetBackgroundActivation()
                     );
             }
