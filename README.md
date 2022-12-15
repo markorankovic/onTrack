@@ -26,7 +26,7 @@ This reinforcement requires that the user types out the task they're supposed to
 #### Press the right goal
 ![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/6.png)
 
-The user has to select the corresponding objective they have specified. The name of the objective is copied and only one is the original one with the rest being modified to look subtly different. This way the user has to carefully look at what the goal is to be reminded of what to do in the event that the user procrastinates. 
+The user has to select the corresponding objective they have specified. The name of the objective is copied multiple times and only one is the original one with the rest modified to look subtly different. This way the user has to carefully look at what the goal is to be reminded of what to do in the event that the user procrastinates. 
 #### What you gonna do now
 ![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/8.png)
 
