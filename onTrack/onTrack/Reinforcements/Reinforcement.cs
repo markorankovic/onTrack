@@ -85,7 +85,7 @@ namespace onTrack.Reinforcements
             public void AddGeneratedIndex(int index, string objective)
             {
                 generatedIndices.Add(index);
-                if (generatedIndices.Count == objective.Length + 2)
+                if (generatedIndices.Count == Max(objective) + 2)
                     generatedIndices.Clear();
             }
 
@@ -105,7 +105,7 @@ namespace onTrack.Reinforcements
             {
                 List<int> indices = new List<int>();
 
-                for (int i = 0; i < objective.Length; i++)
+                for (int i = 0; i < Max(objective); i++)
                     if (!generatedIndices.Contains(i))
                         indices.Add(i);
 
@@ -116,14 +116,19 @@ namespace onTrack.Reinforcements
                         indices.Add(-1);
                         AddGeneratedIndex(-1, objective);
                     }
-                    if (!generatedIndices.Contains(objective.Length))
+                    if (!generatedIndices.Contains(Max(objective)))
                     {
                         indices.Add(objective.Length);
-                        AddGeneratedIndex(objective.Length, objective);
+                        AddGeneratedIndex(Max(objective), objective);
                     }
                 }
 
                 return indices;
+            }
+
+            public int Max(string objective)
+            {
+                return 10 < objective.Length ? 10 : objective.Length;
             }
 
             public int RandomIndex(string objective, bool outsideRange = true)
@@ -139,7 +144,7 @@ namespace onTrack.Reinforcements
             {
                 int randomIndex = RandomIndex(objective);
                 if (randomIndex < 0) return "." + objective;
-                else if (randomIndex > objective.Length) return objective + ".";
+                else if (randomIndex > Max(objective)) return objective + ".";
                 return objective.Insert(randomIndex, ".");
             }
 

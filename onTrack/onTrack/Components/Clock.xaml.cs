@@ -39,7 +39,6 @@ namespace onTrack.Components
             {
                 if (Timer.Playing)
                 {
-                    Trace.WriteLine("Resetting sequence");
                     CurrentTime = 0;
                     RunSequence();
                 }
@@ -55,7 +54,6 @@ namespace onTrack.Components
             progressBar.Visibility = Visibility.Visible;
             double max = 251.0;
             doubleAnimation.From = CurrentTime;
-            Trace.WriteLine(CurrentTime);
             doubleAnimation.To = max;
             double duration = Timer.Duration - (Timer.TimeEllapsed / 1000);
             doubleAnimation.Duration = TimeSpan.FromSeconds(duration >= 0 ? duration : 0);
