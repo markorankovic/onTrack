@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>onTrack</id>
+    <version>1.0.0</version>
+    <authors>onTrack</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0-windows10.0.17763">
+        <dependency id="Microsoft.Toolkit.Uwp.Notifications" version="7.1.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0-windows10.0.17763">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+    </frameworkReferences>
+    <contentFiles>
+      <files include="any/net6.0-windows10.0.17763/favicon.ico" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.runtimeconfig.json" target="lib\net6.0-windows10.0.17763\onTrack.runtimeconfig.json" />
+    <file src="C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.dll" target="lib\net6.0-windows10.0.17763\onTrack.dll" />
+    <file src="C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\favicon.ico" target="content\favicon.ico" />
+    <file src="C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\favicon.ico" target="contentFiles\any\net6.0-windows10.0.17763\favicon.ico" />
+  </files>
+</package>

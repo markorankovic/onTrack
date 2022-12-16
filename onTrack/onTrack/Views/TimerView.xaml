@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="onTrack.Views.TimerView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:s="clr-namespace:onTrack"
+      xmlns:f="clr-namespace:onTrack.Components"
+      mc:Ignorable="d" 
+      Width="800" Height="490"
+      Background="#1E90FF"
+      MouseUp="UserControl_MouseUp">
+
+    <UserControl.Resources>
+        <ControlTemplate x:Key="ButtonControlTemplate" TargetType="{x:Type Button}">
+            <Border Background="{TemplateBinding Background}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                  Margin="{TemplateBinding Padding}"/>
+            </Border>
+        </ControlTemplate>
+        <Storyboard x:Key="mouseover">
+            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.1"/>
+            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.1"/>
+        </Storyboard>
+        <Storyboard x:Key="mouseleave">
+            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.0"/>
+            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.0"/>
+        </Storyboard>
+        <Style x:Key="ButtonAnimation" TargetType="Button">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard Storyboard="{StaticResource mouseover}" />
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard Storyboard="{StaticResource mouseleave}" />
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.0"/>
+                            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.0"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="1.1"/>
+                            <DoubleAnimation Duration="00:00:00.2000000" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="1.1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="PlayButtonStyle" BasedOn="{StaticResource ButtonAnimation}" TargetType="Button">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+    <Canvas />
+    <f:Clock x:Name="clock" />
+    <StackPanel
+        VerticalAlignment="Center" 
+        HorizontalAlignment="Center" 
+    >
+        <TextBox 
+                Name="objective"
+                Height="80"
+                FontSize="30"
+                Margin="0 0 0 10"
+                Background="Transparent"
+                Foreground="White"
+                TextAlignment="Center"
+                Text="{x:Static s:Timer.Objective}"
+                TextChanged="objective_TextChanged"
+                BorderThickness="0"
+                CaretBrush="White"
+                />
+        <f:Countdown
+            x:Name="countdown"
+        />
+        <StackPanel 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                Orientation="Horizontal"
+                >
+            <Button x:Name="PlayButton"
+                        FontSize="50"
+                        Width="190"
+                        Height="60"
+                        FontFamily="Calibri"
+                        Click="PlayButton_Click"
+                        Template="{StaticResource ButtonControlTemplate}"
+                        BorderThickness="0"
+                        Foreground="White"
+                        Background="Transparent"
+                        Style="{StaticResource PlayButtonStyle}"
+                        Margin="0 0 0 0"
+                        RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                ▶ Start
+            </Button>
+        </StackPanel>
+    </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,11 @@
+C:\Users\marko\Desktop\Alarm Sounds\Evacuation.wav
+C:\Users\marko\Desktop\Alarm Sounds\Police.wav
+C:\Users\marko\Desktop\Alarm Sounds\Wake Up.wav
+C:\Users\marko\Desktop\onTrack.exe
+C:\Users\marko\Desktop\onTrack.dll
+C:\Users\marko\Desktop\onTrack.deps.json
+C:\Users\marko\Desktop\onTrack.runtimeconfig.json
+C:\Users\marko\Desktop\onTrack.pdb
+C:\Users\marko\Desktop\Microsoft.Windows.SDK.NET.dll
+C:\Users\marko\Desktop\WinRT.Runtime.dll
+C:\Users\marko\Desktop\Microsoft.Toolkit.Uwp.Notifications.dll
