@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "vxvQwe/QGHJnP8XDaSBnQQlDd9k6t+Q8OKfBonud8DVSw6xQWoTnhHhXvPwaXaZuUNG43YWBjXO1OvqMQ0bN5Q==",
+  "dgSpecHash": "p61LA/JfP0JICPtpDxGQrGrPQyj/PVETcneV9td3i1xz4y+3F2KNshc2LNaWxrZEdsv148Lh95YztEW63btP8Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\marko\\Documents\\GitHub\\onTrack\\onTrack\\onTrack\\onTrack.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\marko\\.nuget\\packages\\inputsimulator\\1.0.4\\inputsimulator.1.0.4.nupkg.sha512",
     "C:\\Users\\marko\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\marko\\.nuget\\packages\\microsoft.toolkit.uwp.notifications\\7.1.2\\microsoft.toolkit.uwp.notifications.7.1.2.nupkg.sha512",
     "C:\\Users\\marko\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
@@ -15,5 +16,16 @@
     "C:\\Users\\marko\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
     "C:\\Users\\marko\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.17763.27\\microsoft.windows.sdk.net.ref.10.0.17763.27.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'InputSimulator 1.0.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0-windows10.0.17763'. This package may not be fully compatible with your project.",
+      "libraryId": "InputSimulator",
+      "targetGraphs": [
+        "net6.0-windows10.0.17763"
+      ]
+    }
+  ]
 }

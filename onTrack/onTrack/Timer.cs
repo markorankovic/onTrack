@@ -8,7 +8,8 @@ using System.Windows.Threading;
 using System.IO;
 using System;
 using Windows.UI.Notifications;
-using Windows.Foundation;
+using WindowsInput;
+using WindowsInput.Native;
 
 namespace onTrack
 {
@@ -37,6 +38,8 @@ namespace onTrack
 
         static List<Reinforcement> previousReinforcements = new();
 
+        public static bool autoPausePlay = false;
+
         static Timer()
         {
             ToastNotificationManagerCompat.OnActivated += toastArgs =>
@@ -46,6 +49,10 @@ namespace onTrack
                     if (CurrentReinforcement.IsValidResponse(toastArgs))
                     {
                         Reset();
+                        if (autoPausePlay) 
+                        {
+                            ClickTheCentreOfTheScreen();
+                        }
                     } else
                     {
                         WakeUser();
@@ -206,8 +213,43 @@ namespace onTrack
                 }
                 timer.AutoReset = false;
                 timer.Enabled = false;
+
                 AlertUser();
+
+                if (autoPausePlay)
+                {
+                    SendSpaceKey();
+                    if (CurrentReinforcement is WhatYouGonnaDoNowReinforcement)
+                    {
+                        FocusOnTheTextBox();
+                    }
+                }
             });
+        }
+
+        private static void FocusOnTheTextBox()
+        {
+            InputSimulator inputSimulator = new InputSimulator();
+            var X = (3840 - 100) * 65535 / 3840;
+            var Y = (2160 - 210) * 65535 / 2160;
+            inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(X, Y);
+            System.Threading.Thread.Sleep(500);
+            inputSimulator.Mouse.LeftButtonClick();
+        }
+
+        private static void ClickTheCentreOfTheScreen()
+        {
+            InputSimulator inputSimulator = new InputSimulator();
+            var X = (3840 / 2) * 65535 / 3840;
+            var Y = (2160 / 2) * 65535 / 2160;
+            inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(X, Y);
+            inputSimulator.Mouse.LeftButtonClick();
+        }
+
+        private static void SendSpaceKey()
+        {
+            InputSimulator inputSimulator = new InputSimulator();
+            inputSimulator.Keyboard.KeyDown(VirtualKeyCode.SPACE);
         }
 
         private static void OnToastPassed(object sender, ToastDismissedEventArgs e)

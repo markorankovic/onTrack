@@ -35,6 +35,8 @@ namespace onTrack.Views
             {
                 test_button.Content = "Test";
             }
+
+            AutoPausePlay.IsChecked = Timer.autoPausePlay;
         }
 
         private void Test_Click(object sender, RoutedEventArgs e)
@@ -74,6 +76,17 @@ namespace onTrack.Views
                 case "Wake Up": Timer.SetAlarmName("Wake Up"); return;
                 case "Police": Timer.SetAlarmName("Police"); return;
                 default: return;
+            }
+        }
+
+        private void AutoPausePlay_Checked(object sender, RoutedEventArgs e)
+        {
+            if (AutoPausePlay.IsChecked == true)
+            {
+                Timer.autoPausePlay = true;
+            } else
+            {
+                Timer.autoPausePlay = false;
             }
         }
     }
