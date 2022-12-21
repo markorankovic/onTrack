@@ -73,7 +73,18 @@
                     <RadioButton Name="RandomReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="Random" Foreground="White" Checked="Reinforcement_Checked" />
                     <RadioButton Name="NoneReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="None" Foreground="White" Checked="Reinforcement_Checked" />
                 </StackPanel>
-                <CheckBox Name="AutoPausePlay" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="1" FontSize="15" Content="Auto Pause/Play" Foreground="White" Click="AutoPausePlay_Checked"  Width="130" />
+                <Label FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0 0 0 10">Automation</Label>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <CheckBox Name="AutoPausePlay" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="1" FontSize="15" Content="Auto Pause/Play" Foreground="White" Click="AutoPausePlay_Checked"  Width="130" />
+                    <StackPanel Orientation="Horizontal" Margin="100 0 100 0" Opacity="0.5">
+                        <Label FontSize="15" Foreground="White">Pause Button</Label>
+                        <Button x:Name="PausePlay_Record" Content="Record" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Opacity="0.5">
+                        <Label FontSize="15" Foreground="White">Play Click Location</Label>
+                        <Button x:Name="Focus_Record" Content="Record" />
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
             <Border Height="3" Background="White" Margin="0 30 0 0" />
             <Label FontSize="50" Foreground="White" HorizontalAlignment="Center">Sound</Label>
