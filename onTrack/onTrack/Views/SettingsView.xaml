@@ -78,11 +78,11 @@
                     <CheckBox Name="AutoPausePlay" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="1" FontSize="15" Content="Auto Pause/Play" Foreground="White" Click="AutoPausePlay_Checked"  Width="130" />
                     <StackPanel Orientation="Horizontal" Margin="100 0 100 0" Opacity="0.5">
                         <Label FontSize="15" Foreground="White">Pause Button</Label>
-                        <Button x:Name="PausePlay_Record" Content="Record" />
+                        <Button x:Name="Pause_Record" Content="Record" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Opacity="0.5">
                         <Label FontSize="15" Foreground="White">Play Click Location</Label>
-                        <Button x:Name="Focus_Record" Content="Record" />
+                        <Button x:Name="Play_Record" Content="Record" />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
