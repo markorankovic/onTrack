@@ -9,5 +9,9 @@ namespace CustomButtons.Controls
 {
     public class CustomButton : Button 
     {
+        public CustomButton()
+        {
+            
+        }
     }
 }
