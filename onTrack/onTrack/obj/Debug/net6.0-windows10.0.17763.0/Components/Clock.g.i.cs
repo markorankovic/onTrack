@@ -61,7 +61,7 @@ namespace onTrack.Components {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/onTrack;component/components/clock.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/onTrack;V1.0.0.0;component/components/clock.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Components\Clock.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
