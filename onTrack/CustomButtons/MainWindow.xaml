@@ -9,13 +9,13 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.Resources>
-            <Style TargetType="controls:CustomButton">
+            <Style TargetType="controls:CustomButton" x:Key="ButtonStyle">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="controls:CustomButton">
                             <Border>
                                 <Grid Width="100" Height="100" Background="Gray">
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Button</TextBlock>
+                                    <TextBlock x:Name="text" HorizontalAlignment="Center" VerticalAlignment="Center">Button</TextBlock>
                                 </Grid>
                             </Border>
                         </ControlTemplate>
@@ -23,6 +23,6 @@
                 </Setter>
             </Style>
         </Grid.Resources>
-        <controls:CustomButton Padding="100 0 0 0" />
+        <controls:CustomButton x:Name="button" Content="Edited!" Click="button_Click" Style="{StaticResource ButtonStyle}" />
     </Grid>
 </Window>
