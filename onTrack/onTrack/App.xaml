@@ -3,13 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:viewmodels="clr-namespace:onTrack.ViewModels"
              xmlns:views="clr-namespace:onTrack.Views"
-             StartupUri="MainWindow.xaml">
+             StartupUri="MainWindow.xaml"
+             xmlns:components="clr-namespace:onTrack.Components">
     <Application.Resources>
-        <DataTemplate DataType="{x:Type viewmodels:TimerViewModel}">
-            <views:TimerView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
-            <views:SettingsView />
-        </DataTemplate>
+        <ResourceDictionary>
+            <Style TargetType="components:NavButton">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Border>
+                                <TextBlock x:Name="textblock">X</TextBlock>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <DataTemplate DataType="{x:Type viewmodels:TimerViewModel}">
+                <views:TimerView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
+                <views:SettingsView />
+            </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

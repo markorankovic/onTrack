@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:components="clr-namespace:onTrack.Components"
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanMinimize"
@@ -34,7 +35,7 @@
 
                     <StackPanel HorizontalAlignment="Right"
                             Orientation="Horizontal">
-                        <Button Width="40"
+                        <components:NavButton Width="40"
                             Height="40"
                             Content="🗕"
                             FontSize="20"
@@ -44,15 +45,16 @@
                             Padding="0, 0, 0, 13"
                             Click="Minimize_Click"/>
 
-                        <Button Width="40"
+                        <components:NavButton Width="40"
                             Height="40"
                             Content="⨉"
                             FontSize="20"
+                            FontWeight="Bold"
                             Foreground="White"
                             Background="Transparent"
                             BorderThickness="0"
+                            Padding="0 6 0 0"
                             Click="Close_Click"/>
-
                     </StackPanel>
 
                 </Grid>
@@ -61,32 +63,32 @@
 
             <StackPanel Grid.Row="1" Orientation="Vertical">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Button 
+                    <components:NavButton
                     Command="{Binding UpdateViewCommand}"
                     CommandParameter="Timer"
                     Background="Transparent"
-                    BorderThickness="0">
-                        <TextBlock Text="⌛" 
-                               FontSize="30"
-                               Foreground="White"/>
-                    </Button>
-                    <Button
+                    BorderThickness="0"
+                    Content="⌛" 
+                    FontSize="30"
+                    Foreground="White"
+                    />
+                    <components:NavButton
                     Command="{Binding UpdateViewCommand}"
                     CommandParameter="Settings"
                     Background="Transparent"
-                    BorderThickness="0">
-                        <TextBlock Text="⚙️" 
-                               FontSize="30"
-                               Foreground="White"/>
-                    </Button>
-                    <Button
+                    BorderThickness="0"
+                    Content="⚙️"
+                    FontSize="30"
+                    Foreground="White"
+                    />
+                    <components:NavButton
                     Background="Transparent"
                     BorderThickness="0"
-                    Click="Help_Click">
-                        <TextBlock Text="❓" 
-                               FontSize="30"
-                               Foreground="White"/>
-                    </Button>
+                    Click="Help_Click"
+                    Content="❓" 
+                    FontSize="30"
+                    Foreground="White"
+                    />
                 </StackPanel>
                 <Rectangle Width="120" Height="5" Fill="White"/>
             </StackPanel>
