@@ -64,6 +64,7 @@
             <StackPanel Grid.Row="1" Orientation="Vertical">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <components:NavButton
+                    x:Name="timerNav"
                     Command="{Binding UpdateViewCommand}"
                     CommandParameter="Timer"
                     Background="Transparent"
@@ -71,8 +72,10 @@
                     Content="⌛" 
                     FontSize="30"
                     Foreground="White"
+                    Click="TimerNav_Click"
                     />
                     <components:NavButton
+                    x:Name="settingsNav"
                     Command="{Binding UpdateViewCommand}"
                     CommandParameter="Settings"
                     Background="Transparent"
@@ -80,6 +83,7 @@
                     Content="⚙️"
                     FontSize="30"
                     Foreground="White"
+                    Click="SettingsNav_Click"
                     />
                     <components:NavButton
                     Background="Transparent"
