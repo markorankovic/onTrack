@@ -1,7 +1,13 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 using onTrack.Reinforcements;
+using Windows.UI;
+using Color = System.Windows.Media.Color;
 
 namespace onTrack.Views
 {
@@ -36,7 +42,7 @@ namespace onTrack.Views
                 test_button.Content = "Test";
             }
 
-            AutoPausePlay.IsChecked = Timer.autoPausePlay;
+            autoPausePlay.IsChecked = Timer.autoPausePlay;
         }
 
         private void Test_Click(object sender, RoutedEventArgs e)
@@ -79,15 +85,29 @@ namespace onTrack.Views
             }
         }
 
+        private void SetTheOptionMarkInCheckBoxBlue()
+        {
+            var optionMark = (Path)autoPausePlay.Template.FindName("optionMark", autoPausePlay);
+            var brush = new SolidColorBrush();
+            var color = ColorTranslator.FromHtml("#00bbff");
+            brush.Color = Color.FromArgb(color.A, color.R, color.G, color.B);
+            optionMark.Fill = brush;
+        }
+
         private void AutoPausePlay_Checked(object sender, RoutedEventArgs e)
         {
-            if (AutoPausePlay.IsChecked == true)
+            if (autoPausePlay.IsChecked == true)
             {
                 Timer.autoPausePlay = true;
             } else
             {
                 Timer.autoPausePlay = false;
             }
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetTheOptionMarkInCheckBoxBlue();
         }
     }
 }
