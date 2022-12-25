@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:onTrack.Views"
       mc:Ignorable="d" 
       Background="#1E90FF"
-      Width="800" Height="490">
+      Width="800" Height="490"
+      Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Foreground" Value="White" />
@@ -75,7 +76,7 @@
                 </StackPanel>
                 <Label FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0 0 0 10">Automation</Label>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <CheckBox Name="AutoPausePlay" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="1" FontSize="15" Content="Auto Pause/Play" Foreground="White" Click="AutoPausePlay_Checked"  Width="130" />
+                    <CheckBox x:Name="autoPausePlay" BorderBrush="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="1" FontSize="15" Content="Auto Pause/Play" Foreground="White" Click="AutoPausePlay_Checked"  Width="130" />
                     <StackPanel Orientation="Horizontal" Margin="100 0 100 0" Opacity="0.5">
                         <Label FontSize="15" Foreground="White">Pause Button</Label>
                         <Button x:Name="Pause_Record" Content="Record" />
