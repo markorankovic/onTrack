@@ -43,7 +43,8 @@
                             Background="Transparent"
                             BorderThickness="0"
                             Padding="0, 0, 0, 13"
-                            Click="Minimize_Click"/>
+                            Click="Minimize_Click"
+                            Style="{StaticResource WindowButtonStyle}"/>
 
                         <components:NavButton Width="40"
                             Height="40"
@@ -54,7 +55,8 @@
                             Background="Transparent"
                             BorderThickness="0"
                             Padding="0 6 0 0"
-                            Click="Close_Click"/>
+                            Click="Close_Click"
+                            Style="{StaticResource WindowButtonStyle}"/>
                     </StackPanel>
 
                 </Grid>
@@ -73,6 +75,7 @@
                     FontSize="30"
                     Foreground="White"
                     Click="TimerNav_Click"
+                    Style="{StaticResource NavButtonStyle}"
                     />
                     <components:NavButton
                     x:Name="settingsNav"
@@ -84,6 +87,7 @@
                     FontSize="30"
                     Foreground="White"
                     Click="SettingsNav_Click"
+                    Style="{StaticResource NavButtonStyle}"
                     />
                     <components:NavButton
                     Background="Transparent"
@@ -92,6 +96,7 @@
                     Content="❓" 
                     FontSize="30"
                     Foreground="White"
+                    Style="{StaticResource NavButtonStyle}"
                     />
                 </StackPanel>
                 <Rectangle Width="120" Height="5" Fill="White"/>
