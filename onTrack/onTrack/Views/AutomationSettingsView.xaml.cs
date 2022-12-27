@@ -21,13 +21,20 @@ namespace onTrack.Views
             SetTheOptionMarkInCheckBoxBlue();
         }
 
-        private void SetTheOptionMarkInCheckBoxBlue()
+        private void SetToBlue(Path optionMark)
         {
-            var optionMark = (Path)autoPausePlay.Template.FindName("optionMark", autoPausePlay);
             var brush = new SolidColorBrush();
             var color = ColorTranslator.FromHtml("#00bbff");
             brush.Color = Color.FromArgb(color.A, color.R, color.G, color.B);
             optionMark.Fill = brush;
+        }
+
+        private void SetTheOptionMarkInCheckBoxBlue()
+        {
+            var autoPausePlayOptionMark = (Path)autoPausePlay.Template.FindName("optionMark", autoPausePlay);
+            var autoFocusOptionMark = (Path)autoPausePlay.Template.FindName("optionMark", autoFocus);
+            SetToBlue(autoPausePlayOptionMark);
+            SetToBlue(autoFocusOptionMark);
         }
 
         private void AutoPausePlay_Checked(object sender, RoutedEventArgs e)

@@ -68,7 +68,7 @@ namespace onTrack.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/onTrack;component/views/audiosettingsview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/onTrack;V1.0.0.0;component/views/audiosettingsview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\AudioSettingsView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
