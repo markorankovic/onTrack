@@ -4,8 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      Width="800" Height="170"
-      Loaded="UserControl_Loaded">
+      Width="620" Height="490">
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Foreground" Value="White" />
@@ -60,17 +59,17 @@
     </UserControl.Resources>
 
     <Grid>
-        <StackPanel>
-            <StackPanel HorizontalAlignment="Center">
-                <Label FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0 0 0 10">Alarm sounds</Label>
-                <StackPanel x:Name="alarmSound" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Margin="149 0 0 0">
+            <StackPanel HorizontalAlignment="Left">
+                <Label FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="0 0 0 10">Alarm sounds</Label>
+                <StackPanel x:Name="alarmSound" Orientation="Horizontal" HorizontalAlignment="Left" Margin="-4 0 0 0">
                     <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="AlarmSounds" Content="Evacuation" Foreground="White" Checked="AlarmSound_Checked" />
                     <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="AlarmSounds" Content="Wake Up" Foreground="White" Checked="AlarmSound_Checked" />
                     <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="AlarmSounds" Content="Police" Foreground="White" Checked="AlarmSound_Checked" />
                 </StackPanel>
                 <Label Foreground="White">Sound effects obtained from https://www.zapsplat.com</Label>
             </StackPanel>
-            <Button Margin="10" HorizontalAlignment="Center" Width="70" Click="Test_Click" x:Name="test_button">
+            <Button Margin="5 10 0 0" HorizontalAlignment="Left" Width="70" Click="Test_Click" x:Name="test_button">
                 <StackPanel>
                     <TextBlock Text="Test" />
                 </StackPanel>

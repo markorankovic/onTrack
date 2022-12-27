@@ -40,3 +40,9 @@ C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.csproj.CopyComplete
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.genruntimeconfig.cache
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\ref\onTrack.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\AudioSettingsView.baml
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\AutomationSettingsView.baml
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\NotificationSettingsView.baml
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\AudioSettingsView.g.cs
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\AutomationSettingsView.g.cs
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\NotificationSettingsView.g.cs

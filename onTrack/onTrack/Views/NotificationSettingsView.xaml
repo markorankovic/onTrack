@@ -4,7 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      Width="800" Height="100">
+      Width="620" Height="490">
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Foreground" Value="White" />
@@ -59,9 +59,9 @@
 
     <Grid>
         <StackPanel>
-            <StackPanel HorizontalAlignment="Center">
-                <Label FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0 0 0 10">Reinforcements</Label>
-                <StackPanel x:Name="reinforcements" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel HorizontalAlignment="Left" Margin="149 0 0 0">
+                <Label FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="0 0 0 10">Reinforcements</Label>
+                <StackPanel x:Name="reinforcements">
                     <RadioButton Name="StandardReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="Standard" Foreground="White" Checked="Reinforcement_Checked" />
                     <RadioButton Name="TypeOutTheGoalReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="Type out the task" Foreground="White" Checked="Reinforcement_Checked" />
                     <RadioButton Name="PressTheRightGoalReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="Press the right goal" Foreground="White" Checked="Reinforcement_Checked" />

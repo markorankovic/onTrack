@@ -3,106 +3,43 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:onTrack.Views"
+      xmlns:views="clr-namespace:onTrack.Views"
+      xmlns:viewmodels="clr-namespace:onTrack.ViewModels"
       mc:Ignorable="d" 
       Background="#1E90FF"
-      Width="800" Height="490"
-      Loaded="UserControl_Loaded">
+      Width="800" Height="490">
     <UserControl.Resources>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="FontSize" Value="15" />
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderThickness="2" BorderBrush="White">
-                            <Grid>
-                                <Path x:Name="PathIcon" Width="15" Height="25" />
-                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style TargetType="{x:Type RadioButton}">
-            <Style.Triggers>
-                <Trigger Property="IsChecked" Value="false">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type RadioButton}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Ellipse Fill="White" Width="10" Height="10" />
-                                    <Label Foreground="White" Content="{TemplateBinding Content}" />
-                                </StackPanel>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-                <Trigger Property="IsChecked" Value="true">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type RadioButton}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Grid>
-                                        <Ellipse Fill="White" Width="10" Height="10" />
-                                        <Ellipse Fill="#00bbff" Width="5" Height="5" />
-                                    </Grid>
-                                    <Label Foreground="White" Content="{TemplateBinding Content}" />
-                                </StackPanel>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
+        <DataTemplate DataType="{x:Type viewmodels:NotificationSettingsViewModel}">
+            <views:NotificationSettingsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:AutomationSettingsViewModel}">
+            <views:AutomationSettingsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:AudioSettingsViewModel}">
+            <views:AudioSettingsView />
+        </DataTemplate>
     </UserControl.Resources>
-
     <Grid Margin="0 10 0 0">
-        <StackPanel>
-            <Label FontSize="50" Foreground="White" HorizontalAlignment="Center">Notifications</Label>
-            <StackPanel HorizontalAlignment="Center">
-                <Label FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0 0 0 10">Reinforcements</Label>
-                <StackPanel x:Name="reinforcements" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <RadioButton Name="StandardReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="Standard" Foreground="White" Checked="Reinforcement_Checked" />
-                    <RadioButton Name="TypeOutTheGoalReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="Type out the task" Foreground="White" Checked="Reinforcement_Checked" />
-                    <RadioButton Name="PressTheRightGoalReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="Press the right goal" Foreground="White" Checked="Reinforcement_Checked" />
-                    <RadioButton Name="WhatYouGonnaDoNowReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="What you gonna do now" Foreground="White" Checked="Reinforcement_Checked" />
-                    <RadioButton Name="RandomReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="Random" Foreground="White" Checked="Reinforcement_Checked" />
-                    <RadioButton Name="NoneReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="None" Foreground="White" Checked="Reinforcement_Checked" />
-                </StackPanel>
-                <Label FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0 0 0 10">Automation</Label>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <CheckBox x:Name="autoPausePlay" BorderBrush="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="1" FontSize="15" Content="Auto Pause/Play" Foreground="White" Click="AutoPausePlay_Checked"  Width="130" />
-                    <StackPanel Orientation="Horizontal" Margin="100 0 100 0" Opacity="0.5">
-                        <Label FontSize="15" Foreground="White">Pause Button</Label>
-                        <Button x:Name="Pause_Record" Content="Record" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Opacity="0.5">
-                        <Label FontSize="15" Foreground="White">Play Click Location</Label>
-                        <Button x:Name="Play_Record" Content="Record" />
-                    </StackPanel>
-                </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Width="155" MouseDown="Notifications_Selected" x:Name="notifications_button">
+                <Label Foreground="White" FontSize="20">Notifications</Label>
+                <Label Foreground="White" FontSize="20">🔔</Label>
             </StackPanel>
-            <Border Height="3" Background="White" Margin="0 30 0 0" />
-            <Label FontSize="50" Foreground="White" HorizontalAlignment="Center">Sound</Label>
-            <StackPanel HorizontalAlignment="Center">
-                <Label FontSize="20" Foreground="White" HorizontalAlignment="Center" Margin="0 0 0 10">Alarm sounds</Label>
-                <StackPanel x:Name="alarmSound" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="AlarmSounds" Content="Evacuation" Foreground="White" Checked="AlarmSound_Checked" />
-                    <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="AlarmSounds" Content="Wake Up" Foreground="White" Checked="AlarmSound_Checked" />
-                    <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="AlarmSounds" Content="Police" Foreground="White" Checked="AlarmSound_Checked" />
-                </StackPanel>
-                <Label Foreground="White">Sound effects obtained from https://www.zapsplat.com</Label>
+            <StackPanel Orientation="Horizontal" Width="155" MouseDown="Automation_Selected" x:Name="automation_button">
+                <Label Foreground="White" FontSize="20">Automation</Label>
+                <Label Foreground="White" FontSize="20">🤖</Label>
             </StackPanel>
-            <Button Margin="10" HorizontalAlignment="Center" Width="70" Click="Test_Click" x:Name="test_button">
-                <StackPanel>
-                    <TextBlock Text="Test" />
-                </StackPanel>
-            </Button>
+            <StackPanel Orientation="Horizontal" Width="155" MouseDown="Audio_Selected" x:Name="audio_button">
+                <Label Foreground="White" FontSize="20">Audio</Label>
+                <Label Foreground="White" FontSize="20">🔉</Label>
+            </StackPanel>
         </StackPanel>
+        <Border BorderThickness="5" Height="110" VerticalAlignment="Top" BorderBrush="White" Grid.Column="1" />
+        <ContentControl Content="{Binding SelectedViewModel}" Grid.Column="2" />
     </Grid>
 </UserControl>
