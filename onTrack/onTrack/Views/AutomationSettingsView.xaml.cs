@@ -33,8 +33,10 @@ namespace onTrack.Views
         {
             var autoPausePlayOptionMark = (Path)autoPausePlay.Template.FindName("optionMark", autoPausePlay);
             var autoFocusOptionMark = (Path)autoPausePlay.Template.FindName("optionMark", autoFocus);
+            var enabledOptionMark = (Path)autoPausePlay.Template.FindName("optionMark", enabled);
             SetToBlue(autoPausePlayOptionMark);
             SetToBlue(autoFocusOptionMark);
+            SetToBlue(enabledOptionMark);
         }
 
         private void AutoPausePlay_Checked(object sender, RoutedEventArgs e)
