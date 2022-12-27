@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\App.xaml
-5-241568032
+8-1401831739
 1-913308027
-21-475396952
+241946624628
 19919920726
-Components\Clock.xaml;Components\Countdown.xaml;MainWindow.xaml;Views\SettingsView.xaml;Views\TimerView.xaml;
+Components\Clock.xaml;Components\Countdown.xaml;MainWindow.xaml;Views\AudioSettingsView.xaml;Views\AutomationSettingsView.xaml;Views\NotificationSettingsView.xaml;Views\SettingsView.xaml;Views\TimerView.xaml;
 
 True
 
