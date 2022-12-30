@@ -64,7 +64,7 @@
     <Grid>
         <StackPanel>
             <StackPanel HorizontalAlignment="Left" Margin="20 10 0 0" Orientation="Vertical">
-                <CheckBox BorderBrush="Transparent" x:Name="enabled" Foreground="White" FontSize="15" Margin="0 0 0 15">Enabled</CheckBox>
+                <CheckBox BorderBrush="Transparent" x:Name="enabled" Foreground="White" FontSize="15" Margin="0 0 0 15" Click="enabled_Click">Enabled</CheckBox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <CheckBox x:Name="autoPausePlay" Opacity="{Binding ElementName=enabled, Path=IsChecked, Converter={StaticResource isCheckedToOpacity}}" IsEnabled="{Binding ElementName=enabled, Path=IsChecked}" IsEnabledChanged="autoPausePlay_IsEnabledChanged" BorderBrush="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="1" FontSize="15" Content="Auto Pause/Play" Foreground="White" Click="AutoPausePlay_Checked"  Width="130" />
                     <StackPanel Orientation="Horizontal" Margin="50 0 50 0" Opacity="{Binding ElementName=autoPausePlay, Path=IsChecked, Converter={StaticResource isCheckedToOpacity}}">

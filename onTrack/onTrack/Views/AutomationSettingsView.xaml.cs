@@ -85,6 +85,15 @@ namespace onTrack.Views
                 Timer.autoFocus = false;
             }
         }
+
+        private void enabled_Click(object sender, RoutedEventArgs e)
+        {
+            if (!enabled.IsChecked ?? false)
+            {
+                Timer.autoPausePlay = false;
+                Timer.autoFocus = false;
+            }
+        }
     }
 
     public class IsCheckedToOpacity : IValueConverter
