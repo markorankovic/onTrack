@@ -18,7 +18,9 @@ namespace onTrack.Views
 
             DataContext = this;
 
+            enabled.IsChecked = Timer.autoPausePlay || Timer.autoFocus;
             autoPausePlay.IsChecked = Timer.autoPausePlay;
+            autoFocus.IsChecked = Timer.autoFocus;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -69,6 +71,18 @@ namespace onTrack.Views
             if (!autoFocus.IsEnabled)
             {
                 autoFocus.IsChecked = false;
+            }
+        }
+
+        private void autoFocus_Checked(object sender, RoutedEventArgs e)
+        {
+            if (autoFocus.IsChecked == true)
+            {
+                Timer.autoFocus = true;
+            }
+            else
+            {
+                Timer.autoFocus = false;
             }
         }
     }

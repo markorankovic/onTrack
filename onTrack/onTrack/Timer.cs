@@ -40,6 +40,8 @@ namespace onTrack
 
         public static bool autoPausePlay = false;
 
+        public static bool autoFocus = false;
+
         static Timer()
         {
             ToastNotificationManagerCompat.OnActivated += toastArgs =>
@@ -219,10 +221,10 @@ namespace onTrack
                 if (autoPausePlay)
                 {
                     SendSpaceKey();
-                    if (CurrentReinforcement is WhatYouGonnaDoNowReinforcement)
-                    {
-                        FocusOnTheTextBox();
-                    }
+                }
+                if (CurrentReinforcement is WhatYouGonnaDoNowReinforcement && autoFocus)
+                {
+                    FocusOnTheTextBox();
                 }
             });
         }
