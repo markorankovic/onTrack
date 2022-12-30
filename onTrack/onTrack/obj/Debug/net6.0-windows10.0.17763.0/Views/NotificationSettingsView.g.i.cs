@@ -108,7 +108,7 @@ namespace onTrack.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/onTrack;V1.0.0.0;component/views/notificationsettingsview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/onTrack;component/views/notificationsettingsview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\NotificationSettingsView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

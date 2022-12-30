@@ -1,6 +1,9 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using Color = System.Windows.Media.Color;
@@ -12,6 +15,8 @@ namespace onTrack.Views
         public AutomationSettingsView()
         {
             InitializeComponent();
+
+            DataContext = this;
 
             autoPausePlay.IsChecked = Timer.autoPausePlay;
         }
@@ -49,6 +54,35 @@ namespace onTrack.Views
             {
                 Timer.autoPausePlay = false;
             }
+        }
+
+        private void autoPausePlay_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (!autoPausePlay.IsEnabled)
+            {
+                autoPausePlay.IsChecked = false;
+            }
+        }
+
+        private void autoFocus_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (!autoFocus.IsEnabled)
+            {
+                autoFocus.IsChecked = false;
+            }
+        }
+    }
+
+    public class IsCheckedToOpacity : IValueConverter
+    {
+        object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (bool)value ? "1" : "0.5";
+        }
+
+        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (string)value == "1" ? true : false;
         }
     }
 }
