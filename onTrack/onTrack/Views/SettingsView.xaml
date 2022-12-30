@@ -31,8 +31,8 @@
                 <Label Foreground="White" FontSize="20">🔔</Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="155" MouseDown="Automation_Selected" x:Name="automation_button">
-                <Label Foreground="White" FontSize="20">Automation</Label>
-                <Label Foreground="White" FontSize="20">🤖</Label>
+                <Label Foreground="White" FontSize="20">Automations</Label>
+                <Label Foreground="White" FontSize="20" Margin="-1.4 0 0 0">🤖</Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Width="155" MouseDown="Audio_Selected" x:Name="audio_button">
                 <Label Foreground="White" FontSize="20">Audio</Label>
