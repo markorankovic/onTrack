@@ -10,6 +10,8 @@ using System;
 using Windows.UI.Notifications;
 using WindowsInput;
 using WindowsInput.Native;
+using System.Windows.Input;
+using Windows.System;
 
 namespace onTrack
 {
@@ -41,6 +43,8 @@ namespace onTrack
         public static bool autoPausePlay = false;
 
         public static bool autoFocus = false;
+
+        public static Key? autoPauseKey;
 
         static Timer()
         {
@@ -220,7 +224,7 @@ namespace onTrack
 
                 if (autoPausePlay)
                 {
-                    SendSpaceKey();
+                    SendAutoPauseKey();
                 }
                 if (CurrentReinforcement is WhatYouGonnaDoNowReinforcement && autoFocus)
                 {
@@ -248,10 +252,12 @@ namespace onTrack
             inputSimulator.Mouse.LeftButtonClick();
         }
 
-        private static void SendSpaceKey()
+        private static void SendAutoPauseKey()
         {
+            if (autoPauseKey == null) return;
             InputSimulator inputSimulator = new InputSimulator();
-            inputSimulator.Keyboard.KeyDown(VirtualKeyCode.SPACE);
+            VirtualKeyCode keyCode = (VirtualKeyCode) KeyInterop.VirtualKeyFromKey(autoPauseKey.Value);
+            inputSimulator.Keyboard.KeyDown(keyCode);
         }
 
         private static void OnToastPassed(object sender, ToastDismissedEventArgs e)

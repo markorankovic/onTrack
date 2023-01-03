@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using Color = System.Windows.Media.Color;
@@ -93,6 +94,47 @@ namespace onTrack.Views
                 Timer.autoPausePlay = false;
                 Timer.autoFocus = false;
             }
+        }
+
+        private enum Record
+        {
+            Pause,
+            Play,
+            Focus
+        }
+
+        Record? RecordingType = null;
+
+        private void EvaluateRecord(Key Key)
+        {
+
+        }
+
+        private void Pause_Record_Click(object sender, RoutedEventArgs e)
+        {
+            RecordingType = Record.Pause;
+            Pause_Record.Content = "•";
+            Pause_Record.Focus();
+        }
+
+        private void Play_Record_Click(object sender, RoutedEventArgs e)
+        {
+            RecordingType = Record.Play;
+            Play_Record.Content = "•";
+            Play_Record.Focus();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RecordingType = Record.Focus;
+            Focus_Record.Content = "•";
+            Focus_Record.Focus();
+        }
+
+        private void Pause_Record_KeyDown(object sender, KeyEventArgs e)
+        {
+            Key key = e.Key;
+            Timer.autoPauseKey = key;
         }
     }
 
