@@ -7,7 +7,8 @@
       xmlns:viewmodels="clr-namespace:onTrack.ViewModels"
       mc:Ignorable="d" 
       Background="#1E90FF"
-      Width="800" Height="490">
+      Width="800" Height="490"
+      >
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type viewmodels:NotificationSettingsViewModel}">
             <views:NotificationSettingsView />

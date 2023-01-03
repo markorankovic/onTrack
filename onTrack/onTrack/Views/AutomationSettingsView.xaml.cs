@@ -105,36 +105,74 @@ namespace onTrack.Views
 
         Record? RecordingType = null;
 
-        private void EvaluateRecord(Key Key)
-        {
-
-        }
+        bool recording = false;
 
         private void Pause_Record_Click(object sender, RoutedEventArgs e)
         {
-            RecordingType = Record.Pause;
-            Pause_Record.Content = "•";
-            Pause_Record.Focus();
+            recording = !recording;
+            if (recording)
+            {
+                RecordingType = Record.Pause;
+                Pause_Record.Content = "Stop";
+                Pause_Record.Focus();
+            } else
+            {
+                Pause_Record.Content = "Record";
+            }
         }
 
         private void Play_Record_Click(object sender, RoutedEventArgs e)
         {
-            RecordingType = Record.Play;
-            Play_Record.Content = "•";
-            Play_Record.Focus();
+            recording = !recording;
+            if (recording)
+            {
+                RecordingType = Record.Play;
+                Play_Record.Content = "Stop";
+                Play_Record.Focus();
+            }
+            else
+            {
+                Play_Record.Content = "Record";
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            RecordingType = Record.Focus;
-            Focus_Record.Content = "•";
-            Focus_Record.Focus();
+            recording = !recording;
+            if (recording)
+            {
+                RecordingType = Record.Focus;
+                Focus_Record.Content = "Stop";
+                Focus_Record.Focus();
+            }
+            else
+            {
+                Focus_Record.Content = "Record";
+            }
         }
 
         private void Pause_Record_KeyDown(object sender, KeyEventArgs e)
         {
             Key key = e.Key;
             Timer.autoPauseKey = key;
+        }
+
+        private void Pause_Record_LostFocus(object sender, RoutedEventArgs e)
+        {
+            recording = false;
+            Pause_Record.Content = "Record";
+        }
+
+        private void Play_Record_LostFocus(object sender, RoutedEventArgs e)
+        {
+            recording = false;
+            Play_Record.Content = "Record";
+        }
+
+        private void Focus_Record_LostFocus(object sender, RoutedEventArgs e)
+        {
+            recording = false;
+            Focus_Record.Content = "Record";
         }
     }
 
