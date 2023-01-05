@@ -107,6 +107,11 @@ namespace onTrack.Views
 
         bool recording = false;
 
+        private void RecordClickLocation()
+        {
+            
+        }
+
         private void Pause_Record_Click(object sender, RoutedEventArgs e)
         {
             recording = !recording;
@@ -129,6 +134,7 @@ namespace onTrack.Views
                 RecordingType = Record.Play;
                 Play_Record.Content = "Stop";
                 Play_Record.Focus();
+                RecordClickLocation();
             }
             else
             {
@@ -144,6 +150,7 @@ namespace onTrack.Views
                 RecordingType = Record.Focus;
                 Focus_Record.Content = "Stop";
                 Focus_Record.Focus();
+                RecordClickLocation();
             }
             else
             {
