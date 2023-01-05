@@ -110,7 +110,7 @@ namespace onTrack.Views
         private void Pause_Record_Click(object sender, RoutedEventArgs e)
         {
             recording = !recording;
-            if (recording)
+            if (recording && autoPausePlay.IsChecked.Value)
             {
                 RecordingType = Record.Pause;
                 Pause_Record.Content = "Stop";
@@ -124,7 +124,7 @@ namespace onTrack.Views
         private void Play_Record_Click(object sender, RoutedEventArgs e)
         {
             recording = !recording;
-            if (recording)
+            if (recording && autoPausePlay.IsChecked.Value)
             {
                 RecordingType = Record.Play;
                 Play_Record.Content = "Stop";
@@ -139,7 +139,7 @@ namespace onTrack.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             recording = !recording;
-            if (recording)
+            if (recording && autoFocus.IsChecked.Value)
             {
                 RecordingType = Record.Focus;
                 Focus_Record.Content = "Stop";
