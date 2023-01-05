@@ -200,6 +200,19 @@ namespace onTrack.Views
             recording = false;
             Focus_Record.Content = "Record";
         }
+
+        private void SimulateNotification()
+        {
+
+        }
+
+        private void Simulate_Notification_Click(object sender, RoutedEventArgs e)
+        {
+            if (autoFocus.IsChecked.Value)
+            {
+                SimulateNotification();
+            }
+        }
     }
 
     public class IsCheckedToOpacity : IValueConverter
