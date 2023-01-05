@@ -107,9 +107,28 @@ namespace onTrack.Views
 
         bool recording = false;
 
+        private void MinimizeWindow()
+        {
+            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+        }
+
+        private void MaximizeRecordWindow(Window window)
+        {
+            window.WindowState = WindowState.Maximized;
+            window.Show();
+            window.Activate();
+        }
+
         private void RecordClickLocation()
         {
-            
+            MinimizeWindow();
+
+            Window window = new Window();
+            window.WindowStyle = WindowStyle.None;
+            window.AllowsTransparency = true;
+            window.Opacity = 0.1;
+
+            MaximizeRecordWindow(window);
         }
 
         private void Pause_Record_Click(object sender, RoutedEventArgs e)
