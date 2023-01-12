@@ -125,7 +125,7 @@ namespace onTrack.Views
             window.Activate();
         }
 
-        private void RecordClickLocation()
+        private void RecordClickLocation(bool autoFocus = true)
         {
             MinimizeWindow();
 
@@ -144,9 +144,10 @@ namespace onTrack.Views
             void Record(object sender, MouseButtonEventArgs e)
             {
                 var pos = Mouse.GetPosition(window);
-                Timer.RecordAutoFocusClick(
+                Timer.RecordClick(
                     TranslateToScreenRes(pos.X, 1),
-                    TranslateToScreenRes(pos.Y, 1)
+                    TranslateToScreenRes(pos.Y, 1),
+                    autoFocus
                 );
                 window.Close();
                 Application.Current.MainWindow.WindowState = WindowState.Normal;
@@ -156,7 +157,8 @@ namespace onTrack.Views
 
             MaximizeRecordWindow(window);
 
-            Timer.SimulateNotification();
+            if (autoFocus)
+                Timer.SimulateNotification();
         }
 
         private void Pause_Record_Click(object sender, RoutedEventArgs e)
@@ -181,7 +183,7 @@ namespace onTrack.Views
                 RecordingType = Record.Play;
                 Play_Record.Content = "Stop";
                 Play_Record.Focus();
-                RecordClickLocation();
+                RecordClickLocation(false);
             }
             else
             {

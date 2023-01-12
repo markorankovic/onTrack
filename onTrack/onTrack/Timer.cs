@@ -60,6 +60,8 @@ namespace onTrack
 
         public static Location autoFocusClickLocation = null;
 
+        public static Location autoPlayClickLocation = null;
+
         static Timer()
         {
             ToastNotificationManagerCompat.OnActivated += toastArgs =>
@@ -69,11 +71,12 @@ namespace onTrack
                     if (CurrentReinforcement.IsValidResponse(toastArgs))
                     {
                         Reset();
-                        if (autoPausePlay) 
+                        if (autoPlayClickLocation != null)
                         {
-                            ClickTheCentreOfTheScreen();
+                            AutoPlay();
                         }
-                    } else
+                    }
+                    else
                     {
                         WakeUser();
                     }
@@ -211,7 +214,7 @@ namespace onTrack
                 ResetTimer();
             });
         }
-
+         
         private static void AlertUser()
         {
             CurrentReinforcement.CreateToast(Objective)
@@ -249,7 +252,7 @@ namespace onTrack
 
                 AlertUser();
 
-                if (autoPausePlay)
+                if (autoPauseKey != null)
                 {
                     SendAutoPauseKey();
                 }
@@ -258,6 +261,16 @@ namespace onTrack
                     FocusOnTheTextBox();
                 }
             });
+        }
+
+        private static void AutoPlay()
+        {
+            InputSimulator inputSimulator = new InputSimulator();
+            var X = autoPlayClickLocation.x * 65535 / System.Windows.SystemParameters.WorkArea.Width;
+            var Y = autoPlayClickLocation.y * 65535 / System.Windows.SystemParameters.WorkArea.Height;
+            inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(X, Y);
+            System.Threading.Thread.Sleep(500);
+            inputSimulator.Mouse.LeftButtonClick();
         }
 
         private static void FocusOnTheTextBox()
@@ -296,9 +309,12 @@ namespace onTrack
             ToastNotificationManagerCompat.History.Clear();
         }
 
-        public static void RecordAutoFocusClick(int x, int y)
+        public static void RecordClick(int x, int y, bool autoFocus)
         {
-            autoFocusClickLocation = new Location(x, y);
+            if (autoFocus)
+                autoFocusClickLocation = new Location(x, y);
+            else
+                autoPlayClickLocation = new Location(x, y);
         }
     }
 }
