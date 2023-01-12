@@ -207,6 +207,19 @@ namespace onTrack
                 });
         }
 
+        public static void SimulateNotification()
+        {
+            new ToastContentBuilder()
+                .AddText("Click where the text box is")
+                .AddText("When the notification disappears")
+                .AddInputTextBox("", "")
+                .AddButton(
+                    new ToastButton()
+                        .SetContent("Click up there ⬆️")
+                )
+                .Show();
+        }
+
         private static void OnTimedEvent(System.Object source, ElapsedEventArgs e)
         {
             Dispatcher.CurrentDispatcher.Invoke(() =>

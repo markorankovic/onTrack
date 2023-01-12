@@ -5,9 +5,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Color = System.Windows.Media.Color;
+using System.Drawing.Imaging;
+using System.Threading.Tasks;
 
 namespace onTrack.Views
 {
@@ -126,9 +130,13 @@ namespace onTrack.Views
             Window window = new Window();
             window.WindowStyle = WindowStyle.None;
             window.AllowsTransparency = true;
-            window.Opacity = 0.1;
+            window.Opacity = 0.3;
+            var brush = new SolidColorBrush(Colors.Black);
+            window.Background = brush;
 
             MaximizeRecordWindow(window);
+
+            Timer.SimulateNotification();
         }
 
         private void Pause_Record_Click(object sender, RoutedEventArgs e)
@@ -199,19 +207,6 @@ namespace onTrack.Views
         {
             recording = false;
             Focus_Record.Content = "Record";
-        }
-
-        private void SimulateNotification()
-        {
-
-        }
-
-        private void Simulate_Notification_Click(object sender, RoutedEventArgs e)
-        {
-            if (autoFocus.IsChecked.Value)
-            {
-                SimulateNotification();
-            }
         }
     }
 

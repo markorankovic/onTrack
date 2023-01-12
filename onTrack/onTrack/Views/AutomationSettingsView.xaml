@@ -81,7 +81,6 @@
                     <StackPanel Orientation="Horizontal" Margin="85 0 0 0" Opacity="{Binding ElementName=autoFocus, Path=IsChecked, Converter={StaticResource isCheckedToOpacity}}">
                         <Label FontSize="15" Foreground="White">Click Location</Label>
                         <Button x:Name="Focus_Record" Content="Record" Click="Button_Click" LostFocus="Focus_Record_LostFocus" />
-                        <Button x:Name="Simulate_Notification" Content="Simulate Notification" Click="Simulate_Notification_Click" Margin="55 0 0 0" />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
