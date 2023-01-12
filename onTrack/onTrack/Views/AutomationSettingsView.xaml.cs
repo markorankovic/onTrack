@@ -12,6 +12,8 @@ using System.Windows.Shapes;
 using Color = System.Windows.Media.Color;
 using System.Drawing.Imaging;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
+using WindowsInput;
 
 namespace onTrack.Views
 {
@@ -133,6 +135,24 @@ namespace onTrack.Views
             window.Opacity = 0.3;
             var brush = new SolidColorBrush(Colors.Black);
             window.Background = brush;
+
+            int TranslateToScreenRes(double loc, double factor)
+            {
+                return (int)(factor * loc);
+            }
+
+            void Record(object sender, MouseButtonEventArgs e)
+            {
+                var pos = Mouse.GetPosition(window);
+                Timer.RecordAutoFocusClick(
+                    TranslateToScreenRes(pos.X, 1),
+                    TranslateToScreenRes(pos.Y, 1)
+                );
+                window.Close();
+                Application.Current.MainWindow.WindowState = WindowState.Normal;
+            }
+
+            window.MouseDown += Record;
 
             MaximizeRecordWindow(window);
 

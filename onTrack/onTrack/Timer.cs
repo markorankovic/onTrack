@@ -15,6 +15,18 @@ using Windows.System;
 
 namespace onTrack
 {
+    public class Location
+    {
+        public int x;
+        public int y;
+
+        public Location(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
     public class Timer
     {
         static Reinforcement CurrentReinforcement = new StandardReinforcement();
@@ -45,6 +57,8 @@ namespace onTrack
         public static bool autoFocus = false;
 
         public static Key? autoPauseKey;
+
+        public static Location autoFocusClickLocation = null;
 
         static Timer()
         {
@@ -249,8 +263,8 @@ namespace onTrack
         private static void FocusOnTheTextBox()
         {
             InputSimulator inputSimulator = new InputSimulator();
-            var X = (3840 - 100) * 65535 / 3840;
-            var Y = (2160 - 210) * 65535 / 2160;
+            var X = autoFocusClickLocation.x * 65535 / System.Windows.SystemParameters.WorkArea.Width;
+            var Y = autoFocusClickLocation.y * 65535 / System.Windows.SystemParameters.WorkArea.Height;
             inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(X, Y);
             System.Threading.Thread.Sleep(500);
             inputSimulator.Mouse.LeftButtonClick();
@@ -280,6 +294,11 @@ namespace onTrack
                 WakeUser();
             }
             ToastNotificationManagerCompat.History.Clear();
+        }
+
+        public static void RecordAutoFocusClick(int x, int y)
+        {
+            autoFocusClickLocation = new Location(x, y);
         }
     }
 }
