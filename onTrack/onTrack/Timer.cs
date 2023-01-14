@@ -71,7 +71,7 @@ namespace onTrack
                     if (CurrentReinforcement.IsValidResponse(toastArgs))
                     {
                         Reset();
-                        if (autoPlayClickLocation != null)
+                        if (autoPlayClickLocation != null && autoPausePlay)
                         {
                             AutoPlay();
                         }
@@ -252,7 +252,7 @@ namespace onTrack
 
                 AlertUser();
 
-                if (autoPauseKey != null)
+                if (autoPauseKey != null && autoPausePlay)
                 {
                     SendAutoPauseKey();
                 }
