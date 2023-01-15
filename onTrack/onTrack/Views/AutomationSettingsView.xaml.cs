@@ -5,15 +5,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Color = System.Windows.Media.Color;
-using System.Drawing.Imaging;
-using System.Threading.Tasks;
-using Windows.Devices.Geolocation;
-using WindowsInput;
 
 namespace onTrack.Views
 {
@@ -169,7 +163,8 @@ namespace onTrack.Views
                 RecordingType = Record.Pause;
                 Pause_Record.Content = "Stop";
                 Pause_Record.Focus();
-            } else
+            }
+            else
             {
                 Pause_Record.Content = "Record";
             }
@@ -181,13 +176,8 @@ namespace onTrack.Views
             if (recording && autoPausePlay.IsChecked.Value)
             {
                 RecordingType = Record.Play;
-                Play_Record.Content = "Stop";
                 Play_Record.Focus();
                 RecordClickLocation(false);
-            }
-            else
-            {
-                Play_Record.Content = "Record";
             }
         }
 
@@ -197,7 +187,6 @@ namespace onTrack.Views
             if (recording && autoFocus.IsChecked.Value)
             {
                 RecordingType = Record.Focus;
-                Focus_Record.Content = "Stop";
                 Focus_Record.Focus();
                 RecordClickLocation();
             }
