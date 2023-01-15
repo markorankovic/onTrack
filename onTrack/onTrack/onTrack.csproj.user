@@ -15,6 +15,15 @@
     <Compile Update="Components\Countdown.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AudioSettingsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AutomationSettingsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NotificationSettingsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Components\Clock.xaml">
@@ -24,6 +33,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AudioSettingsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AutomationSettingsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\NotificationSettingsView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

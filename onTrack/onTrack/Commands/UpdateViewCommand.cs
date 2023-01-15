@@ -35,4 +35,4 @@ namespace onTrack.Commands
             MainViewModel = mainViewModel;
         }
     }
-}
+} 

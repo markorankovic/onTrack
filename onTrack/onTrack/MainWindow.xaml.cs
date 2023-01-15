@@ -15,6 +15,8 @@ namespace onTrack
             InitializeComponent();
 
             DataContext = new MainViewModel();
+
+            EvaluateNav();
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -42,6 +44,31 @@ namespace onTrack
             #else
                  Launcher.LaunchUriAsync(new System.Uri("https://github.com/markorankovic/onTrack"));
             #endif
+        }
+
+        private void EvaluateNav()
+        {
+            if (((MainViewModel) DataContext).SelectedViewModel is TimerViewModel)
+            {
+                timerNav.Opacity = 1;
+                settingsNav.Opacity = 0.5;
+            } else
+            {
+                timerNav.Opacity = 0.5;
+                settingsNav.Opacity = 1;
+            }
+        }
+
+        private void TimerNav_Click(object sender, RoutedEventArgs e)
+        {
+            timerNav.Opacity = 1;
+            settingsNav.Opacity = 0.5;
+        }
+
+        private void SettingsNav_Click(object sender, RoutedEventArgs e)
+        {
+            timerNav.Opacity = 0.5;
+            settingsNav.Opacity = 1;
         }
     }
 }
