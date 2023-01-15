@@ -67,9 +67,9 @@
                 <CheckBox BorderBrush="Transparent" x:Name="enabled" Foreground="White" FontSize="15" Margin="0 0 0 15" Click="enabled_Click">Enabled</CheckBox>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <CheckBox x:Name="autoPausePlay" Opacity="{Binding ElementName=enabled, Path=IsChecked, Converter={StaticResource isCheckedToOpacity}}" IsEnabled="{Binding ElementName=enabled, Path=IsChecked}" IsEnabledChanged="autoPausePlay_IsEnabledChanged" BorderBrush="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="1" FontSize="15" Content="Auto Pause/Play" Foreground="White" Click="AutoPausePlay_Checked"  Width="130" />
-                    <StackPanel Orientation="Horizontal" Margin="50 0 50 0" Opacity="{Binding ElementName=autoPausePlay, Path=IsChecked, Converter={StaticResource isCheckedToOpacity}}">
-                        <Label FontSize="15" Foreground="White">Pause Button</Label>
-                        <Button Margin="5 0 0 0" x:Name="Pause_Record" Content="Record" Click="Pause_Record_Click" PreviewKeyDown="Pause_Record_KeyDown" LostFocus="Pause_Record_LostFocus" />
+                    <StackPanel Orientation="Horizontal" Margin="20 0 20 0" Opacity="{Binding ElementName=autoPausePlay, Path=IsChecked, Converter={StaticResource isCheckedToOpacity}}">
+                        <Label x:Name="Pause_Button_Label" FontSize="15" Foreground="White">Pause Button</Label>
+                        <Button Margin="5 0 0 0" x:Name="Pause_Record" Content="Record" PreviewMouseDown="Pause_Record_MouseDown" PreviewKeyDown="Pause_Record_KeyDown" LostFocus="Pause_Record_LostFocus" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Opacity="{Binding ElementName=autoPausePlay, Path=IsChecked, Converter={StaticResource isCheckedToOpacity}}">
                         <Label FontSize="15" Foreground="White">Play Click Location</Label>
@@ -78,7 +78,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 10 0 0">
                     <CheckBox x:Name="autoFocus" Opacity="{Binding ElementName=enabled, Path=IsChecked, Converter={StaticResource isCheckedToOpacity}}" IsEnabled="{Binding ElementName=enabled, Path=IsChecked}" IsEnabledChanged="autoFocus_IsEnabledChanged" BorderBrush="Transparent" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="1" FontSize="15" Content="Auto Focus" Foreground="White"  Width="96" Click="autoFocus_Checked" />
-                    <StackPanel Orientation="Horizontal" Margin="85 0 0 0" Opacity="{Binding ElementName=autoFocus, Path=IsChecked, Converter={StaticResource isCheckedToOpacity}}">
+                    <StackPanel Orientation="Horizontal" Margin="55 0 0 0" Opacity="{Binding ElementName=autoFocus, Path=IsChecked, Converter={StaticResource isCheckedToOpacity}}">
                         <Label FontSize="15" Foreground="White">Click Location</Label>
                         <Button x:Name="Focus_Record" Content="Record" Click="Button_Click" LostFocus="Focus_Record_LostFocus" />
                     </StackPanel>

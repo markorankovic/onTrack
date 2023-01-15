@@ -22,6 +22,12 @@ namespace onTrack.Views
             enabled.IsChecked = Timer.autoPausePlay || Timer.autoFocus;
             autoPausePlay.IsChecked = Timer.autoPausePlay;
             autoFocus.IsChecked = Timer.autoFocus;
+
+            Pause_Record.Content = Timer.autoPauseKey != null ? "Record Again" : "Record";
+            Play_Record.Content = Timer.autoPlayClickLocation != null ? "Record Again" : "Record";
+            Focus_Record.Content = Timer.autoFocusClickLocation != null ? "Record Again" : "Record";
+
+            Pause_Button_Label.Content = Timer.autoPauseKey != null ? "Pause: " + Timer.autoPauseKey.ToString() : "Pause Button";
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -155,21 +161,6 @@ namespace onTrack.Views
                 Timer.SimulateNotification();
         }
 
-        private void Pause_Record_Click(object sender, RoutedEventArgs e)
-        {
-            recording = !recording;
-            if (recording && autoPausePlay.IsChecked.Value)
-            {
-                RecordingType = Record.Pause;
-                Pause_Record.Content = "Stop";
-                Pause_Record.Focus();
-            }
-            else
-            {
-                Pause_Record.Content = "Record";
-            }
-        }
-
         private void Play_Record_Click(object sender, RoutedEventArgs e)
         {
             recording = !recording;
@@ -178,6 +169,7 @@ namespace onTrack.Views
                 RecordingType = Record.Play;
                 Play_Record.Focus();
                 RecordClickLocation(false);
+                Play_Record.Content = "Record Again";
             }
         }
 
@@ -189,10 +181,7 @@ namespace onTrack.Views
                 RecordingType = Record.Focus;
                 Focus_Record.Focus();
                 RecordClickLocation();
-            }
-            else
-            {
-                Focus_Record.Content = "Record";
+                Focus_Record.Content = "Record Again";
             }
         }
 
@@ -200,24 +189,39 @@ namespace onTrack.Views
         {
             Key key = e.Key;
             Timer.autoPauseKey = key;
+            Pause_Record.Content = "Record Again";
+            Pause_Button_Label.Content = Timer.autoPauseKey != null ? "Pause: " + Timer.autoPauseKey.ToString() : "Pause Button";
         }
 
         private void Pause_Record_LostFocus(object sender, RoutedEventArgs e)
         {
             recording = false;
-            Pause_Record.Content = "Record";
+            Pause_Record.Content = Timer.autoPauseKey != null ? "Record Again" : "Record";
         }
 
         private void Play_Record_LostFocus(object sender, RoutedEventArgs e)
         {
             recording = false;
-            Play_Record.Content = "Record";
         }
 
         private void Focus_Record_LostFocus(object sender, RoutedEventArgs e)
         {
             recording = false;
-            Focus_Record.Content = "Record";
+        }
+
+        private void Pause_Record_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            recording = Pause_Record.Content.Equals("Stop") ? false : true;
+            if (recording && autoPausePlay.IsChecked.Value)
+            {
+                RecordingType = Record.Pause;
+                Pause_Record.Content = "Stop";
+                Pause_Record.Focus();
+            }
+            else
+            {
+                Pause_Record.Content = Timer.autoPauseKey != null ? "Record Again" : "Record";
+            }
         }
     }
 
