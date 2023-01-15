@@ -8,10 +8,25 @@ using System.Windows.Threading;
 using System.IO;
 using System;
 using Windows.UI.Notifications;
-using Windows.Foundation;
+using WindowsInput;
+using WindowsInput.Native;
+using System.Windows.Input;
+using Windows.System;
 
 namespace onTrack
 {
+    public class Location
+    {
+        public int x;
+        public int y;
+
+        public Location(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
     public class Timer
     {
         static Reinforcement CurrentReinforcement = new StandardReinforcement();
@@ -37,6 +52,16 @@ namespace onTrack
 
         static List<Reinforcement> previousReinforcements = new();
 
+        public static bool autoPausePlay = false;
+
+        public static bool autoFocus = false;
+
+        public static Key? autoPauseKey;
+
+        public static Location autoFocusClickLocation = null;
+
+        public static Location autoPlayClickLocation = null;
+
         static Timer()
         {
             ToastNotificationManagerCompat.OnActivated += toastArgs =>
@@ -46,7 +71,12 @@ namespace onTrack
                     if (CurrentReinforcement.IsValidResponse(toastArgs))
                     {
                         Reset();
-                    } else
+                        if (autoPlayClickLocation != null && autoPausePlay)
+                        {
+                            AutoPlay();
+                        }
+                    }
+                    else
                     {
                         WakeUser();
                     }
@@ -184,7 +214,7 @@ namespace onTrack
                 ResetTimer();
             });
         }
-
+         
         private static void AlertUser()
         {
             CurrentReinforcement.CreateToast(Objective)
@@ -192,6 +222,19 @@ namespace onTrack
                 {
                     toast.Dismissed += OnToastPassed;
                 });
+        }
+
+        public static void SimulateNotification()
+        {
+            new ToastContentBuilder()
+                .AddText("Click where the text box is")
+                .AddText("When the notification disappears")
+                .AddInputTextBox("", "")
+                .AddButton(
+                    new ToastButton()
+                        .SetContent("Click up there ⬆️")
+                )
+                .Show();
         }
 
         private static void OnTimedEvent(System.Object source, ElapsedEventArgs e)
@@ -206,8 +249,55 @@ namespace onTrack
                 }
                 timer.AutoReset = false;
                 timer.Enabled = false;
+
                 AlertUser();
+
+                if (autoPauseKey != null && autoPausePlay)
+                {
+                    SendAutoPauseKey();
+                }
+                if (CurrentReinforcement is WhatYouGonnaDoNowReinforcement && autoFocus)
+                {
+                    FocusOnTheTextBox();
+                }
             });
+        }
+
+        private static void AutoPlay()
+        {
+            InputSimulator inputSimulator = new InputSimulator();
+            var X = autoPlayClickLocation.x * 65535 / System.Windows.SystemParameters.WorkArea.Width;
+            var Y = autoPlayClickLocation.y * 65535 / System.Windows.SystemParameters.WorkArea.Height;
+            inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(X, Y);
+            System.Threading.Thread.Sleep(500);
+            inputSimulator.Mouse.LeftButtonClick();
+        }
+
+        private static void FocusOnTheTextBox()
+        {
+            InputSimulator inputSimulator = new InputSimulator();
+            var X = autoFocusClickLocation.x * 65535 / System.Windows.SystemParameters.WorkArea.Width;
+            var Y = autoFocusClickLocation.y * 65535 / System.Windows.SystemParameters.WorkArea.Height;
+            inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(X, Y);
+            System.Threading.Thread.Sleep(500);
+            inputSimulator.Mouse.LeftButtonClick();
+        }
+
+        private static void ClickTheCentreOfTheScreen()
+        {
+            InputSimulator inputSimulator = new InputSimulator();
+            var X = (3840 / 2) * 65535 / 3840;
+            var Y = (2160 / 2) * 65535 / 2160;
+            inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(X, Y);
+            inputSimulator.Mouse.LeftButtonClick();
+        }
+
+        private static void SendAutoPauseKey()
+        {
+            if (autoPauseKey == null) return;
+            InputSimulator inputSimulator = new InputSimulator();
+            VirtualKeyCode keyCode = (VirtualKeyCode) KeyInterop.VirtualKeyFromKey(autoPauseKey.Value);
+            inputSimulator.Keyboard.KeyDown(keyCode);
         }
 
         private static void OnToastPassed(object sender, ToastDismissedEventArgs e)
@@ -217,6 +307,14 @@ namespace onTrack
                 WakeUser();
             }
             ToastNotificationManagerCompat.History.Clear();
+        }
+
+        public static void RecordClick(int x, int y, bool autoFocus)
+        {
+            if (autoFocus)
+                autoFocusClickLocation = new Location(x, y);
+            else
+                autoPlayClickLocation = new Location(x, y);
         }
     }
 }
