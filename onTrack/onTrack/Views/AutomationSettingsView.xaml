@@ -18,7 +18,7 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderThickness="2" BorderBrush="White">
                             <Grid>
-                                <Path x:Name="PathIcon" Width="15" Height="25" />
+                                <Path x:Name="PathIcon" Width="5" Height="25" Margin="50 0 0 0" />
                                 <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                             </Grid>
                         </Border>
