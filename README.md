@@ -45,4 +45,5 @@ For playing a video or focusing on a textbox of a reinforcement, press record an
 I'm sorry for the inconvenience, I know it takes blood & sweat!
 ## Sound
 ### Alarm Sounds
+![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/audio_settings.png)
 Here you can choose which alarm sound will play on failure to respond to the notification within 10 seconds. The default sound is Wake Up which is a wake-up alarm sound effect, the other two is Evacuation featuring a nuclear warning alarm sound effect and the Police siren. Below is the Test button allowing you to test out the selected alarm sound.
