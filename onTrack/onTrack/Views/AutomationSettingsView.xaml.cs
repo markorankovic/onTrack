@@ -161,7 +161,7 @@ namespace onTrack.Views
                 );
                 if (autoFocus)
                 {
-                    Focus_Record.Content = Timer.autoPlayClickLocation != null ? "Record Again" : "Record";
+                    Focus_Record.Content = Timer.autoFocusClickLocation != null ? "Record Again" : "Record";
                 }
                 else
                 {
