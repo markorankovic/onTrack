@@ -11,8 +11,8 @@ The aim of onTrack is to help people who struggle to focus on a given task and s
 6. You're ready to get onTrack!
 
 # Settings
-![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/2.png)
 ## Notifications
+![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/notifications_settings.png)
 ### Reinforcements
 Reinforcements offer a variety of UIs on the notifications aimed to reinforce the user's awareness of the task by demanding certain responses that require the user's attention.
 #### Standard
@@ -34,6 +34,15 @@ What you gonna now, the moment the notification is gone? Not the ultimate task y
 The idea here is to make the user think about smaller milestones for reaching the objective they've set. The next time this notification fires, it will display the previous response made by the user. 
 #### Random
 Randomly selects a reinforcement after every interval. This way users don't get too habitual with their responses.
+## Automations
+Automations (Or macros) are used so certain actions such as pausing/playing a video is done automatically when the time is up and users don't have to always move the mouse to focus on the textbox if they need to make a textual response to reinforcements such as What You Gonna Do Now or Type Out The Goal.
+### Recording a button press
+![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/recording_pause_button.png)
+Click on "Record" for the pause button and when it says "Stop" then press the key you want to use to pause the video.
+### Recording a click
+For playing a video or focusing on a textbox of a reinforcement, press record and then click on the part of the screen like the play button or the textbox of the simulated notification. NOTE: Don't actually press the textbox, instead place the cursor close to it (as shown by the [red cross](https://www.icrc.org/en/donate) in the screenshot below) and wait for the notification to disappear and then move the cursor to where the textbox was and then click. 
+![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/recording_focus_click.png)
+I'm sorry for the inconvenience, I know it takes blood & sweat!
 ## Sound
 ### Alarm Sounds
 Here you can choose which alarm sound will play on failure to respond to the notification within 10 seconds. The default sound is Wake Up which is a wake-up alarm sound effect, the other two is Evacuation featuring a nuclear warning alarm sound effect and the Police siren. Below is the Test button allowing you to test out the selected alarm sound.
