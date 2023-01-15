@@ -135,22 +135,39 @@ namespace onTrack.Views
             window.Opacity = 0.3;
             var brush = new SolidColorBrush(Colors.Black);
             window.Background = brush;
+            window.KeyDown += Window_KeyDown;
 
-            int TranslateToScreenRes(double loc, double factor)
+            void Window_KeyDown(object sender, KeyEventArgs e)
             {
-                return (int)(factor * loc);
+                if (e.Key == Key.Escape)
+                {
+                    CloseThenOpenMainWindow();
+                }
+            }
+
+            void CloseThenOpenMainWindow()
+            {
+                window.Close();
+                Application.Current.MainWindow.WindowState = WindowState.Normal;
             }
 
             void Record(object sender, MouseButtonEventArgs e)
             {
                 var pos = Mouse.GetPosition(window);
                 Timer.RecordClick(
-                    TranslateToScreenRes(pos.X, 1),
-                    TranslateToScreenRes(pos.Y, 1),
+                    (int) pos.X,
+                    (int) pos.Y,
                     autoFocus
                 );
-                window.Close();
-                Application.Current.MainWindow.WindowState = WindowState.Normal;
+                if (autoFocus)
+                {
+                    Focus_Record.Content = Timer.autoPlayClickLocation != null ? "Record Again" : "Record";
+                }
+                else
+                {
+                    Play_Record.Content = Timer.autoPlayClickLocation != null ? "Record Again" : "Record";
+                }
+                CloseThenOpenMainWindow();
             }
 
             window.MouseDown += Record;
@@ -163,25 +180,22 @@ namespace onTrack.Views
 
         private void Play_Record_Click(object sender, RoutedEventArgs e)
         {
-            recording = !recording;
-            if (recording && autoPausePlay.IsChecked.Value)
+            if (autoPausePlay.IsChecked.Value)
             {
                 RecordingType = Record.Play;
                 Play_Record.Focus();
                 RecordClickLocation(false);
-                Play_Record.Content = "Record Again";
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            recording = !recording;
-            if (recording && autoFocus.IsChecked.Value)
+            if (autoFocus.IsChecked.Value)
             {
                 RecordingType = Record.Focus;
                 Focus_Record.Focus();
                 RecordClickLocation();
-                Focus_Record.Content = "Record Again";
+                Focus_Record.Content = Timer.autoFocusClickLocation != null ? "Record Again" : "Record";
             }
         }
 
