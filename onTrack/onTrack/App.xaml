@@ -31,6 +31,9 @@
             <DataTemplate DataType="{x:Type viewmodels:TimerViewModel}">
                 <views:TimerView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:TaskListViewModel}">
+                <views:TaskListView />
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
                 <views:SettingsView />
             </DataTemplate>

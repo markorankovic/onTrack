@@ -1,9 +1,5 @@
 ﻿using onTrack.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace onTrack.Commands
@@ -27,6 +23,9 @@ namespace onTrack.Commands
             } else if (parameter.ToString() == "Settings")
             {
                 MainViewModel.SelectedViewModel = new SettingsViewModel();
+            } else
+            {
+                MainViewModel.SelectedViewModel = new TaskListViewModel();
             }
         }
 
