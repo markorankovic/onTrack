@@ -24,6 +24,9 @@
     <Compile Update="Views\NotificationSettingsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\TaskListView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Components\Clock.xaml">
@@ -42,6 +45,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\NotificationSettingsView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TaskListView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

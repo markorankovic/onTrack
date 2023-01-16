@@ -78,6 +78,18 @@
                     Style="{StaticResource NavButtonStyle}"
                     />
                     <components:NavButton
+                    x:Name="taskListNav"
+                    Command="{Binding UpdateViewCommand}"
+                    CommandParameter="TaskList"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Content="📃"
+                    FontSize="30"
+                    Foreground="White"
+                    Click="TaskListNav_Click"
+                    Style="{StaticResource NavButtonStyle}"
+                    />
+                    <components:NavButton
                     x:Name="settingsNav"
                     Command="{Binding UpdateViewCommand}"
                     CommandParameter="Settings"
@@ -99,7 +111,7 @@
                     Style="{StaticResource NavButtonStyle}"
                     />
                 </StackPanel>
-                <Rectangle Width="120" Height="5" Fill="White"/>
+                <Rectangle Width="160" Height="5" Fill="White"/>
             </StackPanel>
 
             <ContentControl Content="{Binding SelectedViewModel}" Grid.Row="2"/>
