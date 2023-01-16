@@ -5,8 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:onTrack.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="490" d:DesignWidth="800"
+             Background="#1E90FF">
+    <StackPanel>
+        <TreeView>
+            <TreeViewItem Header="Parent">
+                <TreeViewItem Header="Child1">
+                    <TreeViewItem Header="Child1-1">
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="Child2">
+                </TreeViewItem>
+                <TreeViewItem Header="Child3">
+                </TreeViewItem>
+            </TreeViewItem>
+        </TreeView>
+    </StackPanel>
 </UserControl>
