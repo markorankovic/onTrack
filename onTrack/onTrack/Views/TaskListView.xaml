@@ -11,7 +11,7 @@
         <TreeView x:Name="tree" ItemsSource="{Binding Items}" Background="Transparent" BorderBrush="Transparent">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                    <TextBox Text="{Binding Task}" />
+                    <TextBox Text="{Binding Task}" FontSize="50" Background="Transparent" Foreground="White" BorderBrush="Transparent" />
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
