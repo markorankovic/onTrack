@@ -27,6 +27,7 @@ namespace onTrack.Views
         public TimerView()
         {
             InitializeComponent();
+            DataContext = ((TaskTree)Application.Current.Resources["taskList"]);
             Trace.WriteLine(Resources["mouseover"]);
             PlayButton.Content = Timer.Playing ? "⏹️ Stop" : "▶️ Start";
         }

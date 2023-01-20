@@ -79,7 +79,7 @@
                 Background="Transparent"
                 Foreground="White"
                 TextAlignment="Center"
-                Text="{x:Static s:Timer.Objective}"
+                Text="{Binding Root.Task}"
                 TextChanged="objective_TextChanged"
                 BorderThickness="0"
                 CaretBrush="White"

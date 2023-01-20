@@ -1,0 +1,15 @@
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\bin\Debug\onTrack.UnitTests.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\bin\Debug\onTrack.UnitTests.pdb
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\obj\Debug\onTrack.UnitTests.csproj.AssemblyReference.cache
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\obj\Debug\onTrack.UnitTests.csproj.CoreCompileInputs.cache
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\obj\Debug\onTrack.UnitTests.csproj.CopyComplete
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\obj\Debug\onTrack.UnitTests.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack.UnitTests\obj\Debug\onTrack.UnitTests.pdb
