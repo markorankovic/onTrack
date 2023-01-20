@@ -3,22 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:onTrack.Views"
+             xmlns:onTrack="clr-namespace:onTrack"
              mc:Ignorable="d" 
              d:DesignHeight="490" d:DesignWidth="800"
              Background="#1E90FF">
     <StackPanel>
-        <TreeView>
-            <TreeViewItem Header="Parent">
-                <TreeViewItem Header="Child1">
-                    <TreeViewItem Header="Child1-1">
-                    </TreeViewItem>
-                </TreeViewItem>
-                <TreeViewItem Header="Child2">
-                </TreeViewItem>
-                <TreeViewItem Header="Child3">
-                </TreeViewItem>
-            </TreeViewItem>
+        <TreeView x:Name="tree" ItemsSource="{Binding Items}" Background="Transparent" BorderBrush="Transparent">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <TextBox Text="{Binding Task}" />
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
         </TreeView>
     </StackPanel>
 </UserControl>

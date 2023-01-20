@@ -4,6 +4,7 @@
              xmlns:viewmodels="clr-namespace:onTrack.ViewModels"
              xmlns:views="clr-namespace:onTrack.Views"
              StartupUri="MainWindow.xaml"
+             xmlns:onTrack="clr-namespace:onTrack"
              xmlns:components="clr-namespace:onTrack.Components">
     <Application.Resources>
         <ResourceDictionary>
