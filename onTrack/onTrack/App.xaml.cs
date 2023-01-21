@@ -90,6 +90,10 @@ namespace onTrack
             TaskItem goal1 = new TaskItem();
             goal1.SetTask("Goal 1");
 
+            TaskItem goal1_1 = new TaskItem();
+            goal1_1.SetTask("Goal 1-1");
+
+
             TaskItem goal2 = new TaskItem();
             goal2.SetTask("Goal 2");
 
@@ -99,6 +103,7 @@ namespace onTrack
             parent.AddChild(goal1);
             parent.AddChild(goal2);
             goal2.AddChild(goal2_1);
+            goal1.AddChild(goal1_1);
 
             TaskTree taskTree = new TaskTree(parent);
 
