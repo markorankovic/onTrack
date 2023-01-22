@@ -21,7 +21,6 @@ namespace onTrack.Views
             {
                 CurrentObjective.tb.IsEnabled = false;
                 CurrentObjective.HideTools();
-                //CurrentObjective = null;
             }
         }
 

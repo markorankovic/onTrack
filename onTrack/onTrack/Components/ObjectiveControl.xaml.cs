@@ -38,16 +38,6 @@ namespace onTrack.Components
             InitializeComponent();
         }
 
-        private void root_LostFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void root_GotFocus(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void root_MouseDown(object sender, MouseButtonEventArgs e)
         {
             FocusManager.SetFocusedElement(Screen, this);
@@ -61,7 +51,6 @@ namespace onTrack.Components
 
         private void tb_LostFocus(object sender, RoutedEventArgs e)
         {
-            //((TaskListView)Screen).SetCurrentObjective(null);
             HideTools();
         }
     }

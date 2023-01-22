@@ -7,11 +7,9 @@
              Height="80" Width="450"
              x:Name="root"
              Focusable="True"
-             MouseDown="root_MouseDown"
-             LostFocus="root_LostFocus"
-             GotFocus="root_GotFocus">
+             MouseDown="root_MouseDown">
     <StackPanel Orientation="Horizontal" x:Name="sp">
-        <TextBox x:Name="tb" CaretBrush="White" LostFocus="tb_LostFocus" Width="350" IsEnabled="False" FontSize="50" Background="Transparent" Foreground="White" Text="{Binding Title, ElementName=root, Mode=TwoWay}"></TextBox>
+        <TextBox BorderBrush="Transparent" x:Name="tb" CaretBrush="White" LostFocus="tb_LostFocus" Width="350" IsEnabled="False" FontSize="50" Background="Transparent" Foreground="White" Text="{Binding Title, ElementName=root, Mode=TwoWay}"></TextBox>
         <StackPanel x:Name="tools" Orientation="Horizontal" Visibility="Hidden">
             <Label x:Name="edit" Content="✏️" FontSize="30" Foreground="White" MouseDown="edit_MouseDown" />
             <Label x:Name="delete" Content="❌" FontSize="30" Foreground="White" />
