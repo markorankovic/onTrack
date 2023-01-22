@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using onTrack.Views;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -39,7 +40,7 @@ namespace onTrack.Components
 
         private void root_LostFocus(object sender, RoutedEventArgs e)
         {
-            HideTools();
+
         }
 
         private void root_GotFocus(object sender, RoutedEventArgs e)
@@ -50,6 +51,18 @@ namespace onTrack.Components
         private void root_MouseDown(object sender, MouseButtonEventArgs e)
         {
             FocusManager.SetFocusedElement(Screen, this);
+            ShowTools();
+        }
+
+        private void edit_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            tb.IsEnabled = true;
+        }
+
+        private void tb_LostFocus(object sender, RoutedEventArgs e)
+        {
+            //((TaskListView)Screen).SetCurrentObjective(null);
+            HideTools();
         }
     }
 }

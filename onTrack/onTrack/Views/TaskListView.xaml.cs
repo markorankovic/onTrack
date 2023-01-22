@@ -17,24 +17,33 @@ namespace onTrack.Views
 
         private void UserControl_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            FocusManager.SetFocusedElement(this, this);
+            if (CurrentObjective != null)
+            {
+                CurrentObjective.tb.IsEnabled = false;
+                CurrentObjective.HideTools();
+                //CurrentObjective = null;
+            }
         }
 
         ObjectiveControl currentObjective = null;
-        ObjectiveControl CurrentObjective { get { return currentObjective; } set { if (currentObjective != null) { currentObjective.HideTools(); } currentObjective = value; currentObjective.ShowTools(); } }
+        ObjectiveControl CurrentObjective { get { return currentObjective; } set { currentObjective = value; } }
+
+        public void SetCurrentObjective(ObjectiveControl objective)
+        {
+            CurrentObjective = objective;
+        }
 
         private void UserControl_GotFocus(object sender, RoutedEventArgs e)
         {
             var focusedElement = FocusManager.GetFocusedElement(this);
-            if (focusedElement is ObjectiveControl)
-            {
-                CurrentObjective = (ObjectiveControl)focusedElement;
-            } else
+            if (focusedElement is ObjectiveControl && !focusedElement.Equals(CurrentObjective))
             {
                 if (CurrentObjective != null)
                 {
                     CurrentObjective.HideTools();
                 }
+                CurrentObjective = (ObjectiveControl) focusedElement;
+                CurrentObjective.ShowTools();
             }
         }
 
