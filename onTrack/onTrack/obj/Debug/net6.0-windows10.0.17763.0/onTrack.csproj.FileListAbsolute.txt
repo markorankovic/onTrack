@@ -12,10 +12,12 @@ C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\WinRT.Runtime.dll
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.csproj.AssemblyReference.cache
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Components\Countdown.baml
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Components\ObjectiveControl.baml
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\AudioSettingsView.baml
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\NotificationSettingsView.baml
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Components\Clock.g.cs
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Components\Countdown.g.cs
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Components\ObjectiveControl.g.cs
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\MainWindow.g.cs
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\AudioSettingsView.g.cs
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\AutomationSettingsView.g.cs

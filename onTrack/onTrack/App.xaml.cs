@@ -82,7 +82,7 @@ namespace onTrack
     public partial class App : Application {
         public App()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             TaskItem parent = new TaskItem();
             parent.SetTask("Your Objective");

@@ -15,6 +15,9 @@
     <Compile Update="Components\Countdown.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\ObjectiveControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AudioSettingsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -33,6 +36,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\Countdown.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\ObjectiveControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

@@ -2,15 +2,20 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:components="clr-namespace:onTrack.Components"
              mc:Ignorable="d" 
              Height="490" Width="800"
-             Background="#1E90FF">
+             Background="#1E90FF"
+             MouseDown="UserControl_MouseDown"
+             GotFocus="UserControl_GotFocus"
+             Focusable="False"
+             >
     <StackPanel>
         <TreeView x:Name="tree" ItemsSource="{Binding Items}" Background="Transparent" BorderBrush="Transparent">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                    <TextBox Text="{Binding Task}" FontSize="50" Background="Transparent" Foreground="White" BorderBrush="Transparent" />
+                    <components:ObjectiveControl Loaded="ObjectiveControl_Loaded" Title="{Binding Task, Mode=TwoWay}" />
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
