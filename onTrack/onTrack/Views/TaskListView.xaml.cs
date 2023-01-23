@@ -32,9 +32,11 @@ namespace onTrack.Views
             CurrentObjective = objective;
         }
 
+        IInputElement? focusedElement = null;
+
         private void UserControl_GotFocus(object sender, RoutedEventArgs e)
         {
-            var focusedElement = FocusManager.GetFocusedElement(this);
+            focusedElement = FocusManager.GetFocusedElement(this);
             if (focusedElement is ObjectiveControl && !focusedElement.Equals(CurrentObjective))
             {
                 if (CurrentObjective != null)
@@ -49,6 +51,14 @@ namespace onTrack.Views
         private void ObjectiveControl_Loaded(object sender, RoutedEventArgs e)
         {
             ((ObjectiveControl)sender).SetScreen(this);
+        }
+
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab)
+            {
+                CurrentObjective.AddChild();
+            }
         }
     }
 }

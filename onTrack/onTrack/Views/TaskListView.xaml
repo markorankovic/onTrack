@@ -10,6 +10,7 @@
              MouseDown="UserControl_MouseDown"
              GotFocus="UserControl_GotFocus"
              Focusable="False"
+             KeyDown="UserControl_KeyDown"
              >
     <StackPanel>
         <TreeView x:Name="tree" ItemsSource="{Binding Items}" Background="Transparent" BorderBrush="Transparent">

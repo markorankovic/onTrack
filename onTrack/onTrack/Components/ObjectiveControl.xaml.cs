@@ -59,5 +59,18 @@ namespace onTrack.Components
             var TaskItem = (TaskItem) this.DataContext;
             TaskItem.RemoveFromParent();
         }
+
+        private void root_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        public void AddChild()
+        {
+            var TaskItem = (TaskItem)this.DataContext;
+            var NewChild = new TaskItem();
+            NewChild.Task = "New Goal";
+            TaskItem.AddChild(NewChild);
+        }
     }
 }
