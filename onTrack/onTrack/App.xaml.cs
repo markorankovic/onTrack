@@ -12,12 +12,12 @@ namespace onTrack
         TaskItem _Root;
         public TaskItem Root { get { return _Root; } set { _Root = value; NotifyPropertyChanged("Root"); } }
 
-        public List<TaskItem> Items { get; set; }
+        public ObservableCollection<TaskItem> Items { get; set; }
 
         public TaskTree(TaskItem root)
         {
             _Root = root;
-            Items = new List<TaskItem>();
+            Items = new ObservableCollection<TaskItem>();
             Items.Add(root);
         }
 
@@ -31,7 +31,7 @@ namespace onTrack
     public class TaskItem : INotifyPropertyChanged
     {
         TaskItem? Parent;
-        public List<TaskItem> Children { get; set; }
+        public ObservableCollection<TaskItem> Children { get; set; }
         string _Task = "";
         public string Task { get { return _Task; } set { _Task = value; NotifyPropertyChanged("Task"); } }
 
@@ -44,7 +44,7 @@ namespace onTrack
 
         public TaskItem()
         {
-            Children = new List<TaskItem>();
+            Children = new ObservableCollection<TaskItem>();
         }
 
         public void AddChild(TaskItem task)

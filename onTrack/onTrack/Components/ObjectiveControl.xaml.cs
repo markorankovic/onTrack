@@ -13,6 +13,9 @@ namespace onTrack.Components
             set { SetValue(TitleProperty, value); }
         }
 
+        public static readonly DependencyProperty TitleProperty =
+    DependencyProperty.Register("Title", typeof(string), typeof(ObjectiveControl), new PropertyMetadata("Your Objective"));
+
         private UserControl Screen = null;
 
         public void SetScreen(UserControl screen)
@@ -29,9 +32,6 @@ namespace onTrack.Components
         {
             tools.Visibility = Visibility.Hidden;
         }
-
-        public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(ObjectiveControl), new PropertyMetadata("Your Objective"));
 
         public ObjectiveControl()
         {
@@ -52,6 +52,12 @@ namespace onTrack.Components
         private void tb_LostFocus(object sender, RoutedEventArgs e)
         {
             HideTools();
+        }
+
+        private void delete_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var TaskItem = (TaskItem) this.DataContext;
+            TaskItem.RemoveFromParent();
         }
     }
 }
