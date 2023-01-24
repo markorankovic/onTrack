@@ -47,8 +47,12 @@ namespace onTrack.Components
 
         public void HideTools()
         {
+            if (!(this.DataContext is TaskItem)) return;
+
+            var taskItem = (TaskItem)this.DataContext;
+
             var currentTask = ((TaskTree)Application.Current.Resources["taskList"]).CurrentTask;
-            if (currentTask?.Equals((TaskItem)this.DataContext) ?? false)
+            if (currentTask?.Equals(taskItem) ?? false)
             {
                 current.Visibility = Visibility.Visible;
             } else

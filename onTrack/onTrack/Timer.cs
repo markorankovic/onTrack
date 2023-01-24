@@ -11,7 +11,7 @@ using Windows.UI.Notifications;
 using WindowsInput;
 using WindowsInput.Native;
 using System.Windows.Input;
-using Windows.System;
+using System.Windows;
 
 namespace onTrack
 {
@@ -68,6 +68,13 @@ namespace onTrack
             {
                 Dispatcher.CurrentDispatcher.Invoke(() =>
                 {
+                    if (toastArgs.Argument.Equals("action=done_task"))
+                    {
+                        var taskTree = ((TaskTree?)Application.Current.Resources["taskList"]);
+                        taskTree?.CurrentTask?.FinishedTask();
+                        Reset();
+                        return;
+                    }
                     if (CurrentReinforcement.IsValidResponse(toastArgs))
                     {
                         Reset();

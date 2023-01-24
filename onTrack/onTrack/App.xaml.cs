@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -89,7 +88,12 @@ namespace onTrack
             {
                 return BottomChild(task);
             }
-            return this;
+            return taskItem;
+        }
+
+        public void FinishedTask()
+        {
+            Parent?.ChildFinishedTask(this);
         }
 
         public void ChildFinishedTask(TaskItem Child)
@@ -99,10 +103,11 @@ namespace onTrack
             var undoneTask = GetUndoneChildTask();
             if (undoneTask != null)
             {
-                taskTree.CurrentTask = undoneTask;
+                var nextTask = BottomChild(undoneTask);
+                taskTree.CurrentTask = nextTask;
                 return;
             }
-            taskTree.CurrentTask = BottomChild(this);
+            taskTree.CurrentTask = this;
         }
 
         public void AddChild(TaskItem task)

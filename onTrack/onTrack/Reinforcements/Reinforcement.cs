@@ -25,6 +25,11 @@ namespace onTrack.Reinforcements
                     .SetContent("Submit")
                     .AddArgument("action", "wakeup")
                     .SetBackgroundActivation()
+                )
+                .AddButton(new ToastButton()
+                    .SetContent("Done")
+                    .AddArgument("action", "done_task")
+                    .SetBackgroundActivation()
                 );
         }
         public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
@@ -50,6 +55,11 @@ namespace onTrack.Reinforcements
                 .AddButton(new ToastButton()
                     .SetContent("Yes")
                     .AddArgument("action", "wakeup")
+                    .SetBackgroundActivation()
+                )
+                .AddButton(new ToastButton()
+                    .SetContent("Done")
+                    .AddArgument("action", "done_task")
                     .SetBackgroundActivation()
                 );
         }
@@ -201,6 +211,11 @@ namespace onTrack.Reinforcements
                         .SetBackgroundActivation()
                     );
             }
+            content.AddButton(new ToastButton()
+                .SetContent("Done")
+                .AddArgument("action", "done_task")
+                .SetBackgroundActivation()
+            );
             return content;
         }
         public bool IsValidResponse(ToastNotificationActivatedEventArgsCompat toastArgs)
@@ -231,6 +246,11 @@ namespace onTrack.Reinforcements
                         .SetContent("Submit")
                         .AddArgument("action", "wakeup")
                         .SetBackgroundActivation()
+                    )
+                    .AddButton(new ToastButton()
+                        .SetContent("Done")
+                        .AddArgument("action", "done_task")
+                        .SetBackgroundActivation()
                     );
             }
             else
@@ -242,6 +262,11 @@ namespace onTrack.Reinforcements
                     .AddButton(new ToastButton()
                         .SetContent("Submit")
                         .AddArgument("action", "wakeup")
+                        .SetBackgroundActivation()
+                    )
+                    .AddButton(new ToastButton()
+                        .SetContent("Done")
+                        .AddArgument("action", "done_task")
                         .SetBackgroundActivation()
                     );
             }
