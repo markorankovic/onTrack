@@ -28,6 +28,7 @@ namespace onTrack
         public TaskTree(TaskItem root)
         {
             _Root = root;
+            _CurrentTask = _Root;
             Items = new ObservableCollection<TaskItem>();
             Items.Add(root);
         }
