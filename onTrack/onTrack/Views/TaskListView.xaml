@@ -13,12 +13,14 @@
              KeyDown="UserControl_KeyDown"
              >
     <StackPanel>
-        <TreeView x:Name="tree" ItemsSource="{Binding Items}" Background="Transparent" BorderBrush="Transparent">
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
-                    <components:ObjectiveControl Loaded="ObjectiveControl_Loaded" Title="{Binding Task, Mode=TwoWay}" />
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-        </TreeView>
+        <ScrollViewer Height="490" HorizontalScrollBarVisibility="Visible">
+            <TreeView x:Name="tree" ItemsSource="{Binding Items}" Background="Transparent" BorderBrush="Transparent">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                        <components:ObjectiveControl Loaded="ObjectiveControl_Loaded" Title="{Binding Task, Mode=TwoWay}" />
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </ScrollViewer>
     </StackPanel>
 </UserControl>
