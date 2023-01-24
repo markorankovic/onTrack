@@ -15,7 +15,7 @@
         <components:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"></components:BoolToVisibilityConverter>
     </UserControl.Resources>
     <StackPanel Orientation="Horizontal" x:Name="sp">
-        <TextBox BorderBrush="Transparent" x:Name="tb" CaretBrush="White" LostFocus="tb_LostFocus" Width="350" IsEnabled="False" FontSize="50" Background="Transparent" Foreground="White" Text="{Binding Title, ElementName=root, Mode=TwoWay}"></TextBox>
+        <TextBox BorderBrush="Transparent" x:Name="tb" CaretBrush="White" LostFocus="tb_LostFocus" Width="350" IsEnabled="False" FontSize="30" Background="Transparent" Foreground="White" Text="{Binding Title, ElementName=root, Mode=TwoWay}"></TextBox>
         <Label x:Name="current" Content="⬅️" FontSize="30" Foreground="White" MouseDown="current_MouseDown" Visibility="{Binding IsCurrentTask, Converter={StaticResource boolToVisibilityConverter}, Mode=TwoWay}" />
         <StackPanel x:Name="tools" Orientation="Horizontal" Visibility="Hidden">
             <Label x:Name="edit" Content="✏️" FontSize="30" Foreground="White" MouseDown="edit_MouseDown" />
