@@ -23,7 +23,7 @@ namespace onTrack
         }
 
         TaskItem? _CurrentTask;
-        public TaskItem? CurrentTask { get { return _CurrentTask; } set { SetIsCurrent(_CurrentTask, false); _CurrentTask = value; SetIsCurrent(_CurrentTask, true); } }
+        public TaskItem? CurrentTask { get { return _CurrentTask; } set { SetIsCurrent(_CurrentTask, false); _CurrentTask = value; SetIsCurrent(_CurrentTask, true); NotifyPropertyChanged("CurrentTask"); } }
 
         public TaskTree(TaskItem root)
         {
@@ -57,6 +57,7 @@ namespace onTrack
                 NotifyPropertyChanged("IsCurrentTask");
             }
         }
+        public bool IsDone = false;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -68,6 +69,40 @@ namespace onTrack
         public TaskItem()
         {
             Children = new ObservableCollection<TaskItem>();
+        }
+
+        TaskItem? GetUndoneChildTask()
+        {
+            foreach (var taskItem in Children)
+            {
+                if (!taskItem.IsDone)
+                {
+                    return taskItem;
+                }
+            }
+            return null;
+        }
+
+        TaskItem BottomChild(TaskItem taskItem)
+        {
+            foreach (TaskItem task in taskItem.Children)
+            {
+                return BottomChild(task);
+            }
+            return this;
+        }
+
+        public void ChildFinishedTask(TaskItem Child)
+        {
+            Child.IsDone = true;
+            var taskTree = ((TaskTree?)Application.Current.Resources["taskList"]);
+            var undoneTask = GetUndoneChildTask();
+            if (undoneTask != null)
+            {
+                taskTree.CurrentTask = undoneTask;
+                return;
+            }
+            taskTree.CurrentTask = BottomChild(this);
         }
 
         public void AddChild(TaskItem task)

@@ -79,7 +79,7 @@
                 Background="Transparent"
                 Foreground="White"
                 TextAlignment="Center"
-                Text="{Binding Root.Task}"
+                Text="{Binding CurrentTask.Task}"
                 TextChanged="objective_TextChanged"
                 BorderThickness="0"
                 CaretBrush="White"
