@@ -13,7 +13,7 @@
              KeyDown="UserControl_KeyDown"
              >
     <StackPanel>
-        <ScrollViewer Height="490" HorizontalScrollBarVisibility="Visible">
+        <ScrollViewer Height="490" HorizontalScrollBarVisibility="Visible" Focusable="False">
             <TreeView x:Name="tree" ItemsSource="{Binding Items}" Background="Transparent" BorderBrush="Transparent">
                 <TreeView.ItemTemplate>
                     <HierarchicalDataTemplate ItemsSource="{Binding Children}">
