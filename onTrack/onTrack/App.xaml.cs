@@ -14,6 +14,17 @@ namespace onTrack
 
         public ObservableCollection<TaskItem> Items { get; set; }
 
+        void SetIsCurrent(TaskItem? taskItem, bool isCurrent)
+        {
+            if (taskItem != null)
+            {
+                taskItem.IsCurrentTask = isCurrent;
+            }
+        }
+
+        TaskItem? _CurrentTask;
+        public TaskItem? CurrentTask { get { return _CurrentTask; } set { SetIsCurrent(_CurrentTask, false); _CurrentTask = value; SetIsCurrent(_CurrentTask, true); } }
+
         public TaskTree(TaskItem root)
         {
             _Root = root;
@@ -34,6 +45,17 @@ namespace onTrack
         public ObservableCollection<TaskItem> Children { get; set; }
         string _Task = "";
         public string Task { get { return _Task; } set { _Task = value; NotifyPropertyChanged("Task"); } }
+        bool _IsCurrentTask = false;
+        public bool IsCurrentTask { 
+            get {
+                return _IsCurrentTask;
+            }
+            set
+            {
+                _IsCurrentTask = value;
+                NotifyPropertyChanged("IsCurrentTask");
+            }
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
