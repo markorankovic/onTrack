@@ -37,7 +37,7 @@ namespace onTrack
         static System.Timers.Timer timer;
         static SoundPlayer soundPlayer = new (Properties.Resources.Wake_Up);
 
-        public static double Duration = 10;
+        public static double Duration = 30;
         public static int Counted = 0;
         public static int Remaining { get { return (int)(Duration - Counted); }  }
 
