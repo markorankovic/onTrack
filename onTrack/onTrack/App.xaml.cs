@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows;
 
@@ -32,8 +33,20 @@ namespace onTrack
             Items.Add(root);
         }
 
+        public void SetCurrentTask(TaskItem task)
+        {
+            if (CurrentTask != null)
+            {
+                Trace.WriteLine("CurrentTask.AddChild");
+                CurrentTask.AddChild(task);
+                Trace.WriteLine("Added child to current task");
+            }
+            CurrentTask = task;
+        }
+
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
+            Trace.WriteLine("Property Changed");
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
@@ -91,8 +104,17 @@ namespace onTrack
             return taskItem;
         }
 
-        public void FinishedTask()
+        public void FinishedTask(String? newTask = null)
         {
+            if (newTask != null || (newTask?.Equals("") ?? false))
+            {
+                var taskTree = ((TaskTree?)Application.Current.Resources["taskList"]);
+                var task = new TaskItem();
+                task.Task = newTask;
+                Parent?.AddChild(task);
+                taskTree.CurrentTask = task;
+                return;
+            }
             Parent?.ChildFinishedTask(this);
         }
 

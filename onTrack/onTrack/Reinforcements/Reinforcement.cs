@@ -251,6 +251,11 @@ namespace onTrack.Reinforcements
                         .SetContent("Done")
                         .AddArgument("action", "done_task")
                         .SetBackgroundActivation()
+                    )
+                    .AddButton(new ToastButton()
+                        .SetContent("New Goal")
+                        .AddArgument("action", "new_goal")
+                        .SetBackgroundActivation()
                     );
             }
             else
@@ -267,6 +272,11 @@ namespace onTrack.Reinforcements
                     .AddButton(new ToastButton()
                         .SetContent("Done")
                         .AddArgument("action", "done_task")
+                        .SetBackgroundActivation()
+                    )
+                    .AddButton(new ToastButton()
+                        .SetContent("New Goal")
+                        .AddArgument("action", "new_goal")
                         .SetBackgroundActivation()
                     );
             }
