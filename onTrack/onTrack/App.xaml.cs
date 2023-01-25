@@ -106,12 +106,13 @@ namespace onTrack
 
         public void FinishedTask(String? newTask = null)
         {
-            if (newTask != null || (newTask?.Equals("") ?? false))
+            var taskTree = ((TaskTree?)Application.Current.Resources["taskList"]);
+            if ((!(Parent?.Equals(taskTree.CurrentTask)) ?? false) && newTask != null && !(newTask?.Equals("") ?? false))
             {
-                var taskTree = ((TaskTree?)Application.Current.Resources["taskList"]);
                 var task = new TaskItem();
                 task.Task = newTask;
                 Parent?.AddChild(task);
+                taskTree.CurrentTask.IsDone = true;
                 taskTree.CurrentTask = task;
                 return;
             }
