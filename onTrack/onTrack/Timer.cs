@@ -12,7 +12,6 @@ using WindowsInput;
 using WindowsInput.Native;
 using System.Windows.Input;
 using System.Windows;
-using System.Threading.Tasks;
 
 namespace onTrack
 {
