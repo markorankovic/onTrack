@@ -41,15 +41,6 @@ namespace onTrack.Components
             Screen = screen;
         }
 
-        public void EvaluateVisibility()
-        {
-            if (!(this.DataContext is TaskItem)) return;
-
-            var taskItem = (TaskItem)this.DataContext;
-
-            current.Visibility = taskItem.IsCurrentTask ? Visibility.Visible : Visibility.Hidden;
-        }
-
         public void ShowTools()
         {
             current.Visibility = Visibility.Visible;
