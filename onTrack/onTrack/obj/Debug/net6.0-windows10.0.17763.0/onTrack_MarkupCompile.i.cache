@@ -16,5 +16,5 @@ C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\App.xaml
 19919920726
 Components\Clock.xaml;Components\Countdown.xaml;Components\ObjectiveControl.xaml;MainWindow.xaml;Views\AudioSettingsView.xaml;Views\AutomationSettingsView.xaml;Views\NotificationSettingsView.xaml;Views\SettingsView.xaml;Views\TaskListView.xaml;Views\TimerView.xaml;
 
-False
+True
 

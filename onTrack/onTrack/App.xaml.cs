@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Data;
 
 namespace onTrack
 {
@@ -14,16 +15,14 @@ namespace onTrack
 
         public ObservableCollection<TaskItem> Items { get; set; }
 
-        void SetIsCurrent(TaskItem? taskItem, bool isCurrent)
-        {
-            if (taskItem != null)
-            {
-                taskItem.IsCurrentTask = isCurrent;
-            }
-        }
-
         TaskItem? _CurrentTask;
-        public TaskItem? CurrentTask { get { return _CurrentTask; } set { SetIsCurrent(_CurrentTask, false); _CurrentTask = value; SetIsCurrent(_CurrentTask, true); NotifyPropertyChanged("CurrentTask"); } }
+        public TaskItem? CurrentTask { 
+            get { return _CurrentTask; } 
+            set { 
+                _CurrentTask = value; 
+                NotifyPropertyChanged("CurrentTask");
+            } 
+        }
 
         public TaskTree(TaskItem root)
         {
@@ -58,27 +57,22 @@ namespace onTrack
         public ObservableCollection<TaskItem> Children { get; set; }
         string _Task = "";
         public string Task { get { return _Task; } set { _Task = value; NotifyPropertyChanged("Task"); } }
-        bool _IsCurrentTask = false;
-        public bool IsCurrentTask { 
+        public bool IsCurrentTask {
             get {
-                return _IsCurrentTask;
-            }
-            set
-            {
-                _IsCurrentTask = value;
-                NotifyPropertyChanged("IsCurrentTask");
+                var taskTree = ((TaskTree?)Application.Current.Resources["taskList"]);
+                return taskTree?.CurrentTask?.Equals(this) ?? false;
             }
         }
         public bool IsDone = false;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public TaskItem()
+        public TaskItem() 
         {
             Children = new ObservableCollection<TaskItem>();
         }
@@ -141,6 +135,10 @@ namespace onTrack
 
         public void RemoveChild(TaskItem task)
         {
+            if (task.IsCurrentTask)
+            {
+                ChildFinishedTask(task);
+            }
             Children.Remove(task);
         }
 

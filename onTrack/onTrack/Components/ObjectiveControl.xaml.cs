@@ -1,5 +1,6 @@
 ﻿using onTrack.Views;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,12 +13,13 @@ namespace onTrack.Components
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (bool) value ? Visibility.Visible : Visibility.Hidden;
+            var taskItem = parameter as TaskItem;
+            return value.Equals(taskItem) ? Visibility.Visible : Visibility.Hidden;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (Visibility) value == Visibility.Visible ? true : false;
+            return null;
         }
     }
 
@@ -37,6 +39,15 @@ namespace onTrack.Components
         public void SetScreen(UserControl screen)
         {
             Screen = screen;
+        }
+
+        public void EvaluateVisibility()
+        {
+            if (!(this.DataContext is TaskItem)) return;
+
+            var taskItem = (TaskItem)this.DataContext;
+
+            current.Visibility = taskItem.IsCurrentTask ? Visibility.Visible : Visibility.Hidden;
         }
 
         public void ShowTools()
@@ -65,7 +76,8 @@ namespace onTrack.Components
         public ObjectiveControl()
         {
             InitializeComponent();
-        }
+
+         }
 
         private void root_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -109,11 +121,16 @@ namespace onTrack.Components
 
         private void root_Loaded(object sender, RoutedEventArgs e)
         {
-            var taskTree = ((TaskTree?)Application.Current.Resources["taskList"]);
-            var currentTask = taskTree.CurrentTask;
-            var TaskItem = (TaskItem)this.DataContext;
-            if (currentTask != null)
-                currentTask.IsCurrentTask = currentTask?.Equals(TaskItem) ?? false;
+            var binding = new Binding("CurrentTask")
+            {
+                Source = ((TaskTree)Application.Current.Resources["taskList"])
+            };
+            binding.Converter = new BooleanToVisibilityConverter();
+            var taskItem = (TaskItem)this.DataContext;
+            binding.ConverterParameter = taskItem;
+            binding.Mode = BindingMode.TwoWay;
+            current.SetBinding(Label.VisibilityProperty, binding);
+            current.Visibility = taskItem.IsCurrentTask ? Visibility.Visible : Visibility.Hidden;
         }
     }
 }

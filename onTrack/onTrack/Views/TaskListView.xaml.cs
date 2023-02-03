@@ -1,7 +1,7 @@
 ﻿using onTrack.Components;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace onTrack.Views
@@ -49,7 +49,8 @@ namespace onTrack.Views
 
         private void ObjectiveControl_Loaded(object sender, RoutedEventArgs e)
         {
-            ((ObjectiveControl)sender).SetScreen(this);
+            var objectiveControl = (ObjectiveControl) sender;
+            objectiveControl.SetScreen(this);
         }
 
         private void UserControl_KeyDown(object sender, KeyEventArgs e)
