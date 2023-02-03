@@ -132,5 +132,10 @@ namespace onTrack.Components
             current.SetBinding(Label.VisibilityProperty, binding);
             current.Visibility = taskItem.IsCurrentTask ? Visibility.Visible : Visibility.Hidden;
         }
+
+        private void root_LostFocus(object sender, RoutedEventArgs e)
+        {
+            tb.IsEnabled = false;
+        }
     }
 }

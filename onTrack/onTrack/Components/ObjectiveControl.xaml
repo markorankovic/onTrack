@@ -10,7 +10,8 @@
              Focusable="True"
              MouseDown="root_MouseDown"
              KeyDown="root_KeyDown"
-             Loaded="root_Loaded">
+             Loaded="root_Loaded"
+             LostFocus="root_LostFocus">
     <UserControl.Resources>
         <components:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"></components:BoolToVisibilityConverter>
     </UserControl.Resources>
