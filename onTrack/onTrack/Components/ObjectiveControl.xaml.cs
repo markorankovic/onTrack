@@ -109,7 +109,7 @@ namespace onTrack.Components
 
         private void current_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ((TaskTree)Application.Current.Resources["taskList"]).CurrentTask = (TaskItem)this.DataContext;
+            ((TaskTree)Application.Current.Resources["taskList"]).CurrentTask = (TaskItem) this.DataContext;
         }
 
         private void root_Loaded(object sender, RoutedEventArgs e)
@@ -121,8 +121,8 @@ namespace onTrack.Components
 
         private void TaskItem_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            var taskItem = (TaskItem)DataContext;
-            current.Visibility = current.Visibility == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden;
+            var taskItem = (TaskItem) DataContext;
+            current.Visibility = taskItem.IsCurrentTask ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void root_LostFocus(object sender, RoutedEventArgs e)

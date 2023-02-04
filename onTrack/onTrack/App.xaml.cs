@@ -19,8 +19,9 @@ namespace onTrack
         public TaskItem? CurrentTask { 
             get { return _CurrentTask; } 
             set {
-                _CurrentTask?.NotifyPropertyChanged("IsCurrentTask");
+                var oldTask = CurrentTask;
                 _CurrentTask = value;
+                oldTask?.NotifyPropertyChanged("IsCurrentTask");
                 CurrentTask?.NotifyPropertyChanged("IsCurrentTask");
                 NotifyPropertyChanged();
             }
