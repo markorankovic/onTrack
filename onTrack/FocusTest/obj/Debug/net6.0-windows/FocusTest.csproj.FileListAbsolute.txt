@@ -1,5 +1,0 @@
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\FocusTest\obj\Debug\net6.0-windows\FocusTest.csproj.AssemblyReference.cache
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\FocusTest\obj\Debug\net6.0-windows\MainWindow.g.cs
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\FocusTest\obj\Debug\net6.0-windows\App.g.cs
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\FocusTest\obj\Debug\net6.0-windows\FocusTest_MarkupCompile.cache
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\FocusTest\obj\Debug\net6.0-windows\FocusTest_MarkupCompile.lref

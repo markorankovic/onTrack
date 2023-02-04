@@ -18,16 +18,18 @@ namespace onTrack
         TaskItem? _CurrentTask;
         public TaskItem? CurrentTask { 
             get { return _CurrentTask; } 
-            set { 
-                _CurrentTask = value; 
-                NotifyPropertyChanged("CurrentTask");
-            } 
+            set {
+                _CurrentTask?.NotifyPropertyChanged("IsCurrentTask");
+                _CurrentTask = value;
+                CurrentTask?.NotifyPropertyChanged("IsCurrentTask");
+                NotifyPropertyChanged();
+            }
         }
 
         public TaskTree(TaskItem root)
         {
             _Root = root;
-            _CurrentTask = _Root;
+            CurrentTask = _Root;
             Items = new ObservableCollection<TaskItem>();
             Items.Add(root);
         }
@@ -45,7 +47,6 @@ namespace onTrack
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
-            Trace.WriteLine("Property Changed");
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
@@ -56,13 +57,18 @@ namespace onTrack
         TaskItem? Parent;
         public ObservableCollection<TaskItem> Children { get; set; }
         string _Task = "";
-        public string Task { get { return _Task; } set { _Task = value; NotifyPropertyChanged("Task"); } }
+        public string Task { 
+            get { return _Task; } 
+            set { _Task = value; NotifyPropertyChanged("Task"); } 
+        }
+
         public bool IsCurrentTask {
             get {
                 var taskTree = ((TaskTree?)Application.Current.Resources["taskList"]);
                 return taskTree?.CurrentTask?.Equals(this) ?? false;
             }
         }
+
         public bool IsDone = false;
 
         public event PropertyChangedEventHandler? PropertyChanged;

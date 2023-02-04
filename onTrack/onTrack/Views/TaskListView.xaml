@@ -12,6 +12,9 @@
              Focusable="False"
              KeyDown="UserControl_KeyDown"
              >
+    <UserControl.Resources>
+        <components:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"></components:BoolToVisibilityConverter>
+    </UserControl.Resources>
     <StackPanel>
         <ScrollViewer Height="490" HorizontalScrollBarVisibility="Visible" Focusable="False">
             <TreeView x:Name="tree" ItemsSource="{Binding Items}" Background="Transparent" BorderBrush="Transparent">

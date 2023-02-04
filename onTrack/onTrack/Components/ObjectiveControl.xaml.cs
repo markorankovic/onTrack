@@ -1,5 +1,6 @@
 ﻿using onTrack.Views;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
@@ -13,8 +14,10 @@ namespace onTrack.Components
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var taskItem = parameter as TaskItem;
-            return value.Equals(taskItem) ? Visibility.Visible : Visibility.Hidden;
+            Trace.WriteLine(value);
+            var CurrentTask = (TaskItem) value;
+            var TaskItem = (TaskItem) parameter;
+            return CurrentTask.Equals(TaskItem) ? Visibility.Visible : Visibility.Hidden;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -67,7 +70,6 @@ namespace onTrack.Components
         public ObjectiveControl()
         {
             InitializeComponent();
-
          }
 
         private void root_MouseDown(object sender, MouseButtonEventArgs e)
@@ -112,16 +114,15 @@ namespace onTrack.Components
 
         private void root_Loaded(object sender, RoutedEventArgs e)
         {
-            var binding = new Binding("CurrentTask")
-            {
-                Source = ((TaskTree)Application.Current.Resources["taskList"])
-            };
-            binding.Converter = new BooleanToVisibilityConverter();
-            var taskItem = (TaskItem)this.DataContext;
-            binding.ConverterParameter = taskItem;
-            binding.Mode = BindingMode.TwoWay;
-            current.SetBinding(Label.VisibilityProperty, binding);
+            var taskItem = (TaskItem)DataContext;
+            taskItem.PropertyChanged += TaskItem_PropertyChanged;
             current.Visibility = taskItem.IsCurrentTask ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        private void TaskItem_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            var taskItem = (TaskItem)DataContext;
+            current.Visibility = current.Visibility == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void root_LostFocus(object sender, RoutedEventArgs e)
