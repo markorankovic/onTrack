@@ -19,7 +19,7 @@
         <ScrollViewer Height="490" HorizontalScrollBarVisibility="Visible" Focusable="False">
             <TreeView x:Name="tree" ItemsSource="{Binding Items}" Background="Transparent" BorderBrush="Transparent">
                 <TreeView.ItemContainerStyle>
-                    <Style TargetType="{x:Type TreeViewItem}">
+                    <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource TreeViewItemTemplate}">
                         <Setter Property="IsExpanded" Value="True" />
                     </Style>
                 </TreeView.ItemContainerStyle>
