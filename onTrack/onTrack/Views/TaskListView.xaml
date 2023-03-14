@@ -129,8 +129,8 @@
                     <ControlTemplate TargetType="{x:Type Thumb}">
                         <Border CornerRadius="2"
                 Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="1" />
+                BorderBrush="{TemplateBinding Background}"
+                BorderThickness="8" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -144,7 +144,7 @@
                 </Grid.RowDefinitions>
                 <Border Grid.RowSpan="3"
             CornerRadius="2"
-            Background="White" />
+            Background="Transparent" />
                 <Track x:Name="PART_Track"
            Grid.Row="1"
            IsDirectionReversed="true">
@@ -152,34 +152,10 @@
                         <Thumb Style="{StaticResource ScrollBarThumb}"
                Margin="1,0,1,0">
                             <Thumb.BorderBrush>
-
-                                <LinearGradientBrush StartPoint="0,0"
-                                 EndPoint="1,0">
-                                    <LinearGradientBrush.GradientStops>
-                                        <GradientStopCollection>
-                                            <GradientStop Color="#1E90FF"
-                                Offset="0.0" />
-                                            <GradientStop Color="#1E90FF"
-                                Offset="1.0" />
-                                        </GradientStopCollection>
-                                    </LinearGradientBrush.GradientStops>
-                                </LinearGradientBrush>
-
+                                <SolidColorBrush Color="White" Opacity="0.56" />
                             </Thumb.BorderBrush>
                             <Thumb.Background>
-
-                                <LinearGradientBrush StartPoint="0,0"
-                                 EndPoint="1,0">
-                                    <LinearGradientBrush.GradientStops>
-                                        <GradientStopCollection>
-                                            <GradientStop Color="#1E90FF"
-                                Offset="0.0" />
-                                            <GradientStop Color="#1E90FF"
-                                Offset="1.0" />
-                                        </GradientStopCollection>
-                                    </LinearGradientBrush.GradientStops>
-                                </LinearGradientBrush>
-
+                                <SolidColorBrush Color="White" Opacity="0.56" />
                             </Thumb.Background>
                         </Thumb>
                     </Track.Thumb>
@@ -195,43 +171,18 @@
                 </Grid.ColumnDefinitions>
                 <Border Grid.ColumnSpan="3"
             CornerRadius="2"
-            Background="White" />
+            Background="Transparent" />
                 <Track x:Name="PART_Track"
            Grid.Column="1"
            IsDirectionReversed="False">
                     <Track.Thumb>
                         <Thumb Style="{StaticResource ScrollBarThumb}"
                Margin="0,1,0,1">
-
                             <Thumb.BorderBrush>
-
-                                <LinearGradientBrush StartPoint="0,0"
-                                 EndPoint="1,0">
-                                    <LinearGradientBrush.GradientStops>
-                                        <GradientStopCollection>
-                                            <GradientStop Color="#1E90FF"
-                                Offset="0.0" />
-                                            <GradientStop Color="#1E90FF"
-                                Offset="1.0" />
-                                        </GradientStopCollection>
-                                    </LinearGradientBrush.GradientStops>
-                                </LinearGradientBrush>
-
+                                <SolidColorBrush Color="White" Opacity="0.56" />
                             </Thumb.BorderBrush>
                             <Thumb.Background>
-
-                                <LinearGradientBrush StartPoint="0,0"
-                                 EndPoint="0,1">
-                                    <LinearGradientBrush.GradientStops>
-                                        <GradientStopCollection>
-                                            <GradientStop Color="#1E90FF"
-                                Offset="0.0" />
-                                            <GradientStop Color="#1E90FF"
-                                Offset="1.0" />
-                                        </GradientStopCollection>
-                                    </LinearGradientBrush.GradientStops>
-                                </LinearGradientBrush>
-
+                                <SolidColorBrush Color="White" Opacity="0.56" />
                             </Thumb.Background>
                         </Thumb>
                     </Track.Thumb>
@@ -266,9 +217,35 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="ScrollViewerStyle" TargetType="{x:Type ScrollViewer}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                        <Grid x:Name="Grid" Background="{TemplateBinding Background}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanHorizontallyScroll="False" ContentTemplate="{TemplateBinding ContentTemplate}" CanVerticallyScroll="False" Grid.Column="0" Content="{TemplateBinding Content}" CanContentScroll="{TemplateBinding CanContentScroll}" Margin="{TemplateBinding Padding}" Grid.Row="0"/>
+                            <ScrollBar x:Name="PART_VerticalScrollBar" AutomationProperties.AutomationId="VerticalScrollBar" Cursor="Arrow" Grid.Column="1" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Grid.Row="0" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+                            <ScrollBar x:Name="PART_HorizontalScrollBar" AutomationProperties.AutomationId="HorizontalScrollBar" Cursor="Arrow" Grid.Column="0" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Orientation="Horizontal" Grid.Row="1" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
     <StackPanel>
-        <ScrollViewer Height="490" HorizontalScrollBarVisibility="Visible" Focusable="False">
+        <ScrollViewer Style="{DynamicResource ScrollViewerStyle}" Height="490" HorizontalScrollBarVisibility="Visible" Focusable="False">
             <TreeView x:Name="tree" ItemsSource="{Binding Items}" Background="Transparent" BorderBrush="Transparent">
                 <TreeView.ItemContainerStyle>
                     <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource TreeViewItemTemplate}">
