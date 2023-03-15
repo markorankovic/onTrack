@@ -193,6 +193,7 @@
 
         <Style x:Key="{x:Type ScrollBar}"
        TargetType="{x:Type ScrollBar}">
+            <Setter Property="ContextMenu" Value="{x:Null}" />
             <Setter Property="SnapsToDevicePixels"
           Value="True" />
             <Setter Property="OverridesDefaultStyle"
