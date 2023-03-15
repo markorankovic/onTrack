@@ -11,7 +11,7 @@ using Windows.UI.Notifications;
 using WindowsInput;
 using WindowsInput.Native;
 using System.Windows.Input;
-using Windows.System;
+using System.Windows;
 
 namespace onTrack
 {
@@ -68,21 +68,42 @@ namespace onTrack
             {
                 Dispatcher.CurrentDispatcher.Invoke(() =>
                 {
-                    if (CurrentReinforcement.IsValidResponse(toastArgs))
+                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, new Action(() =>
                     {
-                        Reset();
+                    if (CurrentReinforcement.IsValidResponse(toastArgs) || toastArgs.Argument.Equals("action=done_task") || toastArgs.Argument.Equals("action=new_goal"))
+                    {
+                        if (toastArgs.Argument.Equals("action=done_task"))
+                        {
+                            var taskTree = ((TaskTree?)Application.Current.Resources["taskList"]);
+                            if (toastArgs.UserInput.Count == 0)
+                            {
+                                taskTree?.CurrentTask?.FinishedTask();
+                            } else
+                            {
+                                var newTask = (string)toastArgs.UserInput["tbReply"];
+                                taskTree?.CurrentTask?.FinishedTask(newTask);
+                            }
+                        }
+                        else if (toastArgs.Argument.Equals("action=new_goal"))
+                        {
+                            var taskTree = ((TaskTree?)Application.Current.Resources["taskList"]);
+                            var newGoal = new TaskItem();
+                            newGoal.Task = (string)toastArgs.UserInput["tbReply"];
+                            taskTree?.SetCurrentTask(newGoal);
+                        }
                         if (autoPlayClickLocation != null && autoPausePlay)
                         {
                             AutoPlay();
                         }
+                        Reset();
                     }
                     else
                     {
                         WakeUser();
                     }
+                    }));
                 });
             };
-            
         }
 
         static Action Callback;
