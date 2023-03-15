@@ -1,4 +1,5 @@
 ﻿using onTrack.Components;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -66,6 +67,26 @@ namespace onTrack.Views
             ScrollViewer scv = (ScrollViewer)sender;
             scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
             e.Handled = true;
+        }
+
+        Point previousMousePosition = new Point(0.0, 0.0);
+        Point mousePosition = new Point(0.0, 0.0);
+
+        private void DragEnter(object sender, MouseEventArgs e)
+        {
+            Point delta = new Point(mousePosition.X - previousMousePosition.X, mousePosition.Y - previousMousePosition.Y);
+            scroll_viewer.ScrollToHorizontalOffset(scroll_viewer.HorizontalOffset - delta.X);
+            scroll_viewer.ScrollToVerticalOffset(scroll_viewer.VerticalOffset - delta.Y);
+        }
+
+        private void UserControl_MouseMove(object sender, MouseEventArgs e)
+        {
+            previousMousePosition = mousePosition;
+            mousePosition = e.GetPosition(this);
+            if (e.RightButton == MouseButtonState.Pressed)
+            {
+                DragEnter(sender, e);
+            }
         }
     }
 }
