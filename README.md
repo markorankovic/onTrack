@@ -72,7 +72,7 @@ Randomly selects a reinforcement after every interval. This way users don't get 
 ## Automations
 Automations (Or macros) are used so certain actions such as pausing/playing a video is done automatically when the time is up and users don't have to always move the mouse to focus on the textbox if they need to make a textual response to reinforcements such as What You Gonna Do Now or Type Out The Goal.
 ### Recording a button press
-![alt text](https://github.com/markorankovic/onTrack/blob/release/1.2.0/Screenshots/recording_pause_button.png)
+![alt text](https://github.com/markorankovic/onTrack/blob/release/1.2.0/Screenshots/automations_settings.png)
 Click on "Record" for the pause button and when it says "Stop" then press the key you want to use to pause the video.
 ### Recording a click
 For playing a video or focusing on a textbox of a reinforcement, press record and then click on the part of the screen like the play button or the textbox of the simulated notification. NOTE: Don't actually press the textbox, instead place the cursor close to it (as shown by the [red cross](https://www.icrc.org/en/donate) in the screenshot below) and wait for the notification to disappear and then move the cursor to where the textbox was and then click. 
