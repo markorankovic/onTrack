@@ -66,7 +66,7 @@ The user has to select the corresponding objective they have specified. The name
 ![alt text](https://github.com/markorankovic/onTrack/blob/release/1.2.0/Screenshots/8.png)
 
 What you gonna now, the moment the notification is gone? Not the ultimate task you have set, but the exact action you will take right at the moment?
-The idea here is to make the user think about smaller milestones for reaching the objective they've set. The next time this notification fires, it will display the previous response made by the user. 
+The idea here is to make the user think about smaller milestones for reaching the objective they've set. The next time this notification fires, it will display the previous response made by the user. Pressing the done button similarly to the Standard reinforcement will move the current task to the next one, which is a sibling task if there is either a pre-existing one or the parent task, otherwise the response is a new sibling task. Pressing the New Goal button will set the response as a sub-task of the current task.
 #### Random
 Randomly selects a reinforcement after every interval. This way users don't get too habitual with their responses.
 ## Automations
