@@ -53,7 +53,7 @@ Reinforcements offer a variety of UIs on the notifications aimed to reinforce th
 #### Standard
 ![alt text](https://github.com/markorankovic/onTrack/blob/release/1.2.0/Screenshots/3.png)
 
-The Standard reinforcement features a notification which asks the user if they're focusing with their task displayed and the user must respond by clicking on the Yes button.
+The Standard reinforcement features a notification which asks the user if they're focusing with their task displayed and the user must respond by clicking on the Yes button, unless the user presses the Done button which sets the current task to the next in the task tree.
 #### Type out the task
 ![alt text](https://github.com/markorankovic/onTrack/blob/release/1.2.0/Screenshots/4.png)
 
