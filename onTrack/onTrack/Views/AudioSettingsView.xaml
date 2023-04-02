@@ -59,7 +59,7 @@
     </UserControl.Resources>
 
     <Grid>
-        <StackPanel Margin="149 0 0 0">
+        <StackPanel Margin="130 0 0 0">
             <StackPanel HorizontalAlignment="Left">
                 <Label FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="0 0 0 10">Alarm sounds</Label>
                 <StackPanel x:Name="alarmSound" Orientation="Horizontal" HorizontalAlignment="Left" Margin="-4 0 0 0">

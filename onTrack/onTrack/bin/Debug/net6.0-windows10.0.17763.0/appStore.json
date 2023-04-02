@@ -1,0 +1,30 @@
+{
+  "taskTree": {
+    "Items": [
+      {
+        "Children": [],
+        "Task": "My Task",
+        "IsCurrentTask": true,
+        "Id": "08c2f485-598e-418f-9172-ad43d4acf6df",
+        "IsDone": false
+      }
+    ],
+    "_CurrentTask": {
+      "Children": [],
+      "Task": "My Task",
+      "IsCurrentTask": true,
+      "Id": "08c2f485-598e-418f-9172-ad43d4acf6df",
+      "IsDone": false
+    }
+  },
+  "settings": {
+    "Duration": 30,
+    "reinforcement": "WhatYouGonnaDoNowReinforcement",
+    "alarmName": "Wake Up",
+    "autoPausePlayEnabled": true,
+    "autoFocusEnabled": true,
+    "autoPauseKey": null,
+    "autoFocusClickLocation": null,
+    "autoPlayClickLocation": null
+  }
+}

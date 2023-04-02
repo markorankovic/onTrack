@@ -3,7 +3,6 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace onTrack.Components
 {
