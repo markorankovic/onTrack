@@ -1,14 +1,49 @@
+# onTrack 1.2.0
+- Introducing the task tree
+- App data is persisted in JSON format
+
 # Introduction
 The aim of onTrack is to help people who struggle to focus on a given task and sometimes also lose track of things they were supposed to do. onTrack monitors the user's focus through routinely communications between the app and the user with minimal disruptions to the user's activity. This takes place by specifying the task the user is focused on and the interval at which the app which fire a notification to check if the user is still focused on the task. However, simply displaying notifications to user can eventually serve little to no purpose if the user gets used to seeing the same notification. To overcome this issue the app can use Reinforcements for the notifications designed to obtain responses from the user in such a way that the user would have to be conscious about the task in order to deliver a valid response. Failure to do so will result in the alarm setting off to which the user would have to go back on the app and reset/stop the timer.
 
 # Usage
 1. Open the app and you should see the following screen.
 ![alt text](https://github.com/markorankovic/onTrack/blob/develop/Screenshots/0.png)
-2. Where it says "Your Objective", replace that with the title of your task.
-3. The slider below is for you to adjust how often you want the notification to fire in minutes. By default it is 30s.
+2. Where it says "Your Objective", replace that with the title of your task (if you haven't already set your tasks).
+3. The timer below is for you to adjust how often you want the notification to fire (By default it is 30s).
 4. Before you start the timer by pressing the play button, check the settings by pressing the ⚙️ button.
-5. Adjust the settings (see Settings) as needed
-6. You're ready to get onTrack!
+5. Create a task tree (see Task Tree) by navigating to the screen by pressing the 📃 button.
+6. Adjust the settings (see Settings) as needed
+7. You're ready to get onTrack!
+
+# Task Tree
+The task tree allows users to break up their tasks into smaller, but specific sub-tasks which in turn can be repeated on sub-tasks.
+
+![alt text](https://github.com/markorankovic/onTrack/blob/release/1.2.0/Screenshots/task_tree_1.png)
+
+Let's say you wanna be an astronaut, that's quite ambitious ain't it? 
+So let's break the dream down into realistic steps! 
+Let's first rename "Your Objective" by clicking on it and then the pencil icon that shows up. 
+Let's instead put "Apply for NASA".
+
+![alt text](https://github.com/markorankovic/onTrack/blob/release/1.2.0/Screenshots/task_tree_2.png)
+
+It now should look as follows ⬇️
+
+![alt text](https://github.com/markorankovic/onTrack/blob/release/1.2.0/Screenshots/task_tree_3.png)
+
+Let's now break it down by adding a sub-task which you can do by pressing the ESC button on "Apply for NASA".
+
+![alt text](https://github.com/markorankovic/onTrack/blob/release/1.2.0/Screenshots/task_tree_4.png)
+
+Let's now rename "New Goal" to "Study Physics".
+
+![alt text](https://github.com/markorankovic/onTrack/blob/release/1.2.0/Screenshots/task_tree_5.png)
+
+Now to set the sub-task as the current task, press the arrow button to the right.
+
+![alt text](https://github.com/markorankovic/onTrack/blob/release/1.2.0/Screenshots/task_tree_6.png)
+
+Now your task is to study Physics if you're gonna dream about becoming an astronaut! 🧑‍🚀
 
 # Settings
 ## Notifications
