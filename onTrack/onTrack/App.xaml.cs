@@ -1,5 +1,4 @@
-﻿using onTrack.Reinforcements;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -8,7 +7,6 @@ using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Windows;
-using System.Windows.Data;
 using System.Windows.Input;
 
 namespace onTrack
@@ -230,7 +228,6 @@ namespace onTrack
     }
 
     public partial class App : Application {
-
         public App()
         {
             InitializeComponent();
@@ -245,8 +242,14 @@ namespace onTrack
             settings.alarmName = Timer.GetAlarmName();
             settings.autoPausePlayEnabled = Timer.autoPausePlay;
             settings.autoFocusEnabled = Timer.autoFocus;
-            settings.autoFocusClickLocation = new Point2D() { x = Timer.autoFocusClickLocation.x, y = Timer.autoFocusClickLocation.y };
-            settings.autoPlayClickLocation = new Point2D() { x = Timer.autoPlayClickLocation.x, y = Timer.autoPlayClickLocation.y };
+            if (Timer.autoFocusClickLocation != null)
+            {
+                settings.autoFocusClickLocation = new Point2D() { x = Timer.autoFocusClickLocation.x, y = Timer.autoFocusClickLocation.y };
+            }
+            if (Timer.autoPlayClickLocation != null)
+            {
+                settings.autoPlayClickLocation = new Point2D() { x = Timer.autoPlayClickLocation.x, y = Timer.autoPlayClickLocation.y };
+            }
             settings.autoPauseKey = Timer.autoPauseKey;
             AppStore store = new AppStore();
             store.taskTree = taskTree;
@@ -282,11 +285,13 @@ namespace onTrack
                 Timer.autoPauseKey = appStore.settings.autoPauseKey;
                 Timer.SetReinforcement(appStore.settings.reinforcement);
                 Timer.SetAlarmName(appStore.settings.alarmName);
-                try
+                if (appStore.settings.autoFocusClickLocation != null)
                 {
                     Timer.autoFocusClickLocation = new Location(x: appStore.settings.autoFocusClickLocation!.x, y: appStore.settings.autoFocusClickLocation.y);
+                }
+                if (appStore.settings.autoPlayClickLocation != null)
+                {
                     Timer.autoPlayClickLocation = new Location(x: appStore.settings.autoPlayClickLocation!.x, y: appStore.settings.autoPlayClickLocation.y);
-                } catch { 
                 }
             }
             catch
