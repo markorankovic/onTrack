@@ -1,13 +1,15 @@
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.exe
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.dll
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\Microsoft.Toolkit.Uwp.Notifications.dll
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\Microsoft.Windows.SDK.NET.dll
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\WinRT.Runtime.dll
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.Properties.Resources.resources
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\Alarm Sounds\Evacuation.wav
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\Alarm Sounds\Police.wav
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\Alarm Sounds\Wake Up.wav
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.exe
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.deps.json
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.runtimeconfig.json
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.pdb
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\WindowsInput.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\Microsoft.Toolkit.Uwp.Notifications.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\Microsoft.Windows.SDK.NET.dll
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\WinRT.Runtime.dll
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.csproj.AssemblyReference.cache
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Components\Countdown.baml
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\AudioSettingsView.baml
@@ -36,6 +38,7 @@ C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\TaskListView.baml
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\Views\TimerView.baml
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.g.resources
+C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.Properties.Resources.resources
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.csproj.GenerateResource.cache
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.AssemblyInfoInputs.cache
@@ -45,8 +48,5 @@ C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.dll
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\refint\onTrack.dll
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.pdb
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.deps.json
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.runtimeconfig.json
-C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\bin\Debug\net6.0-windows10.0.17763.0\onTrack.pdb
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\onTrack.genruntimeconfig.cache
 C:\Users\marko\Documents\GitHub\onTrack\onTrack\onTrack\obj\Debug\net6.0-windows10.0.17763.0\ref\onTrack.dll
