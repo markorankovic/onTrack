@@ -5,7 +5,9 @@
              xmlns:views="clr-namespace:onTrack.Views"
              StartupUri="MainWindow.xaml"
              xmlns:onTrack="clr-namespace:onTrack"
-             xmlns:components="clr-namespace:onTrack.Components">
+             xmlns:components="clr-namespace:onTrack.Components"
+             Exit="Application_Exit"
+             Startup="Application_Startup">
     <Application.Resources>
         <ResourceDictionary>
             <Style x:Key="NavButtonStyle" TargetType="components:NavButton">

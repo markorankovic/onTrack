@@ -172,6 +172,19 @@ namespace onTrack
             previousReinforcements.Add(reinforcement);
         }
 
+        public static void SetReinforcement(string Type)
+        {
+            switch (Type)
+            {
+                case "TypeOutTheGoalReinforcement": Timer.SetReinforcement(new TypeOutTheGoalReinforcement()); return;
+                case "StandardReinforcement": Timer.SetReinforcement(new StandardReinforcement()); return;
+                case "NoneReinforcement": Timer.SetReinforcement(new NoneReinforcement()); return;
+                case "PressTheRightGoalReinforcement": Timer.SetReinforcement(new PressTheRightGoalReinforcement()); return;
+                case "WhatYouGonnaDoNowReinforcement": Timer.SetReinforcement(new WhatYouGonnaDoNowReinforcement()); return;
+                case "RandomReinforcement": Timer.SetReinforcement(new RandomReinforcement()); return;
+            }
+        }
+
         private static void ExecuteCallbacks()
         {
             Callback();
