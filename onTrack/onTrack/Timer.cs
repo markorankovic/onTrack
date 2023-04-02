@@ -339,6 +339,9 @@ namespace onTrack
             if (!(CurrentReinforcement is NoneReinforcement) && Remaining == -1)
             {
                 WakeUser();
+            } else
+            {
+                ResetTimer();
             }
             ToastNotificationManagerCompat.History.Clear();
         }
