@@ -305,15 +305,6 @@ namespace onTrack
             inputSimulator.Mouse.LeftButtonClick();
         }
 
-        private static void ClickTheCentreOfTheScreen()
-        {
-            InputSimulator inputSimulator = new InputSimulator();
-            var X = (3840 / 2) * 65535 / 3840;
-            var Y = (2160 / 2) * 65535 / 2160;
-            inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(X, Y);
-            inputSimulator.Mouse.LeftButtonClick();
-        }
-
         private static void SendAutoPauseKey()
         {
             if (autoPauseKey == null) return;
