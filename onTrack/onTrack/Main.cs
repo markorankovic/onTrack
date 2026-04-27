@@ -21,8 +21,8 @@ namespace onTrack
 
         static string AlarmName = "Wake Up";
 
-        static Timer timer;
-        static SoundPlayer soundPlayer = new (Properties.Resources.Wake_Up);
+        static Timer Timer;
+        static SoundPlayer SoundPlayer = new (Properties.Resources.Wake_Up);
 
         public static double Duration = 30;
         public static int Counted = 0;
@@ -38,17 +38,17 @@ namespace onTrack
 
         public static int TimeEllapsed { get { return (int) DateTime.UtcNow.Subtract(TimeInitiated != null ? TimeInitiated.Value : DateTime.UtcNow).TotalMilliseconds; } }
 
-        static List<Reinforcement> previousReinforcements = new();
+        static List<Reinforcement> PreviousReinforcements = new();
 
-        public static bool autoPausePlay = false;
+        public static bool AutoPausePlay = false;
 
-        public static bool autoFocus = false;
+        public static bool AutoFocus = false;
 
-        public static Key? autoPauseKey;
+        public static Key? AutoPauseKey;
 
-        public static Location autoFocusClickLocation = null;
+        public static Location AutoFocusClickLocation = null;
 
-        public static Location autoPlayClickLocation = null;
+        public static Location AutoPlayClickLocation = null;
 
         static Main()
         {
@@ -79,7 +79,7 @@ namespace onTrack
                             newGoal.Task = (string)toastArgs.UserInput["tbReply"];
                             taskTree?.SetCurrentTask(newGoal);
                         }
-                        if (autoPlayClickLocation != null && autoPausePlay)
+                        if (AutoPlayClickLocation != null && AutoPausePlay)
                         {
                             AutoPlay();
                         }
@@ -122,7 +122,7 @@ namespace onTrack
                 case "Evacuation": stream = Properties.Resources.Evacuation; break;
                 default: stream = Properties.Resources.Wake_Up; break;
             }
-            soundPlayer = new(stream);
+            SoundPlayer = new(stream);
         }
 
         public static void SetDuration(double duration)
@@ -142,22 +142,22 @@ namespace onTrack
 
         public static Reinforcement GetReinforcementInstance(Reinforcement reinforcement)
         {
-            foreach (Reinforcement previousReinforcement in previousReinforcements)
+            foreach (Reinforcement previousReinforcement in PreviousReinforcements)
             {
                 if (reinforcement.GetType().Equals(previousReinforcement.GetType())) { return previousReinforcement; }
             }
-            previousReinforcements.Add(reinforcement);
+            PreviousReinforcements.Add(reinforcement);
             return reinforcement;
         }
 
         public static void SetReinforcement(Reinforcement reinforcement)
         {
-            foreach(Reinforcement previousReinforcement in previousReinforcements)
+            foreach(Reinforcement previousReinforcement in PreviousReinforcements)
             {
                 if (reinforcement.GetType().Equals(previousReinforcement.GetType())) { CurrentReinforcement = previousReinforcement; return; }
             }
             CurrentReinforcement = reinforcement;
-            previousReinforcements.Add(reinforcement);
+            PreviousReinforcements.Add(reinforcement);
         }
 
         public static void SetReinforcement(string Type)
@@ -191,25 +191,25 @@ namespace onTrack
                 Playing = false;
                 ExecuteCallbacks();
                 ExecuteFinishCallbacks();
-                soundPlayer.Stop();
-                timer?.Stop();
+                SoundPlayer.Stop();
+                Timer?.Stop();
             });
         }
 
         private static void WakeUser()
         {
-            soundPlayer.PlayLooping();
+            SoundPlayer.PlayLooping();
         }
 
         public static void PlayAlarm()
         {
-            soundPlayer.PlayLooping();
+            SoundPlayer.PlayLooping();
             SoundPlaying = true;
         }
 
         public static void StopAlarm()
         {
-            soundPlayer.Stop();
+            SoundPlayer.Stop();
             SoundPlaying = false;
         }
 
@@ -221,12 +221,12 @@ namespace onTrack
             ExecuteFinishCallbacks();
             Counted = 0;
             Trace.WriteLine("Duration: " + Duration);
-            timer?.Stop();
-            timer = new(Duration * 1000);
-            timer.Elapsed += OnTimedEvent;
-            timer.Interval = 1000;
-            timer.AutoReset = true;
-            timer.Enabled = true;
+            Timer?.Stop();
+            Timer = new(Duration * 1000);
+            Timer.Elapsed += OnTimedEvent;
+            Timer.Interval = 1000;
+            Timer.AutoReset = true;
+            Timer.Enabled = true;
         }
 
         public static void Reset()
@@ -269,16 +269,16 @@ namespace onTrack
                     ExecuteCallbacks();
                     return;
                 }
-                timer.AutoReset = false;
-                timer.Enabled = false;
+                Timer.AutoReset = false;
+                Timer.Enabled = false;
 
                 AlertUser();
 
-                if (autoPauseKey != null && autoPausePlay)
+                if (AutoPauseKey != null && AutoPausePlay)
                 {
                     SendAutoPauseKey();
                 }
-                if (CurrentReinforcement is WhatYouGonnaDoNowReinforcement && autoFocus)
+                if (CurrentReinforcement is WhatYouGonnaDoNowReinforcement && AutoFocus)
                 {
                     FocusOnTheTextBox();
                 }
@@ -288,8 +288,8 @@ namespace onTrack
         private static void AutoPlay()
         {
             InputSimulator inputSimulator = new InputSimulator();
-            var X = autoPlayClickLocation.x * 65535 / SystemParameters.WorkArea.Width;
-            var Y = autoPlayClickLocation.y * 65535 / SystemParameters.WorkArea.Height;
+            var X = AutoPlayClickLocation.x * 65535 / SystemParameters.WorkArea.Width;
+            var Y = AutoPlayClickLocation.y * 65535 / SystemParameters.WorkArea.Height;
             inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(X, Y);
             System.Threading.Thread.Sleep(500);
             inputSimulator.Mouse.LeftButtonClick();
@@ -298,8 +298,8 @@ namespace onTrack
         private static void FocusOnTheTextBox()
         {
             InputSimulator inputSimulator = new InputSimulator();
-            var X = autoFocusClickLocation.x * 65535 / SystemParameters.WorkArea.Width;
-            var Y = autoFocusClickLocation.y * 65535 / SystemParameters.WorkArea.Height;
+            var X = AutoFocusClickLocation.x * 65535 / SystemParameters.WorkArea.Width;
+            var Y = AutoFocusClickLocation.y * 65535 / SystemParameters.WorkArea.Height;
             inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(X, Y);
             System.Threading.Thread.Sleep(500);
             inputSimulator.Mouse.LeftButtonClick();
@@ -307,9 +307,9 @@ namespace onTrack
 
         private static void SendAutoPauseKey()
         {
-            if (autoPauseKey == null) return;
+            if (AutoPauseKey == null) return;
             InputSimulator inputSimulator = new InputSimulator();
-            VirtualKeyCode keyCode = (VirtualKeyCode) KeyInterop.VirtualKeyFromKey(autoPauseKey.Value);
+            VirtualKeyCode keyCode = (VirtualKeyCode) KeyInterop.VirtualKeyFromKey(AutoPauseKey.Value);
             inputSimulator.Keyboard.KeyDown(keyCode);
         }
 
@@ -328,9 +328,9 @@ namespace onTrack
         public static void RecordClick(int x, int y, bool autoFocus)
         {
             if (autoFocus)
-                autoFocusClickLocation = new Location(x, y);
+                AutoFocusClickLocation = new Location(x, y);
             else
-                autoPlayClickLocation = new Location(x, y);
+                AutoPlayClickLocation = new Location(x, y);
         }
     }
 }

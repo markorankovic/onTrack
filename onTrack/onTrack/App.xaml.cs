@@ -240,17 +240,17 @@ namespace onTrack
             settings.Duration = onTrack.Main.Duration;
             settings.reinforcement = onTrack.Main.GetReinforcement().GetType().Name;
             settings.alarmName = onTrack.Main.GetAlarmName();
-            settings.autoPausePlayEnabled = onTrack.Main.autoPausePlay;
-            settings.autoFocusEnabled = onTrack.Main.autoFocus;
-            if (onTrack.Main.autoFocusClickLocation != null)
+            settings.autoPausePlayEnabled = onTrack.Main.AutoPausePlay;
+            settings.autoFocusEnabled = onTrack.Main.AutoFocus;
+            if (onTrack.Main.AutoFocusClickLocation != null)
             {
-                settings.autoFocusClickLocation = new Point2D() { x = onTrack.Main.autoFocusClickLocation.x, y = onTrack.Main.autoFocusClickLocation.y };
+                settings.autoFocusClickLocation = new Point2D() { x = onTrack.Main.AutoFocusClickLocation.x, y = onTrack.Main.AutoFocusClickLocation.y };
             }
-            if (onTrack.Main.autoPlayClickLocation != null)
+            if (onTrack.Main.AutoPlayClickLocation != null)
             {
-                settings.autoPlayClickLocation = new Point2D() { x = onTrack.Main.autoPlayClickLocation.x, y = onTrack.Main.autoPlayClickLocation.y };
+                settings.autoPlayClickLocation = new Point2D() { x = onTrack.Main.AutoPlayClickLocation.x, y = onTrack.Main.AutoPlayClickLocation.y };
             }
-            settings.autoPauseKey = onTrack.Main.autoPauseKey;
+            settings.autoPauseKey = onTrack.Main.AutoPauseKey;
             AppStore store = new AppStore();
             store.taskTree = taskTree;
             store.settings = settings;
@@ -280,18 +280,18 @@ namespace onTrack
                 Current.Resources.Add("taskList", appStore.taskTree);
 
                 onTrack.Main.Duration = appStore.settings.Duration;
-                onTrack.Main.autoPausePlay = appStore.settings.autoPausePlayEnabled;
-                onTrack.Main.autoFocus = appStore.settings.autoFocusEnabled;
-                onTrack.Main.autoPauseKey = appStore.settings.autoPauseKey;
+                onTrack.Main.AutoPausePlay = appStore.settings.autoPausePlayEnabled;
+                onTrack.Main.AutoFocus = appStore.settings.autoFocusEnabled;
+                onTrack.Main.AutoPauseKey = appStore.settings.autoPauseKey;
                 onTrack.Main.SetReinforcement(appStore.settings.reinforcement);
                 onTrack.Main.SetAlarmName(appStore.settings.alarmName);
                 if (appStore.settings.autoFocusClickLocation != null)
                 {
-                    onTrack.Main.autoFocusClickLocation = new Location(x: appStore.settings.autoFocusClickLocation!.x, y: appStore.settings.autoFocusClickLocation.y);
+                    onTrack.Main.AutoFocusClickLocation = new Location(x: appStore.settings.autoFocusClickLocation!.x, y: appStore.settings.autoFocusClickLocation.y);
                 }
                 if (appStore.settings.autoPlayClickLocation != null)
                 {
-                    onTrack.Main.autoPlayClickLocation = new Location(x: appStore.settings.autoPlayClickLocation!.x, y: appStore.settings.autoPlayClickLocation.y);
+                    onTrack.Main.AutoPlayClickLocation = new Location(x: appStore.settings.autoPlayClickLocation!.x, y: appStore.settings.autoPlayClickLocation.y);
                 }
             }
             catch

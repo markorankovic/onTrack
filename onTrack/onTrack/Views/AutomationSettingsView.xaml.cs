@@ -19,15 +19,15 @@ namespace onTrack.Views
 
             DataContext = this;
 
-            enabled.IsChecked = Main.autoPausePlay || Main.autoFocus;
-            autoPausePlay.IsChecked = Main.autoPausePlay;
-            autoFocus.IsChecked = Main.autoFocus;
+            enabled.IsChecked = Main.AutoPausePlay || Main.AutoFocus;
+            autoPausePlay.IsChecked = Main.AutoPausePlay;
+            autoFocus.IsChecked = Main.AutoFocus;
 
-            Pause_Record.Content = Main.autoPauseKey != null ? "Record Again" : "Record";
-            Play_Record.Content = Main.autoPlayClickLocation != null ? "Record Again" : "Record";
-            Focus_Record.Content = Main.autoFocusClickLocation != null ? "Record Again" : "Record";
+            Pause_Record.Content = Main.AutoPauseKey != null ? "Record Again" : "Record";
+            Play_Record.Content = Main.AutoPlayClickLocation != null ? "Record Again" : "Record";
+            Focus_Record.Content = Main.AutoFocusClickLocation != null ? "Record Again" : "Record";
 
-            Pause_Button_Label.Content = Main.autoPauseKey != null ? "Pause: " + Main.autoPauseKey.ToString() : "Pause Button";
+            Pause_Button_Label.Content = Main.AutoPauseKey != null ? "Pause: " + Main.AutoPauseKey.ToString() : "Pause Button";
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -57,11 +57,11 @@ namespace onTrack.Views
         {
             if (autoPausePlay.IsChecked == true)
             {
-                Main.autoPausePlay = true;
+                Main.AutoPausePlay = true;
             }
             else
             {
-                Main.autoPausePlay = false;
+                Main.AutoPausePlay = false;
             }
         }
 
@@ -85,11 +85,11 @@ namespace onTrack.Views
         {
             if (autoFocus.IsChecked == true)
             {
-                Main.autoFocus = true;
+                Main.AutoFocus = true;
             }
             else
             {
-                Main.autoFocus = false;
+                Main.AutoFocus = false;
             }
         }
 
@@ -97,8 +97,8 @@ namespace onTrack.Views
         {
             if (!enabled.IsChecked ?? false)
             {
-                Main.autoPausePlay = false;
-                Main.autoFocus = false;
+                Main.AutoPausePlay = false;
+                Main.AutoFocus = false;
             }
         }
 
@@ -161,11 +161,11 @@ namespace onTrack.Views
                 );
                 if (autoFocus)
                 {
-                    Focus_Record.Content = Main.autoFocusClickLocation != null ? "Record Again" : "Record";
+                    Focus_Record.Content = Main.AutoFocusClickLocation != null ? "Record Again" : "Record";
                 }
                 else
                 {
-                    Play_Record.Content = Main.autoPlayClickLocation != null ? "Record Again" : "Record";
+                    Play_Record.Content = Main.AutoPlayClickLocation != null ? "Record Again" : "Record";
                 }
                 CloseThenOpenMainWindow();
             }
@@ -195,22 +195,22 @@ namespace onTrack.Views
                 RecordingType = Record.Focus;
                 Focus_Record.Focus();
                 RecordClickLocation();
-                Focus_Record.Content = Main.autoFocusClickLocation != null ? "Record Again" : "Record";
+                Focus_Record.Content = Main.AutoFocusClickLocation != null ? "Record Again" : "Record";
             }
         }
 
         private void Pause_Record_KeyDown(object sender, KeyEventArgs e)
         {
             Key key = e.Key;
-            Main.autoPauseKey = key;
+            Main.AutoPauseKey = key;
             Pause_Record.Content = "Record Again";
-            Pause_Button_Label.Content = Main.autoPauseKey != null ? "Pause: " + Main.autoPauseKey.ToString() : "Pause Button";
+            Pause_Button_Label.Content = Main.AutoPauseKey != null ? "Pause: " + Main.AutoPauseKey.ToString() : "Pause Button";
         }
 
         private void Pause_Record_LostFocus(object sender, RoutedEventArgs e)
         {
             recording = false;
-            Pause_Record.Content = Main.autoPauseKey != null ? "Record Again" : "Record";
+            Pause_Record.Content = Main.AutoPauseKey != null ? "Record Again" : "Record";
         }
 
         private void Play_Record_LostFocus(object sender, RoutedEventArgs e)
@@ -234,7 +234,7 @@ namespace onTrack.Views
             }
             else
             {
-                Pause_Record.Content = Main.autoPauseKey != null ? "Record Again" : "Record";
+                Pause_Record.Content = Main.AutoPauseKey != null ? "Record Again" : "Record";
             }
         }
     }
