@@ -28,7 +28,7 @@ namespace onTrack
         public static int Counted = 0;
         public static int Remaining { get { return (int)(Duration - Counted); }  }
 
-        public static string Objective = "Your Objective";
+        public static string CurrentObjective = "Your Objective";
 
         public static bool SoundPlaying = false;
 
@@ -132,7 +132,7 @@ namespace onTrack
 
         public static void SetObjective(string objective)
         {
-            Objective = objective;
+            CurrentObjective = objective;
         }
 
         public static Reinforcement GetReinforcement()
@@ -239,7 +239,7 @@ namespace onTrack
          
         private static void AlertUser()
         {
-            CurrentReinforcement.CreateToast(Objective)
+            CurrentReinforcement.CreateToast(CurrentObjective)
                 .Show(toast =>
                 {
                     toast.Dismissed += OnToastPassed;
