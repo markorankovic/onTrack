@@ -259,7 +259,7 @@ namespace onTrack
                 .Show();
         }
 
-        private static void OnTimedEvent(System.Object source, ElapsedEventArgs e)
+        private static void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             Dispatcher.CurrentDispatcher.Invoke(() =>
             {
@@ -288,8 +288,8 @@ namespace onTrack
         private static void AutoPlay()
         {
             InputSimulator inputSimulator = new InputSimulator();
-            var X = autoPlayClickLocation.x * 65535 / System.Windows.SystemParameters.WorkArea.Width;
-            var Y = autoPlayClickLocation.y * 65535 / System.Windows.SystemParameters.WorkArea.Height;
+            var X = autoPlayClickLocation.x * 65535 / SystemParameters.WorkArea.Width;
+            var Y = autoPlayClickLocation.y * 65535 / SystemParameters.WorkArea.Height;
             inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(X, Y);
             System.Threading.Thread.Sleep(500);
             inputSimulator.Mouse.LeftButtonClick();
@@ -298,8 +298,8 @@ namespace onTrack
         private static void FocusOnTheTextBox()
         {
             InputSimulator inputSimulator = new InputSimulator();
-            var X = autoFocusClickLocation.x * 65535 / System.Windows.SystemParameters.WorkArea.Width;
-            var Y = autoFocusClickLocation.y * 65535 / System.Windows.SystemParameters.WorkArea.Height;
+            var X = autoFocusClickLocation.x * 65535 / SystemParameters.WorkArea.Width;
+            var Y = autoFocusClickLocation.y * 65535 / SystemParameters.WorkArea.Height;
             inputSimulator.Mouse.MoveMouseToPositionOnVirtualDesktop(X, Y);
             System.Threading.Thread.Sleep(500);
             inputSimulator.Mouse.LeftButtonClick();
