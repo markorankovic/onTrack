@@ -21,7 +21,7 @@ namespace onTrack
 
         static string AlarmName = "Wake Up";
 
-        static System.Timers.Timer timer;
+        static Timer timer;
         static SoundPlayer soundPlayer = new (Properties.Resources.Wake_Up);
 
         public static double Duration = 30;
