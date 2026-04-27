@@ -15,7 +15,7 @@ using System.Windows;
 
 namespace onTrack
 {
-    public class Timer
+    public class Main
     {
         static Reinforcement CurrentReinforcement = new StandardReinforcement();
 
@@ -50,7 +50,7 @@ namespace onTrack
 
         public static Location autoPlayClickLocation = null;
 
-        static Timer()
+        static Main()
         {
             ToastNotificationManagerCompat.OnActivated += toastArgs =>
             {
@@ -164,12 +164,12 @@ namespace onTrack
         {
             switch (Type)
             {
-                case "TypeOutTheGoalReinforcement": Timer.SetReinforcement(new TypeOutTheGoalReinforcement()); return;
-                case "StandardReinforcement": Timer.SetReinforcement(new StandardReinforcement()); return;
-                case "NoneReinforcement": Timer.SetReinforcement(new NoneReinforcement()); return;
-                case "PressTheRightGoalReinforcement": Timer.SetReinforcement(new PressTheRightGoalReinforcement()); return;
-                case "WhatYouGonnaDoNowReinforcement": Timer.SetReinforcement(new WhatYouGonnaDoNowReinforcement()); return;
-                case "RandomReinforcement": Timer.SetReinforcement(new RandomReinforcement()); return;
+                case "TypeOutTheGoalReinforcement": Main.SetReinforcement(new TypeOutTheGoalReinforcement()); return;
+                case "StandardReinforcement": Main.SetReinforcement(new StandardReinforcement()); return;
+                case "NoneReinforcement": Main.SetReinforcement(new NoneReinforcement()); return;
+                case "PressTheRightGoalReinforcement": Main.SetReinforcement(new PressTheRightGoalReinforcement()); return;
+                case "WhatYouGonnaDoNowReinforcement": Main.SetReinforcement(new WhatYouGonnaDoNowReinforcement()); return;
+                case "RandomReinforcement": Main.SetReinforcement(new RandomReinforcement()); return;
             }
         }
 

@@ -19,15 +19,15 @@ namespace onTrack.Views
 
             DataContext = this;
 
-            enabled.IsChecked = Timer.autoPausePlay || Timer.autoFocus;
-            autoPausePlay.IsChecked = Timer.autoPausePlay;
-            autoFocus.IsChecked = Timer.autoFocus;
+            enabled.IsChecked = Main.autoPausePlay || Main.autoFocus;
+            autoPausePlay.IsChecked = Main.autoPausePlay;
+            autoFocus.IsChecked = Main.autoFocus;
 
-            Pause_Record.Content = Timer.autoPauseKey != null ? "Record Again" : "Record";
-            Play_Record.Content = Timer.autoPlayClickLocation != null ? "Record Again" : "Record";
-            Focus_Record.Content = Timer.autoFocusClickLocation != null ? "Record Again" : "Record";
+            Pause_Record.Content = Main.autoPauseKey != null ? "Record Again" : "Record";
+            Play_Record.Content = Main.autoPlayClickLocation != null ? "Record Again" : "Record";
+            Focus_Record.Content = Main.autoFocusClickLocation != null ? "Record Again" : "Record";
 
-            Pause_Button_Label.Content = Timer.autoPauseKey != null ? "Pause: " + Timer.autoPauseKey.ToString() : "Pause Button";
+            Pause_Button_Label.Content = Main.autoPauseKey != null ? "Pause: " + Main.autoPauseKey.ToString() : "Pause Button";
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -57,11 +57,11 @@ namespace onTrack.Views
         {
             if (autoPausePlay.IsChecked == true)
             {
-                Timer.autoPausePlay = true;
+                Main.autoPausePlay = true;
             }
             else
             {
-                Timer.autoPausePlay = false;
+                Main.autoPausePlay = false;
             }
         }
 
@@ -85,11 +85,11 @@ namespace onTrack.Views
         {
             if (autoFocus.IsChecked == true)
             {
-                Timer.autoFocus = true;
+                Main.autoFocus = true;
             }
             else
             {
-                Timer.autoFocus = false;
+                Main.autoFocus = false;
             }
         }
 
@@ -97,8 +97,8 @@ namespace onTrack.Views
         {
             if (!enabled.IsChecked ?? false)
             {
-                Timer.autoPausePlay = false;
-                Timer.autoFocus = false;
+                Main.autoPausePlay = false;
+                Main.autoFocus = false;
             }
         }
 
@@ -154,18 +154,18 @@ namespace onTrack.Views
             void Record(object sender, MouseButtonEventArgs e)
             {
                 var pos = Mouse.GetPosition(window);
-                Timer.RecordClick(
+                Main.RecordClick(
                     (int) pos.X,
                     (int) pos.Y,
                     autoFocus
                 );
                 if (autoFocus)
                 {
-                    Focus_Record.Content = Timer.autoFocusClickLocation != null ? "Record Again" : "Record";
+                    Focus_Record.Content = Main.autoFocusClickLocation != null ? "Record Again" : "Record";
                 }
                 else
                 {
-                    Play_Record.Content = Timer.autoPlayClickLocation != null ? "Record Again" : "Record";
+                    Play_Record.Content = Main.autoPlayClickLocation != null ? "Record Again" : "Record";
                 }
                 CloseThenOpenMainWindow();
             }
@@ -175,7 +175,7 @@ namespace onTrack.Views
             MaximizeRecordWindow(window);
 
             if (autoFocus)
-                Timer.SimulateNotification();
+                Main.SimulateNotification();
         }
 
         private void Play_Record_Click(object sender, RoutedEventArgs e)
@@ -195,22 +195,22 @@ namespace onTrack.Views
                 RecordingType = Record.Focus;
                 Focus_Record.Focus();
                 RecordClickLocation();
-                Focus_Record.Content = Timer.autoFocusClickLocation != null ? "Record Again" : "Record";
+                Focus_Record.Content = Main.autoFocusClickLocation != null ? "Record Again" : "Record";
             }
         }
 
         private void Pause_Record_KeyDown(object sender, KeyEventArgs e)
         {
             Key key = e.Key;
-            Timer.autoPauseKey = key;
+            Main.autoPauseKey = key;
             Pause_Record.Content = "Record Again";
-            Pause_Button_Label.Content = Timer.autoPauseKey != null ? "Pause: " + Timer.autoPauseKey.ToString() : "Pause Button";
+            Pause_Button_Label.Content = Main.autoPauseKey != null ? "Pause: " + Main.autoPauseKey.ToString() : "Pause Button";
         }
 
         private void Pause_Record_LostFocus(object sender, RoutedEventArgs e)
         {
             recording = false;
-            Pause_Record.Content = Timer.autoPauseKey != null ? "Record Again" : "Record";
+            Pause_Record.Content = Main.autoPauseKey != null ? "Record Again" : "Record";
         }
 
         private void Play_Record_LostFocus(object sender, RoutedEventArgs e)
@@ -234,7 +234,7 @@ namespace onTrack.Views
             }
             else
             {
-                Pause_Record.Content = Timer.autoPauseKey != null ? "Record Again" : "Record";
+                Pause_Record.Content = Main.autoPauseKey != null ? "Record Again" : "Record";
             }
         }
     }

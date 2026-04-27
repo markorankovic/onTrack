@@ -12,10 +12,10 @@ namespace onTrack.Components
         {
             InitializeComponent();
             DataContext = this;
-            Timer.AddFinishCallback(ResetSequence);
-            if (Timer.Playing)
+            Main.AddFinishCallback(ResetSequence);
+            if (Main.Playing)
             {
-                CurrentTime = 251 * ((Timer.TimeEllapsed / 1000) / Timer.Duration);
+                CurrentTime = 251 * ((Main.TimeEllapsed / 1000) / Main.Duration);
                 RunSequence();
             }
         }
@@ -37,7 +37,7 @@ namespace onTrack.Components
         {
             Dispatcher.Invoke(() =>
             {
-                if (Timer.Playing)
+                if (Main.Playing)
                 {
                     CurrentTime = 0;
                     RunSequence();
@@ -55,7 +55,7 @@ namespace onTrack.Components
             double max = 251.0;
             doubleAnimation.From = CurrentTime;
             doubleAnimation.To = max;
-            double duration = Timer.Duration - (Timer.TimeEllapsed / 1000);
+            double duration = Main.Duration - (Main.TimeEllapsed / 1000);
             doubleAnimation.Duration = TimeSpan.FromSeconds(duration >= 0 ? duration : 0);
 
             timeSequence.Children.Add(doubleAnimation);

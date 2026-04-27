@@ -44,7 +44,7 @@ namespace onTrack.Components
         {
             InitializeComponent();
             UpdateTime();
-            Timer.AddCallback(UpdateTime);
+            Main.AddCallback(UpdateTime);
             Enabled = false;
         }
 
@@ -52,8 +52,8 @@ namespace onTrack.Components
         {
             Dispatcher.Invoke(() =>
             {
-                var minutes = Timer.Remaining / 60;
-                var seconds = Timer.Remaining - (minutes * 60);
+                var minutes = Main.Remaining / 60;
+                var seconds = Main.Remaining - (minutes * 60);
                 seconds = seconds < 0 ? 0 : seconds;
                 timeStr = (minutes < 10 ? 0 + "" + minutes : "" + minutes) + "" + (seconds < 10 ? 0 + "" + seconds : "" + seconds);
             });
@@ -103,7 +103,7 @@ namespace onTrack.Components
 
         private void textbox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (Timer.Playing || !Enabled)
+            if (Main.Playing || !Enabled)
             {
                 textbox.Text = previousText; 
                 return;
@@ -113,7 +113,7 @@ namespace onTrack.Components
             if (parsed)
             {
                 timeStr += diff;
-                Timer.SetDuration(StringToSeconds());
+                Main.SetDuration(StringToSeconds());
             } else
             {
                 textbox.Text = previousText;
@@ -122,7 +122,7 @@ namespace onTrack.Components
 
         private void textbox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (!Timer.Playing)
+            if (!Main.Playing)
             {
                 Enabled = true;
             }
@@ -144,11 +144,11 @@ namespace onTrack.Components
         private void UserControl_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             textbox.Select(0, 0);
-            if (e.Key.Equals(Key.Back) && !Timer.Playing)
+            if (e.Key.Equals(Key.Back) && !Main.Playing)
             {
                 if (timeStr.Length < 1) return;
                 timeStr = timeStr.Remove(timeStr.Length - 1);
-                Timer.SetDuration(StringToSeconds());
+                Main.SetDuration(StringToSeconds());
             }
         }
 
@@ -160,7 +160,7 @@ namespace onTrack.Components
 
         private void textbox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (!Timer.Playing)
+            if (!Main.Playing)
             {
                 Enabled = true;
             }
