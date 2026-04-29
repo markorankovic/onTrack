@@ -304,7 +304,7 @@ namespace onTrack.Reinforcements
         {
             var randIndex = random.Next(reinforcements.Length);
             var reinforcement = reinforcements[randIndex];
-            return Timer.GetReinforcementInstance(reinforcement);
+            return Main.GetReinforcementInstance(reinforcement);
         }
         public ToastContentBuilder CreateToast(string goal)
         {

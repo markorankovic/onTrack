@@ -9,14 +9,14 @@ namespace onTrack.Views
     {
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Timer.Playing)
+            if (Main.Playing)
             {
-                Timer.Stop();
+                Main.Stop();
                 PlayButton.Content = "▶️ Start";
             }
             else
             {
-                Timer.Reset();
+                Main.Reset();
                 PlayButton.Content = "⏹️ Stop";
             }
         }
@@ -29,12 +29,12 @@ namespace onTrack.Views
             InitializeComponent();
             DataContext = ((TaskTree)Application.Current.Resources["taskList"]);
             Trace.WriteLine(Resources["mouseover"]);
-            PlayButton.Content = Timer.Playing ? "⏹️ Stop" : "▶️ Start";
+            PlayButton.Content = Main.Playing ? "⏹️ Stop" : "▶️ Start";
         }
 
         private void objective_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Timer.SetObjective(objective.Text);
+            Main.SetObjective(objective.Text);
         }
 
 

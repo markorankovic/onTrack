@@ -28,7 +28,7 @@ namespace onTrack.Views
             var reinforcementRadioButtons = LogicalTreeHelper.GetChildren(reinforcements).OfType<RadioButton>();
             foreach (var rb in reinforcementRadioButtons)
             {
-                if (("onTrack.Reinforcements." + rb.Name).Equals(Timer.GetReinforcement().GetType().ToString()))
+                if (("onTrack.Reinforcements." + rb.Name).Equals(Main.GetReinforcement().GetType().ToString()))
                 {
                     rb.IsChecked = true;
                 }
@@ -40,12 +40,12 @@ namespace onTrack.Views
             RadioButton radioButton = (RadioButton)sender;
             switch (radioButton.Content)
             {
-                case "Standard": Timer.SetReinforcement(new StandardReinforcement()); return;
-                case "Type out the task": Timer.SetReinforcement(new TypeOutTheGoalReinforcement()); return;
-                case "Press the right goal": Timer.SetReinforcement(new PressTheRightGoalReinforcement()); return;
-                case "What you gonna do now": Timer.SetReinforcement(new WhatYouGonnaDoNowReinforcement()); return;
-                case "Random": Timer.SetReinforcement(new RandomReinforcement()); return;
-                case "None": Timer.SetReinforcement(new NoneReinforcement()); return;
+                case "Standard": Main.SetReinforcement(new StandardReinforcement()); return;
+                case "Type out the task": Main.SetReinforcement(new TypeOutTheGoalReinforcement()); return;
+                case "Press the right goal": Main.SetReinforcement(new PressTheRightGoalReinforcement()); return;
+                case "What you gonna do now": Main.SetReinforcement(new WhatYouGonnaDoNowReinforcement()); return;
+                case "Random": Main.SetReinforcement(new RandomReinforcement()); return;
+                case "None": Main.SetReinforcement(new NoneReinforcement()); return;
                 default: return;
             }
         }

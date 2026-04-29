@@ -12,13 +12,13 @@ namespace onTrack.Views
             var alarmSoundRadioButtons = LogicalTreeHelper.GetChildren(alarmSound).OfType<RadioButton>();
             foreach (var rb in alarmSoundRadioButtons)
             {
-                if (rb.Content.Equals(Timer.GetAlarmName()))
+                if (rb.Content.Equals(Main.GetAlarmName()))
                 {
                     rb.IsChecked = true;
                 }
             }
 
-            if (Timer.SoundPlaying)
+            if (Main.SoundPlaying)
             {
                 test_button.Content = "Stop";
             }
@@ -32,12 +32,12 @@ namespace onTrack.Views
         {
             if (((Button)e.OriginalSource).Content.Equals("Test"))
             {
-                Timer.PlayAlarm();
+                Main.PlayAlarm();
                 ((Button)e.OriginalSource).Content = "Stop";
             }
             else
             {
-                Timer.StopAlarm();
+                Main.StopAlarm();
                 ((Button)e.OriginalSource).Content = "Test";
             }
         }
@@ -47,9 +47,9 @@ namespace onTrack.Views
             RadioButton radioButton = (RadioButton)sender;
             switch (radioButton.Content)
             {
-                case "Evacuation": Timer.SetAlarmName("Evacuation"); return;
-                case "Wake Up": Timer.SetAlarmName("Wake Up"); return;
-                case "Police": Timer.SetAlarmName("Police"); return;
+                case "Evacuation": Main.SetAlarmName("Evacuation"); return;
+                case "Wake Up": Main.SetAlarmName("Wake Up"); return;
+                case "Police": Main.SetAlarmName("Police"); return;
                 default: return;
             }
         }

@@ -237,20 +237,20 @@ namespace onTrack
         {
             TaskTree taskTree = (TaskTree) Current.Resources["taskList"];
             Settings settings = new Settings();
-            settings.Duration = Timer.Duration;
-            settings.reinforcement = Timer.GetReinforcement().GetType().Name;
-            settings.alarmName = Timer.GetAlarmName();
-            settings.autoPausePlayEnabled = Timer.autoPausePlay;
-            settings.autoFocusEnabled = Timer.autoFocus;
-            if (Timer.autoFocusClickLocation != null)
+            settings.Duration = onTrack.Main.Duration;
+            settings.reinforcement = onTrack.Main.GetReinforcement().GetType().Name;
+            settings.alarmName = onTrack.Main.GetAlarmName();
+            settings.autoPausePlayEnabled = onTrack.Main.AutoPausePlay;
+            settings.autoFocusEnabled = onTrack.Main.AutoFocus;
+            if (onTrack.Main.AutoFocusClickLocation != null)
             {
-                settings.autoFocusClickLocation = new Point2D() { x = Timer.autoFocusClickLocation.x, y = Timer.autoFocusClickLocation.y };
+                settings.autoFocusClickLocation = new Point2D() { x = onTrack.Main.AutoFocusClickLocation.x, y = onTrack.Main.AutoFocusClickLocation.y };
             }
-            if (Timer.autoPlayClickLocation != null)
+            if (onTrack.Main.AutoPlayClickLocation != null)
             {
-                settings.autoPlayClickLocation = new Point2D() { x = Timer.autoPlayClickLocation.x, y = Timer.autoPlayClickLocation.y };
+                settings.autoPlayClickLocation = new Point2D() { x = onTrack.Main.AutoPlayClickLocation.x, y = onTrack.Main.AutoPlayClickLocation.y };
             }
-            settings.autoPauseKey = Timer.autoPauseKey;
+            settings.autoPauseKey = onTrack.Main.AutoPauseKey;
             AppStore store = new AppStore();
             store.taskTree = taskTree;
             store.settings = settings;
@@ -279,19 +279,19 @@ namespace onTrack
                 appStore.taskTree.SetParentOnChildTasks(root);
                 Current.Resources.Add("taskList", appStore.taskTree);
 
-                Timer.Duration = appStore.settings.Duration;
-                Timer.autoPausePlay = appStore.settings.autoPausePlayEnabled;
-                Timer.autoFocus = appStore.settings.autoFocusEnabled;
-                Timer.autoPauseKey = appStore.settings.autoPauseKey;
-                Timer.SetReinforcement(appStore.settings.reinforcement);
-                Timer.SetAlarmName(appStore.settings.alarmName);
+                onTrack.Main.Duration = appStore.settings.Duration;
+                onTrack.Main.AutoPausePlay = appStore.settings.autoPausePlayEnabled;
+                onTrack.Main.AutoFocus = appStore.settings.autoFocusEnabled;
+                onTrack.Main.AutoPauseKey = appStore.settings.autoPauseKey;
+                onTrack.Main.SetReinforcement(appStore.settings.reinforcement);
+                onTrack.Main.SetAlarmName(appStore.settings.alarmName);
                 if (appStore.settings.autoFocusClickLocation != null)
                 {
-                    Timer.autoFocusClickLocation = new Location(x: appStore.settings.autoFocusClickLocation!.x, y: appStore.settings.autoFocusClickLocation.y);
+                    onTrack.Main.AutoFocusClickLocation = new Location(x: appStore.settings.autoFocusClickLocation!.x, y: appStore.settings.autoFocusClickLocation.y);
                 }
                 if (appStore.settings.autoPlayClickLocation != null)
                 {
-                    Timer.autoPlayClickLocation = new Location(x: appStore.settings.autoPlayClickLocation!.x, y: appStore.settings.autoPlayClickLocation.y);
+                    onTrack.Main.AutoPlayClickLocation = new Location(x: appStore.settings.autoPlayClickLocation!.x, y: appStore.settings.autoPlayClickLocation.y);
                 }
             }
             catch
