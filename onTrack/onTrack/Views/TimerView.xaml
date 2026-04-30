@@ -80,6 +80,7 @@
                 Foreground="White"
                 TextAlignment="Center"
                 Text="{Binding CurrentTask.Task}"
+                ToolTip="{Binding CurrentTask.Task}"
                 TextChanged="objective_TextChanged"
                 BorderThickness="0"
                 CaretBrush="White"
