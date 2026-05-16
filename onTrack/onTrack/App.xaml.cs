@@ -91,13 +91,16 @@ namespace onTrack
 
         public void SetCurrentTask(TaskItem task)
         {
+            CurrentTask = task;
+        }
+
+        public void SetInitialTask(TaskItem task)
+        {
             if (CurrentTask != null)
             {
-                Trace.WriteLine("CurrentTask.AddChild");
                 CurrentTask.AddChild(task);
-                Trace.WriteLine("Added child to current task");
             }
-            CurrentTask = task;
+            SetCurrentTask(task);
         }
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
@@ -221,6 +224,37 @@ namespace onTrack
             this.Parent = Parent;
         }
 
+        public void SwitchParent(TaskItem newParent)
+        {
+            var taskTree = ((TaskTree)Application.Current.Resources["taskList"]);
+            var isCurrentTask = IsCurrentTask;
+            RemoveFromParent();
+            SetParent(newParent);
+            newParent.AddChild(this);
+            if (isCurrentTask)
+            {
+                taskTree.SetCurrentTask(isCurrentTask ? this : taskTree.CurrentTask!);
+            }
+        }
+
+        public bool HasParent()
+        {
+            return Parent != null;
+        }
+
+        public bool IsDescendant(TaskItem Item)
+        {
+            if (!Item.HasParent())
+            {
+                return false;
+            }
+            else if (Item.Parent == this)
+            {
+                return true;
+            }
+            return IsDescendant(Item.Parent!);
+        }
+
         public string GetTask()
         {
             return Task;
@@ -299,7 +333,7 @@ namespace onTrack
                 TaskItem parent = new TaskItem();
                 parent.SetTask("Your Objective");
                 TaskTree taskTree = new TaskTree(parent);
-                taskTree.SetCurrentTask(parent);
+                taskTree.SetInitialTask(parent);
                 Current.Resources.Add("taskList", taskTree);
             }
         }
