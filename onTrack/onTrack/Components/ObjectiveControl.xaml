@@ -4,27 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:components="clr-namespace:onTrack.Components"
+             xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
              mc:Ignorable="d" 
-             Height="80" Width="500"
+             Height="80"
              x:Name="root"
              Focusable="True"
              MouseDown="root_MouseDown"
              KeyDown="root_KeyDown"
              Loaded="root_Loaded"
-             LostFocus="root_LostFocus">
+             LostFocus="root_LostFocus"
+             Drop="DragAndDrop_Drop"
+             AllowDrop="True">
     <UserControl.Resources>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
         <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
     </UserControl.Resources>
-    <StackPanel ToolTip="{Binding Title, ElementName=root}" Orientation="Horizontal" x:Name="sp">
-        <TextBox ContextMenu="{x:Null}" BorderBrush="Transparent" x:Name="tb" CaretBrush="White" LostFocus="tb_LostFocus" Width="350" IsEnabled="False" FontSize="30" Background="Transparent" Foreground="White" Text="{Binding Title, ElementName=root, Mode=TwoWay}"></TextBox>
-        <Label x:Name="current" Content="⬅️" FontSize="30" Foreground="White" MouseDown="current_MouseDown">
+    <StackPanel ToolTip="{Binding Title, ElementName=root}" Orientation="Horizontal" x:Name="sp" DragOver="DragAndDrop_DragOver">
+        <materialIcons:MaterialIcon Name="dragIcon" Kind="Drag" FontSize="30" Foreground="White" MouseMove="DragAndDrop_MouseMove" GiveFeedback="DragAndDrop_GiveFeedback" />
+        <TextBox ContextMenu="{x:Null}" BorderBrush="Transparent" x:Name="tb" CaretBrush="White" LostFocus="tb_LostFocus" VerticalAlignment="Center" Width="350" IsEnabled="False" FontSize="30" Background="Transparent" Foreground="White" Text="{Binding Title, ElementName=root, Mode=TwoWay}"></TextBox>
+        <Label x:Name="current" Content="⬅️" VerticalAlignment="Center" FontSize="30" Foreground="White" MouseDown="current_MouseDown">
             <Validation.ErrorTemplate>
                 <ControlTemplate>
                 </ControlTemplate>
             </Validation.ErrorTemplate>
         </Label>
-        <StackPanel x:Name="tools" Orientation="Horizontal" Visibility="Hidden">
+        <StackPanel x:Name="tools" Orientation="Horizontal" VerticalAlignment="Center" Visibility="Hidden">
             <Label x:Name="edit" Content="✏️" FontSize="30" Foreground="White" MouseDown="edit_MouseDown" />
             <Label x:Name="delete" Content="❌" FontSize="30" Foreground="White" MouseDown="delete_MouseDown" />
         </StackPanel>

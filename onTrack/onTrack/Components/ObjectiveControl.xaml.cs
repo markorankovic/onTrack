@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -70,7 +71,7 @@ namespace onTrack.Components
         public ObjectiveControl()
         {
             InitializeComponent();
-         }
+        }
 
         private void root_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -115,19 +116,95 @@ namespace onTrack.Components
         private void root_Loaded(object sender, RoutedEventArgs e)
         {
             var taskItem = (TaskItem)DataContext;
+
             taskItem.PropertyChanged += TaskItem_PropertyChanged;
             current.Visibility = taskItem.IsCurrentTask ? Visibility.Visible : Visibility.Hidden;
+
+            bool isRoot = !((TaskItem)DataContext).HasParent();
+            dragIcon.Visibility = isRoot ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private void TaskItem_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            var taskItem = (TaskItem) DataContext;
-            current.Visibility = taskItem.IsCurrentTask ? Visibility.Visible : Visibility.Hidden;
+            try
+            {
+                var taskItem = (TaskItem)DataContext;
+                current.Visibility = taskItem.IsCurrentTask ? Visibility.Visible : Visibility.Hidden;
+            }
+            catch
+            {
+                Console.WriteLine("TaskItem is now likely disconnected");
+            }
         }
 
         private void root_LostFocus(object sender, RoutedEventArgs e)
         {
             tb.IsEnabled = false;
+        }
+
+        private void DragAndDrop_MouseMove(object sender, MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            TaskItem taskItem = (TaskItem)DataContext;
+            bool isRoot = !taskItem.HasParent();
+            if (e.LeftButton == MouseButtonState.Pressed && !isRoot)
+            {
+                DataObject data = new DataObject();
+                data.SetData("Task", taskItem);
+
+                DragDrop.DoDragDrop(this, data, DragDropEffects.Move);
+            }
+        }
+
+        private void DragAndDrop_GiveFeedback(object sender, GiveFeedbackEventArgs e)
+        {
+            base.OnGiveFeedback(e);
+            if (e.Effects.HasFlag(DragDropEffects.Move))
+            {
+                Mouse.SetCursor(Cursors.Hand);
+            }
+            else
+            {
+                Mouse.SetCursor(Cursors.No);
+            }
+            e.Handled = true;
+        }
+
+        private void DragAndDrop_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.None;
+            if (e.Data.GetDataPresent("Task"))
+            {
+                try
+                {
+                    object taskObject = e.Data.GetData("Task");
+                    TaskItem taskItem = (TaskItem)taskObject;
+                    TaskItem newParent = (TaskItem)DataContext;
+                    if (taskItem != newParent && !taskItem.IsDescendant(newParent))
+                    {
+                        e.Effects = DragDropEffects.Move;
+                    }
+                }
+                catch
+                {
+                }
+            }
+            e.Handled = true;
+        }
+
+        private void DragAndDrop_Drop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                object taskObject = e.Data.GetData("Task");
+                TaskItem taskItem = (TaskItem)taskObject;
+                TaskItem newParent = (TaskItem)DataContext;
+                taskItem.SwitchParent(newParent);
+            }
+            catch
+            {
+                Console.WriteLine("Drop operation error: Failed to retrieve task data");
+            }
         }
     }
 }
