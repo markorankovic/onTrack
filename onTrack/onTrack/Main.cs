@@ -40,6 +40,8 @@ namespace onTrack
 
         static List<Reinforcement> PreviousReinforcements = new();
 
+        public static bool AFKMode = false;
+
         public static bool AutoPausePlay = false;
 
         public static bool AutoFocus = false;
@@ -267,7 +269,7 @@ namespace onTrack
                 if (Counted <= Duration)
                 {
                     ExecuteCallbacks();
-                    if (!AFKTracker.EvaluateIsAFK((int)Duration))
+                    if (AFKMode && !AFKTracker.EvaluateIsAFK((int)Duration))
                     {
                         Reset();
                     }
