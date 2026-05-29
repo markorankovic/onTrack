@@ -267,6 +267,10 @@ namespace onTrack
                 if (Counted <= Duration)
                 {
                     ExecuteCallbacks();
+                    if (!AFKTracker.EvaluateIsAFK((int)Duration))
+                    {
+                        Reset();
+                    }
                     return;
                 }
                 Timer.AutoReset = false;
