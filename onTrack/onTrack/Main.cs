@@ -79,6 +79,7 @@ namespace onTrack
                             var taskTree = ((TaskTree?)Application.Current.Resources["taskList"]);
                             var newGoal = new TaskItem();
                             newGoal.Task = (string)toastArgs.UserInput["tbReply"];
+                            taskTree?.CurrentTask?.AddChild(newGoal);
                             taskTree?.SetCurrentTask(newGoal);
                         }
                         if (AutoPlayClickLocation != null && AutoPausePlay)
