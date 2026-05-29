@@ -38,6 +38,8 @@ namespace onTrack
         public string alarmName;
         // Automations
         [JsonInclude]
+        public bool afkModeEnabled;
+        [JsonInclude]
         public bool autoPausePlayEnabled;
         [JsonInclude]
         public bool autoFocusEnabled;
@@ -274,6 +276,7 @@ namespace onTrack
             settings.Duration = onTrack.Main.Duration;
             settings.reinforcement = onTrack.Main.GetReinforcement().GetType().Name;
             settings.alarmName = onTrack.Main.GetAlarmName();
+            settings.afkModeEnabled = onTrack.Main.AFKMode;
             settings.autoPausePlayEnabled = onTrack.Main.AutoPausePlay;
             settings.autoFocusEnabled = onTrack.Main.AutoFocus;
             if (onTrack.Main.AutoFocusClickLocation != null)
@@ -314,6 +317,7 @@ namespace onTrack
                 Current.Resources.Add("taskList", appStore.taskTree);
 
                 onTrack.Main.Duration = appStore.settings.Duration;
+                onTrack.Main.AFKMode = appStore.settings.afkModeEnabled;
                 onTrack.Main.AutoPausePlay = appStore.settings.autoPausePlayEnabled;
                 onTrack.Main.AutoFocus = appStore.settings.autoFocusEnabled;
                 onTrack.Main.AutoPauseKey = appStore.settings.autoPauseKey;

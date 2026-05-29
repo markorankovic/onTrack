@@ -19,7 +19,8 @@ namespace onTrack.Views
 
             DataContext = this;
 
-            enabled.IsChecked = Main.AutoPausePlay || Main.AutoFocus;
+            enabled.IsChecked = Main.AutoPausePlay || Main.AutoFocus || Main.AFKMode;
+            afkMode.IsChecked = Main.AFKMode;
             autoPausePlay.IsChecked = Main.AutoPausePlay;
             autoFocus.IsChecked = Main.AutoFocus;
 
@@ -47,9 +48,11 @@ namespace onTrack.Views
         {
             var autoPausePlayOptionMark = (Path)autoPausePlay.Template.FindName("optionMark", autoPausePlay);
             var autoFocusOptionMark = (Path)autoPausePlay.Template.FindName("optionMark", autoFocus);
+            var afkModeOptionMark = (Path)afkMode.Template.FindName("optionMark", afkMode);
             var enabledOptionMark = (Path)autoPausePlay.Template.FindName("optionMark", enabled);
             SetToBlue(autoPausePlayOptionMark);
             SetToBlue(autoFocusOptionMark);
+            SetToBlue(afkModeOptionMark);
             SetToBlue(enabledOptionMark);
         }
 
@@ -93,10 +96,31 @@ namespace onTrack.Views
             }
         }
 
+        private void afkMode_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (!afkMode.IsEnabled)
+            {
+                afkMode.IsChecked = false;
+            }
+        }
+
+        private void AFKMode_Checked(object sender, RoutedEventArgs e)
+        {
+            if (afkMode.IsChecked == true)
+            {
+                Main.AFKMode = true;
+            }
+            else
+            {
+                Main.AFKMode = false;
+            }
+        }
+
         private void enabled_Click(object sender, RoutedEventArgs e)
         {
             if (!enabled.IsChecked ?? false)
             {
+                Main.AFKMode = false;
                 Main.AutoPausePlay = false;
                 Main.AutoFocus = false;
             }
