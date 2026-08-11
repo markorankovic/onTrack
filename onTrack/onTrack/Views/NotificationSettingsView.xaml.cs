@@ -52,18 +52,18 @@ namespace onTrack.Views
             }
         }
 
-        private void TimeToRespond_TextInput(object sender, TextCompositionEventArgs e)
+        private void TimeToRespondTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             // TODO: Add validation
             int? parseResult = null;
             try
             {
-                parseResult = int.Parse(e.Text);
+                parseResult = timeToRespondTextBox.Text == "" ? null : int.Parse(timeToRespondTextBox.Text);
+                Main.TimeToRespond = parseResult;
             }
             catch
             {
             }
-            Main.TimeToRespond = parseResult;
         }
     }
 }

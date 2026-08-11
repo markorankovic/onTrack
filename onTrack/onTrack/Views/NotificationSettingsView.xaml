@@ -70,7 +70,7 @@
                     <RadioButton Name="NoneReinforcement" VerticalContentAlignment="Center" Margin="10" FontSize="15" GroupName="Reinforcements" Content="None" Foreground="White" Checked="Reinforcement_Checked" />
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Time to respond" FontSize="15" Foreground="White" />
-                        <TextBox x:Name="timeToRespondTextBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="50" PreviewTextInput="TimeToRespond_TextInput" />
+                        <TextBox x:Name="timeToRespondTextBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="50" TextChanged="TimeToRespondTextBox_TextChanged" />
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
