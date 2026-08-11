@@ -38,6 +38,10 @@ namespace onTrack
 
         public static int TimeEllapsed { get { return (int) DateTime.UtcNow.Subtract(TimeInitiated != null ? TimeInitiated.Value : DateTime.UtcNow).TotalMilliseconds; } }
 
+        public static int? TimeToRespond = null;
+
+        public static Timer? ResponseTimer = null;
+
         static List<Reinforcement> PreviousReinforcements = new();
 
         public static bool AFKMode = false;
@@ -108,6 +112,17 @@ namespace onTrack
         public static void AddFinishCallback(Action callback)
         {
             FinishCallback = callback;
+        }
+
+        public static void StartTimerToRespond()
+        {
+            ResponseTimer = new Timer((double)(TimeToRespond! * 1000));
+            ResponseTimer.Elapsed += (Object source, ElapsedEventArgs e) =>
+            {
+                ResponseTimer.Close();
+                WakeUser();
+            };
+            ResponseTimer.Enabled = true;
         }
 
         public static string GetAlarmName()
@@ -222,6 +237,7 @@ namespace onTrack
             Playing = true;
             ExecuteCallbacks();
             ExecuteFinishCallbacks();
+            ResponseTimer?.Close();
             Counted = 0;
             Trace.WriteLine("Duration: " + Duration);
             Timer?.Stop();
@@ -281,6 +297,10 @@ namespace onTrack
 
                 AlertUser();
 
+                if (TimeToRespond != null && !(CurrentReinforcement is NoneReinforcement))
+                {
+                    StartTimerToRespond();
+                }
                 if (AutoPauseKey != null && AutoPausePlay)
                 {
                     SendAutoPauseKey();
