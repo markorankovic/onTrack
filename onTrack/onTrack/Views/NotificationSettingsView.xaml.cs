@@ -54,15 +54,16 @@ namespace onTrack.Views
 
         private void TimeToRespondTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // TODO: Add validation
             int? parseResult = null;
             try
             {
                 parseResult = timeToRespondTextBox.Text == "" ? null : int.Parse(timeToRespondTextBox.Text);
                 Main.TimeToRespond = parseResult;
             }
-            catch
+            catch(Exception err)
             {
+                Trace.WriteLine("Error parsing time to respond value: " + err.Message);
+                timeToRespondTextBox.Text = Main.TimeToRespond + "";
             }
         }
     }
