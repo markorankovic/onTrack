@@ -1,6 +1,7 @@
 ﻿using onTrack.Reinforcements;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace onTrack.Views
             InitializeComponent();
 
             var reinforcementRadioButtons = LogicalTreeHelper.GetChildren(reinforcements).OfType<RadioButton>();
+            timeToRespondTextBox.Text = "" + Main.TimeToRespond; 
             foreach (var rb in reinforcementRadioButtons)
             {
                 if (("onTrack.Reinforcements." + rb.Name).Equals(Main.GetReinforcement().GetType().ToString()))
@@ -47,6 +49,21 @@ namespace onTrack.Views
                 case "Random": Main.SetReinforcement(new RandomReinforcement()); return;
                 case "None": Main.SetReinforcement(new NoneReinforcement()); return;
                 default: return;
+            }
+        }
+
+        private void TimeToRespondTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int? parseResult = null;
+            try
+            {
+                parseResult = timeToRespondTextBox.Text == "" ? null : int.Parse(timeToRespondTextBox.Text);
+                Main.TimeToRespond = parseResult;
+            }
+            catch(Exception err)
+            {
+                Trace.WriteLine("Error parsing time to respond value: " + err.Message);
+                timeToRespondTextBox.Text = Main.TimeToRespond + "";
             }
         }
     }

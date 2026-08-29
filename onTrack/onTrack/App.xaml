@@ -31,6 +31,14 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+            <Style TargetType="TextBox">
+                <Style.Triggers>
+                    <Trigger Property="IsEnabled" Value="True">
+                        <Setter Property="Foreground" Value="#FF27C7F7" />
+                        <Setter Property="CaretBrush" Value="#FF27C7F7" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
             <DataTemplate DataType="{x:Type viewmodels:TimerViewModel}">
                 <views:TimerView />
             </DataTemplate>
@@ -42,6 +50,7 @@
             <SolidColorBrush x:Key="TreeViewItem.TreeArrow.Static.Checked.Fill" Color="White"/>
             <SolidColorBrush x:Key="TreeViewItem.TreeArrow.MouseOver.Checked.Stroke" Color="#FF1CC4F7"/>
             <SolidColorBrush x:Key="TreeViewItem.TreeArrow.MouseOver.Checked.Fill" Color="#FF1CC4F7"/>
+            <SolidColorBrush x:Key="TextBox.Foreground" Color="#FF1CC4F7"/>
             <PathGeometry x:Key="TreeArrow" Figures="M0,0 L0,6 L6,0 z"/>
             <Style x:Key="ExpandCollapseToggleStyle" TargetType="{x:Type ToggleButton}">
                 <Setter Property="Focusable" Value="False"/>
